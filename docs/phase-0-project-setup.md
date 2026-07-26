@@ -346,12 +346,12 @@ export function ThemeProvider({
 
 ## PR Checklist — Phase 0
 
-- [ ] `pnpm dev` starts without errors
-- [ ] `pnpm dlx convex dev` syncs schema without errors
-- [ ] All shadcn/ui components installed and importable
-- [ ] `convex/schema.ts` defines all 6 tables with correct indexes
-- [ ] `src/mastra/index.ts` exists with placeholder config
-- [ ] `.env.example` has all required keys documented
-- [ ] Convex + Theme providers wired in root layout
-- [ ] Directory structure matches the diagram above
-- [ ] Git repo initialized, initial commit on `main`
+- [x] `pnpm dev` starts without errors
+- [x] `pnpm dlx convex dev` syncs schema without errors
+- [x] All shadcn/ui components installed and importable
+- [x] `convex/schema.ts` defines all 6 tables with correct indexes
+- [x] `src/mastra/index.ts` exists with placeholder config
+- [x] `.env.example` has all required keys documented
+- [x] Convex + Theme providers wired in root layout
+- [x] Directory structure matches the diagram above
+- [x] Git repo initialized, initial commit on `main`
