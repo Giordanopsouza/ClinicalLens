@@ -10,20 +10,29 @@ export const searchDischargeSummaries = action({
     limit: v.optional(v.number()),
   },
   handler: async (ctx, args) => {
-    const results = await ctx.vectorSearch("clinical_cases", "by_embedding", {
+    const limit = Math.min(Math.max(args.limit ?? 5, 1), 20);
+    const matches = await ctx.vectorSearch("clinical_cases", "by_embedding", {
       vector: args.embedding,
-      limit: args.limit ?? 5,
+      limit,
     });
 
-    const docs = await Promise.all(
-      results.map(async (result) => {
-        const doc = await ctx.runQuery(internal.queries.getPatientByDocId, {
-          id: result._id,
+    const hydrated = await Promise.all(
+      matches.map(async (match) => {
+        const clinicalCase = await ctx.runQuery(internal.queries.getPatientByDocId, {
+          id: match._id,
         });
-        return { ...doc, score: result._score };
-      })
+
+        if (!clinicalCase) {
+          return null;
+        }
+
+        return {
+          ...clinicalCase,
+          score: match._score,
+        };
+      }),
     );
 
-    return docs;
+    return hydrated.filter((item): item is NonNullable<typeof item> => item !== null);
   },
 });

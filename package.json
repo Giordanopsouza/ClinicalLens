@@ -8,7 +8,13 @@
     "dev:all": "concurrently \"pnpm dev\" \"pnpm dev:mastra\" \"pnpm dlx convex dev\"",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "data:download": "npx tsx scripts/download-data.ts",
+    "data:seed:small": "npx tsx scripts/seed-convex.ts",
+    "data:import:large": "npx tsx scripts/import-large-tables.ts",
+    "data:seed": "pnpm run data:seed:small && pnpm run data:import:large",
+    "data:embed": "npx tsx scripts/generate-embeddings.ts",
+    "data:verify": "npx tsx scripts/verify-seed.ts"
   },
   "dependencies": {
     "@ag-ui/client": "^0.0.47",
