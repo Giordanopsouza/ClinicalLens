@@ -9,16 +9,40 @@ This document outlines the design standards, component guidelines, and technical
 - **Icons**: Lucide React
 - **Theming**: `next-themes` (Dark/Light/System)
 - **Animations**: `motion/react` (Framer Motion)
-- **Font**: Roboto (Primary Sans-serif)
+- **Font**: Lexend (Primary Sans-serif) / JetBrains Mono (Monospace)
 
-## 2. Color Palette (OKLCH - Creative Dark Blue)
-Professional and vibrant blue-centric palette.
-- **Light Mode**: Primary `oklch(0.35 0.12 250)`, Background `oklch(0.99 0 0)`
-- **Dark Mode**: Primary `oklch(0.7 0.15 250)`, Background `oklch(0.12 0.02 250)`
+## 2. Color Palette
+The project uses a clean, high-contrast palette optimized for clinical environments.
+
+### Light Mode (:root)
+- **Primary Blue**: `#0D3BA5` — Main actions, branding, key data points.
+- **Success Green**: `#10B981` — Positive states, stable vitals.
+- **Warning Yellow**: `#F59E0B` — Cautionary alerts, missing data.
+- **Critical Red**: `#EF4444` — Errors, critical patient alerts.
+- **Info Blue**: `#3B82F6` — Informational highlights.
+- **Background**: `#F8FAFC` (Neutral 50)
+- **Surface/Card**: `#FFFFFF`
+- **Text (Main)**: `#1E293B` (Neutral 800)
+- **Text (Muted)**: `#64748B` (Neutral 500)
+- **Border**: `#E2E8F0` (Neutral 200)
+
+### Dark Mode (.dark)
+- **Primary Blue**: `#1E5EFF` — Vibrant blue for high contrast on dark backgrounds.
+- **Success Green**: `#10B981`
+- **Warning Yellow**: `#F59E0B`
+- **Critical Red**: `#EF4444`
+- **Info Blue**: `#60A5FA`
+- **Background Deep**: `#030712`
+- **Surface/Card**: `#111827`
+- **Text (Main)**: `#F3F4F6`
+- **Text (Muted)**: `#9CA3AF`
+- **Border Subtle**: `#1F2937`
 
 ## 3. Typography
-- **Primary Font**: **Roboto** (Google Font)
-- **Mono Font**: Geist Mono
+- **Primary Font**: **Lexend** (Google Font)
+  - Used for all reading content, headings, and descriptions.
+- **Mono Font**: **JetBrains Mono** (Google Font)
+  - Used for precise data display (IDs, vitals, lab values).
 
 ## 4. Animation Standards (Mild Professional Enterprise)
 To maintain a professional medical aesthetic, animations must be subtle, purposeful, and non-distracting.
@@ -32,29 +56,14 @@ To maintain a professional medical aesthetic, animations must be subtle, purpose
 - **Entry Fades**: Subtle `opacity` + small `y` offset (10-20px) on page or section load.
 - **Staggering**: Apply a slight `staggerChildren` (0.05s - 0.1s) for lists or card grids to guide the eye.
 - **Hover States**:
-  - **Cards**: Gentle lift (`y: -4` to `-8`) with a subtle increase in border intensity or shadow.
+  - **Cards**: Gentle lift (`y: -4` to `-8`) with a subtle increase in border intensity or shadow (e.g. `card-glow`).
   - **Buttons**: Scale up slightly (`scale: 1.02`) or adjust background-color.
 - **Active States**: Immediate feedback with `scale: 0.98`.
 
-### 4.3 Implementation
-Always use `motion` from `motion/react`. 
-```tsx
-import { motion } from "motion/react";
-
-// Example of professional entry animation
-<motion.div
-  initial={{ opacity: 0, y: 10 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.3, ease: "easeOut" }}
->
-  Content
-</motion.div>
-```
-
 ## 5. Component Standards
 - **Shadcn UI**: MANDATORY for all standard UI elements.
-- **Radius**: Modern corners (`--radius: 0.75rem`).
-- **Glassmorphism**: Use `backdrop-blur` for fixed headers.
+- **Radius**: Medium corners (`--radius: 0.5rem` / `8px`).
+- **Cards**: Use subtle shadows in light mode, and a soft glow (`box-shadow: 0 0 15px rgba(30, 94, 255, 0.1)`) in dark mode.
 
 ## 6. Generative UI (CopilotKit)
 - Chat cards MUST use the `primary` and `card` variables.

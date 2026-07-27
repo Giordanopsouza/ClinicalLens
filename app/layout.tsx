@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import { Roboto, Geist_Mono } from "next/font/google";
+import { Lexend, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ConvexClientProvider } from "@/components/providers/convex-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { CopilotKitProvider } from "@/components/providers/copilotkit-provider";
 
-const roboto = Roboto({
-  weight: ["300", "400", "500", "700"],
+const lexend = Lexend({
+  weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
-  variable: "--font-roboto",
+  variable: "--font-lexend",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
 
@@ -29,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${roboto.variable} ${geistMono.variable} font-sans antialiased`}
+        className={`${lexend.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -38,9 +39,11 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ConvexClientProvider>
-            <TooltipProvider>
-              {children}
-            </TooltipProvider>
+            <CopilotKitProvider>
+              <TooltipProvider>
+                {children}
+              </TooltipProvider>
+            </CopilotKitProvider>
           </ConvexClientProvider>
         </ThemeProvider>
       </body>

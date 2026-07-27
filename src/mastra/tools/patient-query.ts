@@ -1,7 +1,7 @@
 import { createTool } from "@mastra/core/tools";
 import { z } from "zod";
 import { getConvexClient } from "./convex-client";
-import { api } from "../../../convex/_generated/api";
+import { api } from "@/convex/_generated/api";
 
 export const patientQueryTool = createTool({
   id: "patient-query",

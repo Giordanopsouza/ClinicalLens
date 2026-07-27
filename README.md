@@ -23,6 +23,7 @@ The platform leverages a modern tech stack to provide real-time, context-aware c
 
 ## 📖 Documentation
 - [**Phase 0: Project Setup**](docs/phase-0-project-setup.md)
+- [**Phase 0.5: Clerk + Convex Auth**](docs/phase-0-5-auth.md)
 - [**Phase 1: Data Foundation**](docs/phase-1-data-foundation.md)
 - [**Phase 2: Mastra Agents**](docs/phase-2-mastra-agents.md)
 - [**Phase 3: Frontend**](docs/phase-3-frontend.md)

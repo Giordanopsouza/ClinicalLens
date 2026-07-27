@@ -1,5 +1,6 @@
 # Phase 2: Mastra Agents & Tools — The AI Brain
 
+**Status:** 100% Complete (10/10 Tasks)
 **Owner:** Person 2 (Agent Engineer)
 **Branch:** `phase-2-agents` (from `main` after Phase 1 merge)
 **Time estimate:** ~3-4 hours
@@ -810,16 +811,16 @@ The CopilotKit component would then use:
 
 ## PR Checklist — Phase 2
 
-- [ ] `src/mastra/index.ts` — full Mastra config with both agents registered
-- [ ] `src/mastra/tools/` — all 5 tools (+ convex-client utility + index)
-- [ ] `src/mastra/agents/` — both agents (+ index)
-- [ ] `src/app/api/copilotkit/route.ts` — CopilotKit API endpoint
-- [ ] `scripts/test-tools.ts` — tool testing script passes for all tools
-- [ ] Tavily API key works (test with a sample query)
-- [ ] Gemini API key works (agent responds to a test prompt)
-- [ ] CopilotKit endpoint returns a valid response
-- [ ] Observational Memory is configured on the clinical copilot agent
-- [ ] No TypeScript errors (`pnpm tsc --noEmit`)
+- [x] `src/mastra/index.ts` — full Mastra config with both agents registered
+- [x] `src/mastra/tools/` — all 5 tools (+ convex-client utility + index)
+- [x] `src/mastra/agents/` — both agents (+ index)
+- [x] `app/api/copilotkit/route.ts` — CopilotKit API endpoint
+- [x] `scripts/test-tools.ts` — tool testing script passes for all tools
+- [x] Tavily API key works (test with a sample query)
+- [x] Gemini API key works (agent responds to a test prompt)
+- [x] CopilotKit endpoint returns a valid response
+- [x] Observational Memory is configured on the clinical copilot agent
+- [x] No TypeScript errors (`pnpm tsc --noEmit`)
 
 ## Troubleshooting
 

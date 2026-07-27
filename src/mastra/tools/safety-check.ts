@@ -1,7 +1,7 @@
 import { createTool } from "@mastra/core/tools";
 import { z } from "zod";
 import { getConvexClient } from "./convex-client";
-import { api } from "../../../convex/_generated/api";
+import { api } from "@/convex/_generated/api";
 
 const DRUG_DIAGNOSIS_HINTS: Record<string, string[]> = {
   insulin: ["diabetes", "hyperglycemia", "250"],

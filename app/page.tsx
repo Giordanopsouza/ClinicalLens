@@ -5,6 +5,7 @@ import { ArrowRight, Activity, Shield, BarChart3, Search } from "lucide-react";
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/layout/navbar";
+import { cn } from "@/lib/utils";
 
 export default function Home() {
   const containerVariants = {
@@ -65,7 +66,7 @@ export default function Home() {
               variants={itemVariants}
               className="mt-10 flex flex-col gap-4 sm:flex-row"
             >
-              <Button size="lg" className="h-12 px-8 text-base shadow-lg shadow-primary/20" asChild>
+              <Button size="lg" className="h-12 px-8 text-base shadow-lg shadow-primary/20 button-glow transition-all active:scale-95" asChild>
                 <Link href="/dashboard">
                   Launch Dashboard <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
@@ -104,19 +105,19 @@ export default function Home() {
               />
               <FeatureCard
                 variants={itemVariants}
-                icon={<Shield className="h-6 w-6 text-primary" />}
+                icon={<Shield className="h-6 w-6 text-[var(--color-brand-success)]" />}
                 title="Safety Auditing"
                 description="Automated cross-referencing of medications and diagnoses to catch potential charting errors."
               />
               <FeatureCard
                 variants={itemVariants}
-                icon={<BarChart3 className="h-6 w-6 text-primary" />}
+                icon={<BarChart3 className="h-6 w-6 text-[var(--color-brand-info)]" />}
                 title="Visual Lab Trends"
                 description="Interactive time-series visualization for lab results, helping identify critical patient changes."
               />
               <FeatureCard
                 variants={itemVariants}
-                icon={<Search className="h-6 w-6 text-primary" />}
+                icon={<Search className="h-6 w-6 text-[var(--color-brand-warning)]" />}
                 title="Case Search"
                 description="Semantic vector search to find similar clinical presentations across historical data."
               />
@@ -155,7 +156,10 @@ function FeatureCard({ variants, icon, title, description }: { variants: any; ic
     <motion.div 
       variants={variants}
       whileHover={{ y: -8, transition: { duration: 0.2 } }}
-      className="group relative rounded-2xl border border-border bg-card p-8 transition-all hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/5"
+      className={cn(
+        "group relative rounded-2xl border border-border bg-card p-8 transition-all hover:border-primary/50",
+        "dark:card-glow"
+      )}
     >
       <div className="mb-6 inline-block rounded-xl bg-primary/10 p-3 group-hover:bg-primary/20 transition-colors">
         {icon}

@@ -2,7 +2,7 @@ import { createTool } from "@mastra/core/tools";
 import { z } from "zod";
 import { GoogleGenerativeAI, TaskType } from "@google/generative-ai";
 import { getConvexClient } from "./convex-client";
-import { api } from "../../../convex/_generated/api";
+import { api } from "@/convex/_generated/api";
 
 const genAI = new GoogleGenerativeAI(
   process.env.GOOGLE_GENERATIVE_AI_API_KEY!

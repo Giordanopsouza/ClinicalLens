@@ -1,7 +1,19 @@
-import { mutation } from "./_generated/server";
+import { mutation, internalMutation } from "./_generated/server";
 import { v } from "convex/values";
 
-export const seedClinicalCase = mutation({
+// Helper to check authentication for client-facing mutations (if any)
+async function requireAuth(ctx: any) {
+  const identity = await ctx.auth.getUserIdentity();
+  if (!identity) {
+    throw new Error("Unauthenticated call. Please sign in.");
+  }
+  return identity;
+}
+
+// Converted all seed mutations to internalMutation for security.
+// These should only be called by admin scripts via `npx convex run`, not from the public client.
+
+export const seedClinicalCase = internalMutation({
   args: {
     case_id: v.string(),
     subject_id: v.number(),
@@ -17,7 +29,7 @@ export const seedClinicalCase = mutation({
   },
 });
 
-export const seedLab = mutation({
+export const seedLab = internalMutation({
   args: {
     hadm_id: v.number(),
     itemid: v.number(),
@@ -31,7 +43,7 @@ export const seedLab = mutation({
   },
 });
 
-export const seedLabsBatch = mutation({
+export const seedLabsBatch = internalMutation({
   args: {
     labs: v.array(
       v.object({
@@ -51,7 +63,7 @@ export const seedLabsBatch = mutation({
   },
 });
 
-export const seedLabDictionary = mutation({
+export const seedLabDictionary = internalMutation({
   args: {
     itemid: v.number(),
     lab_name: v.string(),
@@ -63,7 +75,7 @@ export const seedLabDictionary = mutation({
   },
 });
 
-export const seedPrescription = mutation({
+export const seedPrescription = internalMutation({
   args: {
     subject_id: v.number(),
     hadm_id: v.number(),
@@ -79,7 +91,7 @@ export const seedPrescription = mutation({
   },
 });
 
-export const seedPrescriptionsBatch = mutation({
+export const seedPrescriptionsBatch = internalMutation({
   args: {
     prescriptions: v.array(
       v.object({
@@ -101,7 +113,7 @@ export const seedPrescriptionsBatch = mutation({
   },
 });
 
-export const seedDiagnosis = mutation({
+export const seedDiagnosis = internalMutation({
   args: {
     subject_id: v.number(),
     hadm_id: v.number(),
@@ -113,7 +125,7 @@ export const seedDiagnosis = mutation({
   },
 });
 
-export const seedDiagnosesBatch = mutation({
+export const seedDiagnosesBatch = internalMutation({
   args: {
     diagnoses: v.array(
       v.object({
@@ -131,7 +143,7 @@ export const seedDiagnosesBatch = mutation({
   },
 });
 
-export const seedDiagnosisDictionary = mutation({
+export const seedDiagnosisDictionary = internalMutation({
   args: {
     icd9_code: v.string(),
     short_title: v.string(),
@@ -142,7 +154,7 @@ export const seedDiagnosisDictionary = mutation({
   },
 });
 
-export const updateCaseEmbedding = mutation({
+export const updateCaseEmbedding = internalMutation({
   args: {
     hadm_id: v.number(),
     embedding: v.array(v.float64()),

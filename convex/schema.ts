@@ -72,4 +72,12 @@ export default defineSchema({
     short_title: v.string(),
     long_title: v.string(),
   }).index("by_icd9_code", ["icd9_code"]),
+
+  // ─── Users & Roles ─────────────────────────────────────────────
+  users: defineTable({
+    tokenIdentifier: v.string(), // Clerk's unique ID
+    name: v.optional(v.string()),
+    email: v.optional(v.string()),
+    role: v.string(), // 'clinician', 'admin', 'researcher'
+  }).index("by_token", ["tokenIdentifier"]),
 });
