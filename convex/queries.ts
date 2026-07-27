@@ -17,13 +17,9 @@ function toTimestamp(value: string): number {
   return Number.isNaN(timestamp) ? 0 : timestamp;
 }
 
-// Helper to check authentication
-async function requireAuth(ctx: any) {
-  const identity = await ctx.auth.getUserIdentity();
-  if (!identity) {
-    throw new Error("Unauthenticated call. Please sign in.");
-  }
-  return identity;
+// Helper to check authentication - returns identity or null
+async function getAuth(ctx: any) {
+  return await ctx.auth.getUserIdentity();
 }
 
 export const getPatientList = query({
@@ -32,7 +28,8 @@ export const getPatientList = query({
     cursor: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
-    await requireAuth(ctx);
+    const identity = await getAuth(ctx);
+    if (!identity) return [];
     
     const limit = Math.min(Math.max(args.limit ?? 50, 1), 200);
 
@@ -49,7 +46,6 @@ export const getPatientList = query({
       age: clinicalCase.age,
       gender: clinicalCase.gender,
       admission_diagnosis: clinicalCase.admission_diagnosis,
-      // Note: discharge_summary intentionally omitted for list views to keep payloads small
     }));
   },
 });
@@ -57,7 +53,8 @@ export const getPatientList = query({
 export const getPatientById = query({
   args: { hadm_id: v.number() },
   handler: async (ctx, args) => {
-    await requireAuth(ctx);
+    const identity = await getAuth(ctx);
+    if (!identity) return null;
 
     return await ctx.db
       .query("clinical_cases")
@@ -69,7 +66,8 @@ export const getPatientById = query({
 export const getLabsByAdmission = query({
   args: { hadm_id: v.number() },
   handler: async (ctx, args) => {
-    await requireAuth(ctx);
+    const identity = await getAuth(ctx);
+    if (!identity) return [];
 
     const labs = await ctx.db
       .query("labs")
@@ -112,7 +110,8 @@ export const getLabTrend = query({
     itemid: v.number(),
   },
   handler: async (ctx, args) => {
-    await requireAuth(ctx);
+    const identity = await getAuth(ctx);
+    if (!identity) return { lab_name: "Loading...", fluid: null, category: null, data: [] };
 
     const labs = await ctx.db
       .query("labs")
@@ -145,7 +144,8 @@ export const getLabTrend = query({
 export const getLabTypesForAdmission = query({
   args: { hadm_id: v.number() },
   handler: async (ctx, args) => {
-    await requireAuth(ctx);
+    const identity = await getAuth(ctx);
+    if (!identity) return [];
 
     const labs = await ctx.db
       .query("labs")
@@ -192,7 +192,8 @@ export const getLabTypesForAdmission = query({
 export const getPrescriptionsByAdmission = query({
   args: { hadm_id: v.number() },
   handler: async (ctx, args) => {
-    await requireAuth(ctx);
+    const identity = await getAuth(ctx);
+    if (!identity) return [];
 
     return await ctx.db
       .query("prescriptions")
@@ -204,7 +205,8 @@ export const getPrescriptionsByAdmission = query({
 export const getDiagnosesByAdmission = query({
   args: { hadm_id: v.number() },
   handler: async (ctx, args) => {
-    await requireAuth(ctx);
+    const identity = await getAuth(ctx);
+    if (!identity) return [];
 
     const diagnoses = await ctx.db
       .query("diagnoses")
@@ -245,8 +247,6 @@ export const getDiagnosesByAdmission = query({
 export const getPatientByDocId = internalQuery({
   args: { id: v.id("clinical_cases") },
   handler: async (ctx, args) => {
-    // Internal queries are typically invoked by trusted server environments (like actions), 
-    // but for extra caution we can let it be, since it's internal only.
     return await ctx.db.get(args.id);
   },
 });

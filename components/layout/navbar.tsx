@@ -5,6 +5,7 @@ import { Activity } from "lucide-react";
 import { motion } from "motion/react";
 import { ThemeSwitcher } from "@/components/kibo-ui/theme-switcher";
 import { Button } from "@/components/ui/button";
+import { SignInButton, UserButton, SignedIn, SignedOut } from "@clerk/nextjs";
 
 export function Navbar() {
   return (
@@ -18,7 +19,7 @@ export function Navbar() {
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center gap-2 group transition-opacity hover:opacity-80">
             <Activity className="h-6 w-6 text-primary" />
-            <span className="hidden font-bold sm:inline-block tracking-tight">
+            <span className="hidden font-bold sm:inline-block tracking-tight text-foreground uppercase">
               Clinical Lens
             </span>
           </Link>
@@ -27,26 +28,44 @@ export function Navbar() {
           <div className="hidden items-center gap-6 md:flex">
             <Link
               href="/dashboard"
-              className="text-sm font-medium transition-colors hover:text-primary"
+              className="text-xs font-black uppercase tracking-widest transition-colors hover:text-primary"
             >
               Dashboard
             </Link>
             <Link
               href="/docs"
-              className="text-sm font-medium transition-colors hover:text-primary"
+              className="text-xs font-black uppercase tracking-widest transition-colors hover:text-primary"
             >
-              Documentation
+              Docs
             </Link>
           </div>
-          <ThemeSwitcher />
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <Button variant="default" size="sm" asChild className="shadow-sm shadow-primary/20">
-              <Link href="/dashboard">Get Started</Link>
-            </Button>
-          </motion.div>
+          
+          <ThemeSwitcher className="scale-90" />
+          
+          <div className="h-6 w-px bg-border/50 mx-1" />
+
+          <SignedOut>
+            <SignInButton mode="modal">
+              <Button variant="default" size="sm" className="h-8 text-[10px] font-black uppercase tracking-widest px-4 shadow-sm shadow-primary/20">
+                Sign In
+              </Button>
+            </SignInButton>
+          </SignedOut>
+
+          <SignedIn>
+            <div className="flex items-center gap-4">
+              <Button variant="outline" size="sm" asChild className="h-8 text-[10px] font-black uppercase tracking-widest px-4 border-primary/20 text-primary hover:bg-primary/5">
+                <Link href="/dashboard">Launch Dashboard</Link>
+              </Button>
+              <UserButton 
+                appearance={{
+                  elements: {
+                    userButtonAvatarBox: "size-8 rounded-lg border border-primary/20 shadow-sm",
+                  }
+                }}
+              />
+            </div>
+          </SignedIn>
         </div>
       </div>
     </motion.nav>
