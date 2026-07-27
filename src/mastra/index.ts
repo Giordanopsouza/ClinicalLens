@@ -1,11 +1,13 @@
 import { Mastra } from "@mastra/core/mastra";
 import { registerCopilotKit } from "@ag-ui/mastra/copilotkit";
-
-// Agents will be imported here in Phase 2
-// import { clinicalCopilotAgent } from "./agents/clinical-copilot";
+import { clinicalCopilotAgent } from "./agents/clinical-copilot";
+import { safetyAuditAgent } from "./agents/safety-audit";
 
 export const mastra = new Mastra({
-  // agents: { clinicalCopilotAgent },
+  agents: {
+    clinicalCopilotAgent,
+    safetyAuditAgent,
+  },
   server: {
     cors: {
       origin: "*",
