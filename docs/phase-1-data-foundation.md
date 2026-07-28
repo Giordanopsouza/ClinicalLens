@@ -1,5 +1,6 @@
 # Phase 1: Data Foundation â€” CSV Ingestion & Convex Queries
 
+**Status:** 90% Complete (10/11 Tasks)
 **Owner:** Person 1 (Data Engineer)
 **Branch:** `phase-1-data` (from `main` after Phase 0 merge)
 **Time estimate:** ~3-4 hours
@@ -900,18 +901,18 @@ npx tsx scripts/verify-seed.ts
 
 ---
 
-## PR Checklist — Phase 1
+## PR Checklist â€” Phase 1
 
 Completed in branch:
-- [x] `scripts/download-data.ts` — downloads all datasets
-- [x] `scripts/parse-csv.ts` — CSV.gz parser utility
-- [x] `scripts/seed-convex.ts` — seeds small/reference tables
-- [x] `scripts/import-large-tables.ts` — imports large tables via `convex import`
-- [x] `scripts/generate-embeddings.ts` — generates + stores embeddings (Gemini)
-- [x] `scripts/verify-seed.ts` — verification script implemented
-- [x] `convex/mutations.ts` — seed mutations + batch variants + embedding update
-- [x] `convex/queries.ts` — patient/lab/prescription/diagnosis query functions
-- [x] `convex/actions.ts` — vector search action
+- [x] `scripts/download-data.ts` ï¿½ downloads all datasets
+- [x] `scripts/parse-csv.ts` ï¿½ CSV.gz parser utility
+- [x] `scripts/seed-convex.ts` ï¿½ seeds small/reference tables
+- [x] `scripts/import-large-tables.ts` ï¿½ imports large tables via `convex import`
+- [x] `scripts/generate-embeddings.ts` ï¿½ generates + stores embeddings (Gemini)
+- [x] `scripts/verify-seed.ts` ï¿½ verification script implemented
+- [x] `convex/mutations.ts` ï¿½ seed mutations + batch variants + embedding update
+- [x] `convex/queries.ts` ï¿½ patient/lab/prescription/diagnosis query functions
+- [x] `convex/actions.ts` ï¿½ vector search action
 - [x] `data/` added to `.gitignore` (don't commit raw CSVs)
 
 Pending runtime validation:
