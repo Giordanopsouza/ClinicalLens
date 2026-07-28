@@ -32,6 +32,11 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
+# Mastra local SQLite storage
+mastra.db
+mastra.db-shm
+mastra.db-wal
+
 # env files (can opt-in for committing if needed)
 .env*
 !.env.example

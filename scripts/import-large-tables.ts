@@ -104,8 +104,8 @@ function runConvexImport(table: string, filePath: string): void {
   const npxCmd = process.platform === "win32" ? "npx.cmd" : "npx";
   const args = [
     "convex",
-    "-y",
     "import",
+    "-y",
     "--replace",
     "--format",
     "jsonLines",

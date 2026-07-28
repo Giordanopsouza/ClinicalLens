@@ -22,7 +22,7 @@ Always structure your response as:
 
 ## Important
 This is a screening tool using heuristic matching. False positives are expected. Always recommend human review of flagged items.`,
-  model: "google/gemini-2.0-flash",
+  model: "google/gemini-2.5-flash", // Updated model
   tools: {
     safetyCheckTool,
     patientQueryTool,

@@ -34,6 +34,12 @@ export function loadEnvLocal(file: string = ".env.local"): void {
       (value.startsWith("'") && value.endsWith("'"))
     ) {
       value = value.slice(1, -1);
+    } else {
+      // Strip inline comments (e.g. "value # comment")
+      const commentIndex = value.indexOf(" #");
+      if (commentIndex !== -1) {
+        value = value.slice(0, commentIndex).trim();
+      }
     }
 
     if (!(key in process.env)) {

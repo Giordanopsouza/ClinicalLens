@@ -1,5 +1,4 @@
 import { Agent } from "@mastra/core/agent";
-import { Memory } from "@mastra/memory";
 import {
   patientQueryTool,
   labTrendTool,
@@ -8,23 +7,6 @@ import {
   tavilyResearchTool,
   dischargeSummarySearchTool,
 } from "../tools";
-
-const memory = new Memory({
-  options: {
-    lastMessages: 40,
-    semanticRecall: false,
-    observationalMemory: {
-      model: "google/gemini-2.0-flash",
-      observation: {
-        messageTokens: 20_000,
-      },
-      reflection: {
-        observationTokens: 60_000,
-      },
-    },
-    generateTitle: true,
-  },
-});
 
 export const clinicalCopilotAgent = new Agent({
   id: "clinicalCopilotAgent",
@@ -57,7 +39,7 @@ export const clinicalCopilotAgent = new Agent({
 
 ## Important
 You are a clinical decision SUPPORT tool. Always remind users that final clinical decisions should be made by qualified healthcare professionals. Do not provide definitive diagnoses or treatment recommendations — present data and evidence for the clinician to evaluate.`,
-  model: "google/gemini-2.0-flash",
+  model: "google/gemini-2.5-flash", // Updated model
   tools: {
     patientQueryTool,
     labTrendTool,
@@ -66,5 +48,4 @@ You are a clinical decision SUPPORT tool. Always remind users that final clinica
     tavilyResearchTool,
     dischargeSummarySearchTool,
   },
-  memory,
 });

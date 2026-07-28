@@ -22,6 +22,7 @@
     "@ag-ui/mastra": "^1.0.0",
     "@ai-sdk/google": "^3.0.43",
     "@clerk/nextjs": "^7.0.1",
+    "@convex-dev/mastra": "0.0.1-alpha.4",
     "@copilotkit/react-core": "^1.53.0",
     "@copilotkit/react-ui": "^1.53.0",
     "@copilotkit/runtime": "^1.53.0",
