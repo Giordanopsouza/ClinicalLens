@@ -1,32 +1,112 @@
 "use client";
 
+import { useState } from "react";
 import { usePatient } from "@/context/patient-context";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileText, Search, History, Download, ExternalLink } from "lucide-react";
+import { FileText, Search, History, Download, ExternalLink, User } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
+import { cn } from "@/lib/utils";
 
 export default function RecordsPage() {
-  const { selectedHadmId } = usePatient();
+  const { selectedHadmId, setSelectedHadmId } = usePatient();
+  const [registrySearch, setRegistrySearch] = useState("");
+  const [recordSearch, setRecordSearch] = useState("");
+
+  const patients = useQuery(api.queries.getPatientList, { limit: 100 });
   const patient = useQuery(
     api.queries.getPatientById,
     selectedHadmId ? { hadm_id: selectedHadmId } : "skip"
   );
 
+  const patientList = patients ?? [];
+  const filteredPatients = patientList.filter(
+    (p) =>
+      p.admission_diagnosis?.toLowerCase().includes(registrySearch.toLowerCase()) ||
+      String(p.hadm_id).includes(registrySearch) ||
+      String(p.subject_id).includes(registrySearch)
+  );
+
   if (!selectedHadmId) {
     return (
-      <div className="flex h-full items-center justify-center bg-muted/5">
-        <div className="text-center animate-in fade-in zoom-in-95 duration-500">
-          <div className="mx-auto h-20 w-20 rounded-full bg-muted/20 flex items-center justify-center mb-6">
-            <FileText className="h-10 w-10 text-muted-foreground/40" />
+      <div className="h-full flex flex-col bg-muted/5">
+        <div className="p-8 border-b border-border/50 bg-card shrink-0">
+          <div className="flex items-center gap-4 max-w-[1200px] mx-auto">
+            <div className="size-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary border border-primary/20">
+              <FileText className="h-6 w-6" />
+            </div>
+            <div>
+              <h1 className="text-2xl font-black tracking-tight text-foreground uppercase">Patient Records</h1>
+              <p className="text-xs text-muted-foreground font-bold uppercase tracking-widest leading-none mt-1 opacity-60">
+                Search the registry to open a patient chart
+              </p>
+            </div>
           </div>
-          <h2 className="text-xl font-bold text-foreground/80">Patient Medical Records</h2>
-          <p className="mt-2 text-sm text-muted-foreground max-w-[280px] mx-auto leading-relaxed">
-            Select a patient from the registry to view their official medical documentation and history.
-          </p>
+        </div>
+
+        <div className="flex-1 overflow-y-auto p-8 custom-scrollbar">
+          <div className="max-w-[1200px] mx-auto space-y-6">
+            {/* Registry Search */}
+            <div className="relative group">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
+              <Input
+                autoFocus
+                placeholder="Search patients by diagnosis, admission ID, subject ID..."
+                className="h-14 pl-12 bg-card border-border/50 text-base rounded-2xl shadow-sm focus-visible:ring-1 focus-visible:ring-primary transition-all"
+                value={registrySearch}
+                onChange={(e) => setRegistrySearch(e.target.value)}
+              />
+            </div>
+
+            {/* Results header */}
+            <div className="flex items-center justify-between px-1">
+              <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest opacity-60">
+                Registry Results
+              </p>
+              <Badge variant="outline" className="text-[9px] h-4 px-1.5 font-black border-border/50">
+                {patients === undefined ? "..." : filteredPatients.length}
+              </Badge>
+            </div>
+
+            {/* Patient cards */}
+            {patients === undefined ? (
+              <div className="space-y-3">
+                {[...Array(6)].map((_, i) => (
+                  <Skeleton key={i} className="h-20 w-full rounded-xl" />
+                ))}
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+                {filteredPatients.map((p) => (
+                  <button
+                    key={p.hadm_id}
+                    onClick={() => setSelectedHadmId(p.hadm_id)}
+                    className="flex flex-col items-start gap-2 rounded-xl p-4 text-left border border-border/50 bg-card hover:border-primary/30 hover:bg-primary/[0.03] transition-all duration-200 group shadow-sm"
+                  >
+                    <div className="flex w-full items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <div className="size-7 rounded-full bg-muted flex items-center justify-center group-hover:bg-primary/10 group-hover:text-primary transition-all">
+                          <User className="h-3.5 w-3.5 text-muted-foreground group-hover:text-primary" />
+                        </div>
+                        <span className="font-black font-mono text-[11px] text-foreground/80 group-hover:text-primary transition-colors">
+                          AEG-{p.hadm_id}
+                        </span>
+                      </div>
+                      <Badge variant="outline" className="text-[9px] px-1.5 h-4 font-black uppercase tracking-tighter text-muted-foreground/60 border-border/50">
+                        {p.gender} · {p.age}y
+                      </Badge>
+                    </div>
+                    <p className="line-clamp-2 text-xs leading-relaxed pl-9 font-medium text-muted-foreground/80 group-hover:text-foreground/70 transition-colors">
+                      {p.admission_diagnosis || "No primary diagnosis recorded"}
+                    </p>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     );
@@ -41,6 +121,22 @@ export default function RecordsPage() {
       </div>
     );
   }
+
+  const highlightText = (text: string, term: string) => {
+    if (!term.trim()) return <>{text}</>;
+    const parts = text.split(new RegExp(`(${term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`, "gi"));
+    return (
+      <>
+        {parts.map((part, i) =>
+          part.toLowerCase() === term.toLowerCase() ? (
+            <mark key={i} className="bg-primary/20 text-foreground rounded px-0.5">{part}</mark>
+          ) : (
+            part
+          )
+        )}
+      </>
+    );
+  };
 
   return (
     <div className="h-full flex flex-col bg-muted/5">
@@ -73,9 +169,11 @@ export default function RecordsPage() {
           {/* Record Search */}
           <div className="relative group">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
-            <Input 
-              placeholder="Search terms in this patient's record..." 
+            <Input
+              placeholder="Search terms in this patient's record..."
               className="h-14 pl-12 bg-card border-border/50 text-base rounded-2xl shadow-sm focus-visible:ring-1 focus-visible:ring-primary transition-all"
+              value={recordSearch}
+              onChange={(e) => setRecordSearch(e.target.value)}
             />
           </div>
 
@@ -93,7 +191,7 @@ export default function RecordsPage() {
                 <CardContent className="p-8">
                   <div className="prose prose-sm dark:prose-invert max-w-none">
                     <p className="whitespace-pre-wrap text-sm leading-relaxed text-foreground/80 font-normal selection:bg-primary/20">
-                      {patient.discharge_summary || "No discharge summary available."}
+                      {highlightText(patient.discharge_summary || "No discharge summary available.", recordSearch)}
                     </p>
                   </div>
                 </CardContent>

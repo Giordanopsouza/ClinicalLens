@@ -1,13 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { usePatient } from "@/context/patient-context";
-import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
-import { Search, User } from "lucide-react";
+import { User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { NavigationMenu } from "./navigation-menu";
 import { ThemeSwitcher } from "@/components/kibo-ui/theme-switcher";
@@ -24,15 +22,7 @@ export function PatientSidebar() {
   const { user } = useUser();
   const patients = useQuery(api.queries.getPatientList, { limit: 100 });
   const { selectedHadmId, setSelectedHadmId } = usePatient();
-  const [search, setSearch] = useState("");
   const { isCollapsed } = useSidebar();
-
-  const filtered = (patients ?? []).filter(
-    (p) =>
-      p.admission_diagnosis?.toLowerCase().includes(search.toLowerCase()) ||
-      String(p.hadm_id).includes(search) ||
-      String(p.subject_id).includes(search)
-  );
 
   return (
     <TooltipProvider delayDuration={300}>
@@ -46,40 +36,26 @@ export function PatientSidebar() {
         {/* Main Navigation */}
         <NavigationMenu isCollapsed={isCollapsed} />
 
-        {/* Patient Search & List — hidden when collapsed */}
+        {/* Patient List — hidden when collapsed */}
         {!isCollapsed && (
           <div className="flex-1 flex flex-col min-h-0">
-            <div className="p-4 bg-muted/5 z-10 border-b border-border/50 shadow-sm relative">
-              <div className="flex items-center justify-between px-1 mb-3">
+            <div className="px-4 py-3 bg-muted/5 z-10 border-b border-border/50 shadow-sm relative">
+              <div className="flex items-center justify-between px-1">
                 <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest opacity-60">
                   Registry
-                </p>
-              </div>
-              <div className="relative group">
-                <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
-                <Input
-                  placeholder="Search registry..."
-                  className="pl-9 h-9 text-xs bg-background/50 dark:bg-[#030712] border-border/50 focus-visible:ring-1 focus-visible:ring-primary transition-all rounded-lg"
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-              </div>
-              <div className="mt-4 flex items-center justify-between px-1">
-                <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest opacity-80">
-                  Registry Items
                 </p>
                 <Badge
                   variant="outline"
                   className="text-[9px] h-4 px-1.5 font-black border-border/50 bg-background"
                 >
-                  {filtered.length}
+                  {(patients ?? []).length}
                 </Badge>
               </div>
             </div>
 
             <ScrollArea className="flex-1">
               <div className="space-y-1 p-2 pb-8">
-                {filtered.map((patient) => (
+                {(patients ?? []).map((patient) => (
                   <button
                     key={patient.hadm_id}
                     onClick={() => setSelectedHadmId(patient.hadm_id)}
