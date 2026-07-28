@@ -4,13 +4,13 @@ import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { FileText, History } from "lucide-react";
+import { FileText, History, AlertCircle } from "lucide-react";
 import { ClinicalNarrative } from "./clinical-narrative";
 
 export function PatientSummary({ hadmId }: { hadmId: number }) {
   const patient = useQuery(api.queries.getPatientById, { hadm_id: hadmId });
 
-  if (!patient) {
+  if (patient === undefined) {
     return (
       <div className="space-y-6">
         <Skeleton className="h-48 w-full rounded-2xl" />
@@ -19,8 +19,18 @@ export function PatientSummary({ hadmId }: { hadmId: number }) {
     );
   }
 
+  if (patient === null) {
+    return (
+      <div className="flex flex-col items-center justify-center py-24 border-2 border-dashed border-border/50 rounded-3xl bg-muted/5">
+        <AlertCircle className="h-10 w-10 text-muted-foreground/30 mb-4" />
+        <p className="text-sm font-bold text-muted-foreground uppercase tracking-widest">No patient record found</p>
+        <p className="mt-2 text-xs text-muted-foreground/60">The selected Admission ID does not exist in the registry.</p>
+      </div>
+    );
+  }
+
   return (
-    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700 pb-12">
       {/* AI Clinical Narrative */}
       <ClinicalNarrative summary={patient.discharge_summary || ""} />
 
@@ -32,14 +42,20 @@ export function PatientSummary({ hadmId }: { hadmId: number }) {
             Full Discharge Record
           </CardTitle>
           <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
-            Admission: {new Date().toLocaleDateString()}
+            Registry Entry: AEG-{patient.hadm_id}
           </span>
         </CardHeader>
         <CardContent className="pt-6 px-8">
           <div className="prose prose-sm dark:prose-invert max-w-none">
-            <p className="whitespace-pre-wrap text-sm leading-relaxed text-foreground/70 font-normal selection:bg-primary/20">
-              {patient.discharge_summary || "No discharge summary available."}
-            </p>
+            {patient.discharge_summary ? (
+              <p className="whitespace-pre-wrap text-sm leading-relaxed text-foreground/70 font-normal selection:bg-primary/20">
+                {patient.discharge_summary}
+              </p>
+            ) : (
+              <div className="py-12 text-center">
+                <p className="text-sm text-muted-foreground italic">No discharge summary available for this record.</p>
+              </div>
+            )}
           </div>
         </CardContent>
       </Card>

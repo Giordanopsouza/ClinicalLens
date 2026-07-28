@@ -4,7 +4,7 @@ import { usePatient } from "@/context/patient-context";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Bell, ShieldAlert, AlertTriangle, Info, CheckCircle2, History, ListFilter } from "lucide-react";
+import { Bell, ShieldAlert, AlertTriangle, Info, CheckCircle2, History, ListFilter, User } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 

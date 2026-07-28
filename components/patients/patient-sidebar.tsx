@@ -55,7 +55,7 @@ export function PatientSidebar() {
 
             <ScrollArea className="flex-1">
               <div className="space-y-1 p-2 pb-8">
-                {(patients ?? []).map((patient) => (
+                {(patients ?? []).map((patient: any) => (
                   <button
                     key={patient.hadm_id}
                     onClick={() => setSelectedHadmId(patient.hadm_id)}

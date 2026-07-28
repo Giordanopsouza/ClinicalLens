@@ -18,7 +18,7 @@ export const searchDischargeSummaries = action({
     embedding: v.array(v.float64()),
     limit: v.optional(v.number()),
   },
-  handler: async (ctx, args) => {
+  handler: async (ctx, args): Promise<any[]> => {
     await requireAuth(ctx);
 
     const limit = Math.min(Math.max(args.limit ?? 5, 1), 20);
@@ -27,9 +27,9 @@ export const searchDischargeSummaries = action({
       limit,
     });
 
-    const hydrated = await Promise.all(
-      matches.map(async (match) => {
-        const clinicalCase = await ctx.runQuery(internal.queries.getPatientByDocId, {
+    const hydrated: any[] = await Promise.all(
+      matches.map(async (match: any) => {
+        const clinicalCase: any = await ctx.runQuery(internal.queries.getPatientByDocId, {
           id: match._id,
         });
 
@@ -44,6 +44,6 @@ export const searchDischargeSummaries = action({
       }),
     );
 
-    return hydrated.filter((item): item is NonNullable<typeof item> => item !== null);
+    return hydrated.filter((item: any): item is NonNullable<typeof item> => item !== null);
   },
 });

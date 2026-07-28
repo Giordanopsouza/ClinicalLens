@@ -25,7 +25,7 @@ export function LabChartCard({ hadmId, itemid, labName }: LabChartCardProps) {
     itemid: itemid,
   });
 
-  const chartData = (trend?.data || []).map((d) => ({
+  const chartData = (trend?.data || []).map((d: any) => ({
     time: new Date(d.charttime).toLocaleDateString("en-US", {
       month: "short",
       day: "numeric",

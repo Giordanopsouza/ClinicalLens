@@ -36,6 +36,10 @@ yarn-error.log*
 mastra.db*
 clinical-lens.db*
 
+# Playwright test output
+test-results/
+playwright-report/
+
 # npm lockfile (project uses pnpm)
 package-lock.json
 

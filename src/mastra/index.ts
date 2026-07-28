@@ -4,7 +4,7 @@ import { clinicalCopilotAgent } from "./agents/clinical-copilot";
 import { safetyAuditAgent } from "./agents/safety-audit";
 
 export const mastra = new Mastra({
-  agents: [clinicalCopilotAgent, safetyAuditAgent],
+  agents: { clinicalCopilotAgent, safetyAuditAgent },
   server: {
     cors: {
       origin: "*",

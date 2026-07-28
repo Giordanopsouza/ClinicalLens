@@ -14,10 +14,12 @@ const runtime = new CopilotRuntime({
   // Use an object for agents to ensure keys are used as IDs for frontend discovery
   agents: {
     clinicalCopilotAgent: new MastraAgent({ 
-      agent: clinicalCopilotAgent as any 
+      agent: clinicalCopilotAgent as any,
+      resourceId: "clinicalCopilotAgent"
     }),
     safetyAuditAgent: new MastraAgent({ 
-      agent: safetyAuditAgent as any 
+      agent: safetyAuditAgent as any,
+      resourceId: "safetyAuditAgent"
     }),
   },
 });

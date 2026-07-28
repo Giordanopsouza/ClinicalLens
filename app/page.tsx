@@ -24,7 +24,7 @@ export default function Home() {
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring",
+        type: "spring" as any,
         stiffness: 100,
       },
     },
@@ -155,7 +155,7 @@ function FeatureCard({ variants, icon, title, description }: { variants: any; ic
   return (
     <motion.div 
       variants={variants}
-      whileHover={{ y: -8, transition: { duration: 0.2 } }}
+      whileHover={{ y: -8, transition: { duration: 0.2 } as any }}
       className={cn(
         "group relative rounded-2xl border border-border bg-card p-8 transition-all hover:border-primary/50",
         "dark:card-glow"

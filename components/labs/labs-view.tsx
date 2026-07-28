@@ -62,7 +62,7 @@ export function LabsView({ hadmId }: { hadmId: number }) {
         </CardHeader>
         <CardContent className="pt-6">
           <div className="flex flex-wrap gap-2">
-            {filteredLabs.map((lt) => (
+            {filteredLabs.map((lt: any) => (
               <button
                 key={lt.itemid}
                 onClick={() => setSelectedItemId(selectedItemId === lt.itemid ? null : lt.itemid)}

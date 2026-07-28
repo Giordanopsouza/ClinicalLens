@@ -50,7 +50,7 @@ export function PrescriptionTable({ hadmId }: { hadmId: number }) {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {prescriptions.map((rx, i) => (
+                  {prescriptions.map((rx: any, i: number) => (
                     <TableRow key={i} className="border-border/40 hover:bg-muted/5 transition-colors">
                       <TableCell className="font-semibold text-sm py-3">{rx.drug}</TableCell>
                       <TableCell className="text-sm py-3 whitespace-nowrap">
