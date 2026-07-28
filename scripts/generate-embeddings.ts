@@ -2,30 +2,13 @@ import fs from "node:fs";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
 
+import OpenAI from "openai";
 import { parseCsvGz } from "./parse-csv";
 import { loadEnvLocal } from "./load-env";
 
 loadEnvLocal();
 
-const geminiApiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
-if (!geminiApiKey) {
-  throw new Error("GOOGLE_GENERATIVE_AI_API_KEY is required in .env.local");
-}
-
-const rawModelName = process.env.GEMINI_EMBEDDING_MODEL ?? "gemini-embedding-001";
-const modelName = rawModelName.startsWith("models/")
-  ? rawModelName
-  : `models/${rawModelName}`;
-
-const outputDimensionality = Number(process.env.GEMINI_EMBEDDING_DIMENSIONS ?? "1536");
-if (!Number.isFinite(outputDimensionality) || outputDimensionality <= 0) {
-  throw new Error("GEMINI_EMBEDDING_DIMENSIONS must be a positive number");
-}
-
-// Batch size for batchEmbedContents — Gemini supports up to 100 per request
-const BATCH_SIZE = 50;
-// Delay between batch requests (ms) — keeps us within rate limits
-const BATCH_DELAY_MS = 2000;
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 const IMPORT_DIR = path.join(process.cwd(), "data", "_convex_import");
 
@@ -51,68 +34,6 @@ function toNumber(value: unknown): number | null {
 function toStringValue(value: unknown): string {
   if (value === null || value === undefined) return "";
   return String(value);
-}
-
-function chunk<T>(items: T[], size: number): T[][] {
-  const output: T[][] = [];
-  for (let i = 0; i < items.length; i += size) output.push(items.slice(i, i + size));
-  return output;
-}
-
-interface BatchEmbedResponse {
-  embeddings?: Array<{ values?: number[] }>;
-}
-
-async function batchCreateEmbeddings(texts: string[], retries = 5): Promise<number[][]> {
-  const endpoint = `https://generativelanguage.googleapis.com/v1beta/${modelName}:batchEmbedContents`;
-
-  const requests = texts.map((text) => ({
-    model: modelName,
-    content: { parts: [{ text: text.slice(0, 8000) }] },
-    taskType: "RETRIEVAL_DOCUMENT",
-    outputDimensionality,
-  }));
-
-  for (let attempt = 0; attempt <= retries; attempt++) {
-    const response = await fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-goog-api-key": geminiApiKey,
-      },
-      body: JSON.stringify({ requests }),
-    });
-
-    if (response.status === 429 || response.status >= 500) {
-      if (attempt === retries) {
-        const errorBody = await response.text();
-        throw new Error(`Gemini request failed (${response.status}) after ${retries} retries: ${errorBody}`);
-      }
-      const waitMs = Math.pow(2, attempt) * 3000;
-      console.warn(`  HTTP ${response.status}, waiting ${waitMs / 1000}s before retry ${attempt + 1}/${retries}...`);
-      await new Promise((r) => setTimeout(r, waitMs));
-      continue;
-    }
-
-    if (!response.ok) {
-      const errorBody = await response.text();
-      throw new Error(`Gemini batch embeddings failed (${response.status}): ${errorBody}`);
-    }
-
-    const parsed = (await response.json()) as BatchEmbedResponse;
-    if (!parsed.embeddings || parsed.embeddings.length !== texts.length) {
-      throw new Error(`Expected ${texts.length} embeddings, got ${parsed.embeddings?.length ?? 0}`);
-    }
-
-    return parsed.embeddings.map((e, i) => {
-      if (!e.values || e.values.length === 0) {
-        throw new Error(`Embedding ${i} has no values`);
-      }
-      return e.values;
-    });
-  }
-
-  throw new Error("Unreachable");
 }
 
 function runConvexImport(table: string, filePath: string): void {
@@ -154,30 +75,36 @@ async function generateEmbeddings(): Promise<void> {
     })
     .filter((row): row is NonNullable<typeof row> => row !== null);
 
-  const batches = chunk(cases, BATCH_SIZE);
-  console.log(
-    `Generating embeddings for ${cases.length} cases in ${batches.length} batches of ${BATCH_SIZE}...\n`,
-  );
-
-  const casesWithEmbeddings: Array<typeof cases[number] & { embedding: number[] }> = [];
-
-  for (let index = 0; index < batches.length; index += 1) {
-    const batch = batches[index];
-    const texts = batch.map((item) => item.discharge_summary);
-    const embeddings = await batchCreateEmbeddings(texts);
-
-    for (let i = 0; i < batch.length; i++) {
-      casesWithEmbeddings.push({ ...batch[i], embedding: embeddings[i] });
-    }
-
-    console.log(`  batch ${index + 1}/${batches.length} (${batch.length} embeddings)`);
-
-    if (index < batches.length - 1) {
-      await new Promise((r) => setTimeout(r, BATCH_DELAY_MS));
-    }
+  // ~1800 tokens/case avg; OpenAI limit is 300K tokens/request → ~150 cases/batch safely
+  const BATCH_SIZE = 100;
+  const batches: typeof cases[] = [];
+  for (let i = 0; i < cases.length; i += BATCH_SIZE) {
+    batches.push(cases.slice(i, i + BATCH_SIZE));
   }
 
-  console.log("\nWriting clinical_cases with embeddings to JSONL...");
+  console.log(`Generating OpenAI embeddings for ${cases.length} cases in ${batches.length} batches...`);
+
+  const allEmbeddings: number[][] = [];
+  for (let i = 0; i < batches.length; i++) {
+    const batch = batches[i];
+    const texts = batch.map((c) => c.discharge_summary.slice(0, 8000));
+    const response = await openai.embeddings.create({
+      model: "text-embedding-3-small",
+      input: texts,
+    });
+    for (const item of response.data) {
+      allEmbeddings.push(item.embedding);
+    }
+    console.log(`  batch ${i + 1}/${batches.length}`);
+  }
+
+  console.log(`Got ${allEmbeddings.length} embeddings. Writing JSONL...`);
+
+  const casesWithEmbeddings = cases.map((c, i) => ({
+    ...c,
+    embedding: allEmbeddings[i],
+  }));
+
   fs.mkdirSync(IMPORT_DIR, { recursive: true });
   const filePath = path.join(IMPORT_DIR, "clinical_cases_with_embeddings.jsonl");
   const writer = fs.createWriteStream(filePath, { encoding: "utf8" });
@@ -190,10 +117,10 @@ async function generateEmbeddings(): Promise<void> {
     writer.end();
   });
 
-  console.log("Importing clinical_cases with embeddings...");
+  console.log("Importing clinical_cases with embeddings into Convex...");
   runConvexImport("clinical_cases", filePath);
 
-  console.log("\nEmbedding generation and import complete.");
+  console.log("\nDone! All 2000 cases embedded and imported.");
 }
 
 generateEmbeddings().catch((error) => {

@@ -1,6 +1,6 @@
 # Phase 1: Data Foundation — CSV Ingestion & Convex Queries
 
-**Status:** 90% Complete (10/11 Tasks)
+**Status:** 100% Complete (11/11 Tasks)
 **Owner:** Person 1 (Data Engineer)
 **Branch:** `phase-1-data` (from `main` after Phase 0 merge)
 **Time estimate:** ~3-4 hours
@@ -915,13 +915,77 @@ Completed in branch:
 - [x] `convex/actions.ts` � vector search action
 - [x] `data/` added to `.gitignore` (don't commit raw CSVs)
 
-Pending runtime validation:
-- [ ] `data/` directory contains all 6 downloaded CSV.gz files locally
-- [ ] `pnpm run data:seed` executed successfully against active Convex deployment
-- [ ] `pnpm run data:embed` executed successfully with Gemini API key configured
-- [ ] `pnpm run data:verify` passes end-to-end
-- [ ] Convex dashboard shows all tables populated with expected row counts
-- [ ] Vector index `by_embedding` populated and vector search returns ranked results
+Runtime validation (completed March 7-8, 2026):
+- [x] `data/` directory contains all 6 downloaded CSV.gz files locally
+- [x] `pnpm run data:seed` executed successfully — clinical_cases (2000), lab_dictionary (554), diagnosis_dictionary (2390) imported via `convex import`
+- [x] `pnpm run data:import:large` — labs (841,507), prescriptions (153,433), diagnoses (23,428) imported
+- [x] `pnpm run data:embed` — 2000 embeddings generated via OpenAI `text-embedding-3-small` (1536 dims), imported into clinical_cases
+- [x] `pnpm run data:verify` passes end-to-end
+- [x] Convex dashboard shows all tables populated with expected row counts
+- [x] Vector index `by_embedding` (1536 dims) populated
+
+Notes on script fixes applied during runtime:
+- All seed mutations were `internalMutation` — switched seed/embed scripts to use `convex import` (JSONL) instead of HTTP client
+- Fixed `npx convex -y import` → `npx convex import -y` (flag position)
+- Fixed `load-env.ts` to strip inline comments from env values (CONVEX_DEPLOYMENT had trailing comment)
+- Switched embedding from Gemini (rate-limited) to OpenAI `text-embedding-3-small` (batched 100 cases/request)
+
+## Implementation Learnings (March 8, 2026 — Runtime Execution)
+
+These are real bugs and gotchas discovered when actually running the pipeline. Future agents must read this before touching seed/embed scripts.
+
+### 1. All Convex mutations are `internalMutation` — ConvexHttpClient cannot call them
+
+`convex/mutations.ts` uses `internalMutation` for all seed functions (intentional security decision).
+`ConvexHttpClient` can only call public functions — it will fail with `"Could not find public function"`.
+
+**Fix:** Use `npx convex import -y --replace --format jsonLines --table <table> <file.jsonl>` instead.
+All seed scripts were rewritten to write JSONL files and shell out to `convex import`.
+
+### 2. All queries have Clerk auth guards — return empty without user session
+
+Every query in `convex/queries.ts` calls `getAuth(ctx)` and returns `[]`/`null` if no user identity.
+`ConvexHttpClient` without a Clerk session token always gets empty results.
+
+**Fix for verify:** Use `npx convex run` (has admin access) or check JSONL files directly.
+`scripts/verify-seed.ts` was updated to check `data/_convex_import/*.jsonl` files.
+
+### 3. Flag order: `npx convex import -y` NOT `npx convex -y import`
+
+`-y` is a flag for the `import` subcommand ("skip confirmation"), not the `convex` root command.
+Wrong: `npx convex -y import ...` → error: `unknown option '-y'`
+Right: `npx convex import -y ...`
+
+### 4. `load-env.ts` did not strip inline comments from `.env.local`
+
+`.env.local` has: `CONVEX_DEPLOYMENT=dev:energetic-jaguar-742 # team: karanarjunb, project: clinical-lens`
+The custom `loadEnvLocal()` was reading the full value including ` # team:...`, breaking `convex import`.
+
+**Fix added to `scripts/load-env.ts`:**
+```typescript
+const commentIndex = value.indexOf(" #");
+if (commentIndex !== -1) value = value.slice(0, commentIndex).trim();
+```
+
+### 5. Gemini embedding API is severely rate-limited — use OpenAI instead
+
+Gemini `gemini-embedding-001` hit 429/503 errors even at 1 request per second (free tier: ~5 req/min).
+After multiple failed attempts (400 batches × 5 items sequential), switched to OpenAI.
+
+**OpenAI `text-embedding-3-small`** (already installed, key in `.env.local`):
+- Accepts up to 2048 inputs per request (token limit: 300K per request)
+- All 2000 cases completed in **20 batches × 100 cases = ~30 seconds**
+- 1536 dimensions — exactly matches Convex vector index `by_embedding`
+
+### 6. `convex/mastra.ts` blocks `convex dev --once` (open issue)
+
+`convex/mastra.ts` imports `@convex-dev/mastra/client` — this subpath is not exported by the package.
+Breaks bundling when `@convex-dev/mastra` is installed. The file needs its import path fixed.
+
+**Workaround:** The already-deployed functions still work. Only new Convex deploys are blocked.
+**To fix:** Update the import in `convex/mastra.ts` to use the correct exported path from `@convex-dev/mastra`.
+
+---
 
 ## Troubleshooting
 

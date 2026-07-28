@@ -1,5 +1,6 @@
 import { Agent } from "@mastra/core/agent";
 import { safetyCheckTool, patientQueryTool } from "../tools";
+import { memory } from "../memory";
 
 export const safetyAuditAgent = new Agent({
   id: "safetyAuditAgent",
@@ -27,4 +28,5 @@ This is a screening tool using heuristic matching. False positives are expected.
     safetyCheckTool,
     patientQueryTool,
   },
+  memory,
 });

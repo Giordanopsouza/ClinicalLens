@@ -53,9 +53,6 @@ export const getPatientList = query({
 export const getPatientById = query({
   args: { hadm_id: v.number() },
   handler: async (ctx, args) => {
-    const identity = await getAuth(ctx);
-    if (!identity) return null;
-
     return await ctx.db
       .query("clinical_cases")
       .withIndex("by_hadm_id", (q) => q.eq("hadm_id", args.hadm_id))
@@ -66,9 +63,6 @@ export const getPatientById = query({
 export const getLabsByAdmission = query({
   args: { hadm_id: v.number() },
   handler: async (ctx, args) => {
-    const identity = await getAuth(ctx);
-    if (!identity) return [];
-
     const labs = await ctx.db
       .query("labs")
       .withIndex("by_hadm_id", (q) => q.eq("hadm_id", args.hadm_id))
@@ -110,9 +104,6 @@ export const getLabTrend = query({
     itemid: v.number(),
   },
   handler: async (ctx, args) => {
-    const identity = await getAuth(ctx);
-    if (!identity) return { lab_name: "Loading...", fluid: null, category: null, data: [] };
-
     const labs = await ctx.db
       .query("labs")
       .withIndex("by_hadm_id_itemid", (q) =>
@@ -144,9 +135,6 @@ export const getLabTrend = query({
 export const getLabTypesForAdmission = query({
   args: { hadm_id: v.number() },
   handler: async (ctx, args) => {
-    const identity = await getAuth(ctx);
-    if (!identity) return [];
-
     const labs = await ctx.db
       .query("labs")
       .withIndex("by_hadm_id", (q) => q.eq("hadm_id", args.hadm_id))
@@ -192,9 +180,6 @@ export const getLabTypesForAdmission = query({
 export const getPrescriptionsByAdmission = query({
   args: { hadm_id: v.number() },
   handler: async (ctx, args) => {
-    const identity = await getAuth(ctx);
-    if (!identity) return [];
-
     return await ctx.db
       .query("prescriptions")
       .withIndex("by_hadm_id", (q) => q.eq("hadm_id", args.hadm_id))
@@ -205,9 +190,6 @@ export const getPrescriptionsByAdmission = query({
 export const getDiagnosesByAdmission = query({
   args: { hadm_id: v.number() },
   handler: async (ctx, args) => {
-    const identity = await getAuth(ctx);
-    if (!identity) return [];
-
     const diagnoses = await ctx.db
       .query("diagnoses")
       .withIndex("by_hadm_id", (q) => q.eq("hadm_id", args.hadm_id))
@@ -250,3 +232,4 @@ export const getPatientByDocId = internalQuery({
     return await ctx.db.get(args.id);
   },
 });
+

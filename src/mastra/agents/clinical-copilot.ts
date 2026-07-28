@@ -7,6 +7,7 @@ import {
   tavilyResearchTool,
   dischargeSummarySearchTool,
 } from "../tools";
+import { memory } from "../memory";
 
 export const clinicalCopilotAgent = new Agent({
   id: "clinicalCopilotAgent",
@@ -48,4 +49,5 @@ You are a clinical decision SUPPORT tool. Always remind users that final clinica
     tavilyResearchTool,
     dischargeSummarySearchTool,
   },
+  memory,
 });
