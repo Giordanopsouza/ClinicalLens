@@ -5,9 +5,11 @@ import { Activity } from "lucide-react";
 import { motion } from "motion/react";
 import { ThemeSwitcher } from "@/components/kibo-ui/theme-switcher";
 import { Button } from "@/components/ui/button";
-import { SignInButton, UserButton, SignedIn, SignedOut } from "@clerk/nextjs";
+import { SignInButton, UserButton, useAuth } from "@clerk/nextjs";
 
 export function Navbar() {
+  const { isSignedIn } = useAuth();
+
   return (
     <motion.nav 
       initial={{ y: -10, opacity: 0 }}
@@ -44,28 +46,28 @@ export function Navbar() {
           
           <div className="h-6 w-px bg-border/50 mx-1" />
 
-          <SignedOut>
+          {!isSignedIn && (
             <SignInButton mode="modal">
               <Button variant="default" size="sm" className="h-8 text-[10px] font-black uppercase tracking-widest px-4 shadow-sm shadow-primary/20">
                 Sign In
               </Button>
             </SignInButton>
-          </SignedOut>
+          )}
 
-          <SignedIn>
+          {isSignedIn && (
             <div className="flex items-center gap-4">
               <Button variant="outline" size="sm" asChild className="h-8 text-[10px] font-black uppercase tracking-widest px-4 border-primary/20 text-primary hover:bg-primary/5">
                 <Link href="/dashboard">Launch Dashboard</Link>
               </Button>
-              <UserButton 
+              <UserButton
                 appearance={{
                   elements: {
                     userButtonAvatarBox: "size-8 rounded-lg border border-primary/20 shadow-sm",
-                  }
+                  },
                 }}
               />
             </div>
-          </SignedIn>
+          )}
         </div>
       </div>
     </motion.nav>

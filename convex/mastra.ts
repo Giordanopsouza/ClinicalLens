@@ -45,6 +45,12 @@ export const chat = action({
     hadm_id: v.optional(v.number()),
   },
   handler: async (ctx, args) => {
+    // SECURITY: Ensure user is authenticated before processing clinical chat
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) {
+      throw new Error("Unauthenticated call. Please sign in.");
+    }
+
     // IMPORTANT: Inject context into adapters
     storage.setCtx(ctx);
     vector.setCtx(ctx);

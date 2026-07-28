@@ -1,6 +1,7 @@
 "use client";
 
 import { PatientProvider } from "@/context/patient-context";
+import { SidebarProvider } from "@/context/sidebar-context";
 import { PatientSidebar } from "@/components/patients/patient-sidebar";
 import { ClinicalChat } from "@/components/chat/clinical-chat";
 import { GlobalHeader } from "@/components/layout/global-header";
@@ -11,6 +12,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
+    <SidebarProvider>
     <PatientProvider>
       <div className="flex h-screen flex-col bg-background overflow-hidden font-sans">
         {/* Top: Global Navigation & User Controls */}
@@ -30,5 +32,6 @@ export default function DashboardLayout({
         </div>
       </div>
     </PatientProvider>
+    </SidebarProvider>
   );
 }
