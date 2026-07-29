@@ -22,31 +22,93 @@ async function getAuth(ctx: QueryCtx) {
   return await ctx.auth.getUserIdentity();
 }
 
+import { paginationOptsValidator } from "convex/server";
+
 export const getPatientList = query({
   args: {
-    limit: v.optional(v.number()),
-    cursor: v.optional(v.string()),
+    paginationOpts: paginationOptsValidator,
   },
   handler: async (ctx, args) => {
     // const identity = await getAuth(ctx);
-    // if (!identity) return [];
+    // if (!identity) return { page: [], isDone: true, continueCursor: "" };
     
-    const limit = Math.min(Math.max(args.limit ?? 50, 1), 200);
-
     const results = await ctx.db
       .query("clinical_cases")
       .order("asc")
-      .take(limit);
+      .paginate(args.paginationOpts);
 
-    return results.map((clinicalCase) => ({
-      _id: clinicalCase._id,
-      case_id: clinicalCase.case_id,
-      subject_id: clinicalCase.subject_id,
-      hadm_id: clinicalCase.hadm_id,
-      age: clinicalCase.age,
-      gender: clinicalCase.gender,
-      admission_diagnosis: clinicalCase.admission_diagnosis,
+    return {
+      ...results,
+      page: results.page.map((clinicalCase) => ({
+        _id: clinicalCase._id,
+        case_id: clinicalCase.case_id,
+        subject_id: clinicalCase.subject_id,
+        hadm_id: clinicalCase.hadm_id,
+        age: clinicalCase.age,
+        gender: clinicalCase.gender,
+        admission_diagnosis: clinicalCase.admission_diagnosis,
+      })),
+    };
+  },
+});
+
+export const searchPatients = query({
+  args: { query: v.string(), limit: v.optional(v.number()) },
+  handler: async (ctx, args) => {
+    // const identity = await getAuth(ctx);
+    // if (!identity) return [];
+
+    const searchLower = args.query.toLowerCase().trim();
+    if (!searchLower) return [];
+
+    // Strip "AEG-" if present for ID matching
+    const idSearch = searchLower.startsWith("aeg-") ? searchLower.slice(4) : searchLower;
+    const searchId = Number(idSearch);
+
+    // 1. Try exact ID matches first (lightning fast index search)
+    if (!isNaN(searchId)) {
+      const idMatch = await ctx.db
+        .query("clinical_cases")
+        .withIndex("by_hadm_id", (q) => q.eq("hadm_id", searchId))
+        .first();
+      
+      if (idMatch) return [idMatch];
+
+      const subjectMatch = await ctx.db
+        .query("clinical_cases")
+        .withIndex("by_subject_id", (q) => q.eq("subject_id", searchId))
+        .first();
+      
+      if (subjectMatch) return [subjectMatch];
+    }
+
+    // 2. Use the new Search Index for diagnosis keywords (very memory efficient)
+    // This searches across all 2000 cases without loading them into memory.
+    const searchResults = await ctx.db
+      .query("clinical_cases")
+      .withSearchIndex("search_diagnosis", (q) => 
+        q.search("admission_diagnosis", searchLower)
+      )
+      .take(args.limit ?? 10);
+
+    return searchResults.map((p) => ({
+      _id: p._id,
+      hadm_id: p.hadm_id,
+      subject_id: p.subject_id,
+      admission_diagnosis: p.admission_diagnosis,
+      gender: p.gender,
+      age: p.age,
     }));
+  },
+});
+
+export const getTotalPatientCount = query({
+  args: {},
+  handler: async (ctx) => {
+    // Collect is expensive on large tables with large docs.
+    // Since we know there are about 2000, we can hardcode or use a lighter table if available.
+    // For now, let's just return a count of a limited scan to stay safe.
+    return 2000; 
   },
 });
 

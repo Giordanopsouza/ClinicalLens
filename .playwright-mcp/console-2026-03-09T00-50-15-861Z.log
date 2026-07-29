@@ -10,3 +10,1880 @@
 [  981949ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
 [  982023ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?debug=skip_cache&__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
 [  982529ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 1566705ms] Error: [CONVEX Q(queries:getPatientList)] [Request ID: 5604cd097c912837] Server Error
+ArgumentValidationError: Object is missing the required field `paginationOpts`. Consider wrapping the field validator in `v.optional(...)` if this is expected.
+
+Object: {limit: 100.0}
+Validator: v.object({paginationOpts: v.object({cursor: v.union(v.string(), v.null()), endCursor: v.optional(v.union(v.string(), v.null())), id: v.optional(v.float64()), maximumBytesRead: v.optional(v.float64()), maximumRowsRead: v.optional(v.float64()), numItems: v.float64()})})
+
+
+  Called by client
+    at OptimisticQueryResults.queryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:2696:19)
+    at BaseConvexClient.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4545:44)
+    at Object.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6520:44)
+    at QueriesObserver.getLocalResults (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6077:31)
+    at useQueriesHelper.useMemo[subscription] (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6280:41)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6192:43)
+    at basicStateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4828:47)
+    at dispatchSetStateInternal (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:5665:78)
+    at dispatchSetState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:5646:9)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6187:21)
+    at QueriesObserver.notifyListeners (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6144:13)
+    at http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6123:53
+    at ConvexReactClient.transition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6722:21)
+    at ConvexReactClient.handleTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6712:14)
+    at PaginatedQueryClient.onTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6433:363)
+    at PaginatedQueryClient.onBaseTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4974:14)
+    at http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4858:63
+    at BaseConvexClient.handleTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4452:13)
+    at BaseConvexClient.notifyOnQueryResultChanges (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4432:14)
+    at WebSocketManager.onMessage (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4343:34)
+    at ws.onmessage (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:3291:35)
+[ 1576188ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 1579460ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 1579959ms] Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <div className="flex h-scr...">
+      <GlobalHeader>
+      <div className="flex flex-...">
+        <PatientSidebar>
+          <TooltipProvider delayDuration={300}>
+            <TooltipProvider data-slot="tooltip-pr..." delayDuration={300}>
+              <TooltipProviderProvider scope={undefined} isOpenDelayedRef={{current:true}} delayDuration={300} ...>
+                <aside className="flex flex-...">
+                  <NavigationMenu>
+                  <div>
+                  <div className="border-t b...">
+                    <div>
+                    <div className="flex items...">
+                      <div className="size-9 rou...">
+                        <withClerk(UserButton) appearance={{elements:{...}}}>
+                          <UserButton getContainer={function} appearance={{elements:{...}}} component="UserButton" ...>
+                            <ClerkHostRenderer component="UserButton" mount={function} unmount={function} ...>
++                             <div ref={{current:null}} data-clerk-component="UserButton">
+                              ...
+                      ...
+        ...
+
+    at throwOnHydrationMismatch (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:3348:56)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6775:918)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopConcurrentByScheduler (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9558:58)
+    at renderRootConcurrent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9541:71)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9068:150)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64)
+[ 1579977ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 1580059ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?debug=skip_cache&__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 1580104ms] Error: [CONVEX Q(queries:getPatientList)] [Request ID: 9d65537c699c37b4] Server Error
+ArgumentValidationError: Object is missing the required field `paginationOpts`. Consider wrapping the field validator in `v.optional(...)` if this is expected.
+
+Object: {limit: 100.0}
+Validator: v.object({paginationOpts: v.object({cursor: v.union(v.string(), v.null()), endCursor: v.optional(v.union(v.string(), v.null())), id: v.optional(v.float64()), maximumBytesRead: v.optional(v.float64()), maximumRowsRead: v.optional(v.float64()), numItems: v.float64()})})
+
+
+  Called by client
+    at OptimisticQueryResults.queryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:2696:19)
+    at BaseConvexClient.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4545:44)
+    at Object.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6520:44)
+    at QueriesObserver.getLocalResults (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6077:31)
+    at useQueriesHelper.useMemo[subscription] (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6280:41)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6192:43)
+    at basicStateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4828:47)
+    at dispatchSetStateInternal (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:5665:78)
+    at dispatchSetState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:5646:9)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6187:21)
+    at QueriesObserver.notifyListeners (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6144:13)
+    at http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6123:53
+    at ConvexReactClient.transition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6722:21)
+    at ConvexReactClient.handleTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6712:14)
+    at PaginatedQueryClient.onTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6433:363)
+    at PaginatedQueryClient.onBaseTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4974:14)
+    at http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4858:63
+    at BaseConvexClient.handleTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4452:13)
+    at BaseConvexClient.notifyOnQueryResultChanges (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4432:14)
+    at WebSocketManager.onMessage (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4343:34)
+    at ws.onmessage (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:3291:35)
+[ 1581659ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 1583648ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 1586283ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 1586503ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 1586586ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?debug=skip_cache&__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 1586634ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 1586859ms] [ERROR] %o
+
+%s Error: [CONVEX Q(queries:getPatientList)] [Request ID: 94b38ec3e9e646b4] Server Error
+ArgumentValidationError: Object is missing the required field `paginationOpts`. Consider wrapping the field validator in `v.optional(...)` if this is expected.
+
+Object: {limit: 100.0}
+Validator: v.object({paginationOpts: v.object({cursor: v.union(v.string(), v.null()), endCursor: v.optional(v.union(v.string(), v.null())), id: v.optional(v.float64()), maximumBytesRead: v.optional(v.float64()), maximumRowsRead: v.optional(v.float64()), numItems: v.float64()})})
+
+
+  Called by client
+    at OptimisticQueryResults.queryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:2696:19)
+    at BaseConvexClient.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4545:44)
+    at Object.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6520:44)
+    at QueriesObserver.getLocalResults (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6077:31)
+    at useQueriesHelper.useMemo[subscription] (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6280:41)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6192:43)
+    at basicStateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4828:47)
+    at updateReducerImpl (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4910:79)
+    at updateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4860:16)
+    at Object.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:15282:24)
+    at exports.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:1754:36)
+    at useSubscription (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6163:412)
+    at useQueriesHelper (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6294:275)
+    at useQueries (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6260:12)
+    at useQuery (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6757:274)
+    at RecordsPage (http://localhost:3000/_next/static/chunks/_32ce1af6._.js:72:268)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9105:47)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64) The above error occurred in the <RecordsPage> component. It was handled by the <ErrorBoundary> error boundary. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_client_2eeeb089._.js:1342
+[ 1586860ms] [ERROR] ErrorBoundary caught: Error: [CONVEX Q(queries:getPatientList)] [Request ID: 94b38ec3e9e646b4] Server Error
+ArgumentValidationError: Object is missing the required field `paginationOpts`. Consider wrapping the field validator in `v.optional(...)` if this is expected.
+
+Object: {limit: 100.0}
+Validator: v.object({paginationOpts: v.object({cursor: v.union(v.string(), v.null()), endCursor: v.optional(v.union(v.string(), v.null())), id: v.optional(v.float64()), maximumBytesRead: v.optional(v.float64()), maximumRowsRead: v.optional(v.float64()), numItems: v.float64()})})
+
+
+  Called by client
+    at OptimisticQueryResults.queryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:2696:19)
+    at BaseConvexClient.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4545:44)
+    at Object.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6520:44)
+    at QueriesObserver.getLocalResults (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6077:31)
+    at useQueriesHelper.useMemo[subscription] (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6280:41)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6192:43)
+    at basicStateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4828:47)
+    at updateReducerImpl (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4910:79)
+    at updateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4860:16)
+    at Object.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:15282:24)
+    at exports.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:1754:36)
+    at useSubscription (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6163:412)
+    at useQueriesHelper (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6294:275)
+    at useQueries (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6260:12)
+    at useQuery (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6757:274)
+    at RecordsPage (http://localhost:3000/_next/static/chunks/_32ce1af6._.js:72:268)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9105:47)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64) {componentStack: 
+    at RecordsPage (http://localhost:3000/_next/s…ks/189f2_next_dist_client_2eeeb089._.js:12602:17)} @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1611144ms] Error: [CONVEX Q(queries:getPatientById)] [Request ID: 0a250419bd699e81] Server Error
+Could not find public function for 'queries:getPatientById'. Did you forget to run `npx convex dev` or `npx convex deploy`?
+
+  Called by client
+    at OptimisticQueryResults.queryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:2696:19)
+    at BaseConvexClient.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4545:44)
+    at Object.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6520:44)
+    at QueriesObserver.getLocalResults (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6077:31)
+    at useQueriesHelper.useMemo[subscription] (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6280:41)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6192:43)
+    at basicStateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4828:47)
+    at dispatchSetStateInternal (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:5665:78)
+    at dispatchSetState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:5646:9)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6187:21)
+    at QueriesObserver.notifyListeners (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6144:13)
+    at http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6123:53
+    at ConvexReactClient.transition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6722:21)
+    at ConvexReactClient.handleTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6712:14)
+    at PaginatedQueryClient.onTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6433:363)
+    at PaginatedQueryClient.onBaseTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4974:14)
+    at http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4858:63
+    at BaseConvexClient.handleTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4452:13)
+    at BaseConvexClient.notifyOnQueryResultChanges (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4432:14)
+    at WebSocketManager.onMessage (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4343:34)
+    at ws.onmessage (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:3291:35)
+[ 1691270ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 1691496ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 1691777ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?debug=skip_cache&__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 1692998ms] [ERROR] Agent execution failed: TypeError: Failed to fetch
+    at http://localhost:3000/_next/static/chunks/89bd6_%40ag-ui_client_dist_index_mjs_27ce17c7._.js:717:489
+    at Observable._subscribe (http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:1474:251)
+    at Observable._trySubscribe (http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:669:25)
+    at http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:663:121
+    at errorContext (http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:366:9)
+    at Observable.subscribe (http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:661:250)
+    at http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:2287:16
+    at SafeSubscriber.<anonymous> (http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:1497:28)
+    at http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:663:48
+    at errorContext (http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:366:9)
+    at Observable.subscribe (http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:661:250)
+    at L (http://localhost:3000/_next/static/chunks/89bd6_%40ag-ui_client_dist_index_mjs_27ce17c7._.js:824:14)
+    at ProxiedCopilotRuntimeAgent.connect (http://localhost:3000/_next/static/chunks/node_modules__pnpm_19343917._.js:20995:311)
+    at http://localhost:3000/_next/static/chunks/89bd6_%40ag-ui_client_dist_index_mjs_27ce17c7._.js:1611:494
+    at http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:620:20
+    at Array.reduce (<anonymous>)
+    at piped (http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:619:20)
+    at ProxiedCopilotRuntimeAgent.connectAgent (http://localhost:3000/_next/static/chunks/89bd6_%40ag-ui_client_dist_index_mjs_27ce17c7._.js:1613:16)
+    at async RunHandler.connectAgent (http://localhost:3000/_next/static/chunks/node_modules__pnpm_19343917._.js:21700:36)
+    at async useCopilotChatInternal.useEffect.connect (http://localhost:3000/_next/static/chunks/9d83e_%40copilotkit_react-core_dist_index_mjs_f2be57aa._.js:2631:25) @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1697167ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 1697383ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 1697454ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?debug=skip_cache&__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 1698152ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 1790147ms] Error: [CONVEX Q(queries:getTotalPatientCount)] [Request ID: fbc45accb8aef309] Server Error
+Uncaught Error: Too many bytes read in a single function execution (limit: 16777216 bytes). Consider using smaller limits in your queries, paginating your queries, or using indexed queries with a selective index range expressions.
+    at async handler (../convex/queries.ts:96:40)
+
+  Called by client
+    at async handler (../convex/queries.ts:96:40)
+
+  Called by client
+    at OptimisticQueryResults.queryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:2696:19)
+    at BaseConvexClient.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4545:44)
+    at Object.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6520:44)
+    at QueriesObserver.getLocalResults (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6077:31)
+    at useQueriesHelper.useMemo[subscription] (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6280:41)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6192:43)
+    at basicStateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4828:47)
+    at updateReducerImpl (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4910:79)
+    at updateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4860:16)
+    at Object.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:15282:24)
+    at exports.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:1754:36)
+    at useSubscription (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6163:412)
+    at useQueriesHelper (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6294:275)
+    at useQueries (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6260:12)
+    at useQuery (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6757:274)
+    at PatientSidebar (http://localhost:3000/_next/static/chunks/_a0d998cb._.js?id=%255Bproject%255D%252Fcomponents%252Fpatients%252Fpatient-sidebar.tsx+%255Bapp-client%255D+%2528ecmascript%2529:52:270)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9105:47)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64)
+[ 1796792ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1798848ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1798966ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1799093ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1810106ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1810166ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1810321ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1810362ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1810457ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1810526ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1810578ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1810651ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1810750ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1810792ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1810826ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1810902ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1810973ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1811046ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1811506ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1811561ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1811709ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1811893ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1811948ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1812075ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1812307ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1812466ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1812671ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1812887ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1813062ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1813263ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1813489ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1813686ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1820715ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1820718ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1820721ms] [ERROR] ./app/(dashboard)/records/page.tsx:83:23
+Parsing ecmascript source code failed
+  81 |             </div>
+  82 |
+> 83 |               </Badge>
+     |                       ^
+> 84 |             </div>
+     | ^^^^^^^^^^^^^
+  85 |
+  86 |             {/* Patient cards */}
+  87 |             {patients === undefined ? (
+
+Expected '</', got 'jsx text'
+
+Import traces:
+  Client Component Browser:
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 1820774ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 1821059ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 1821185ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?debug=skip_cache&__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 1821762ms] Error: [CONVEX Q(queries:getTotalPatientCount)] [Request ID: 69a5a659d295a983] Server Error
+Uncaught Error: Too many bytes read in a single function execution (limit: 16777216 bytes). Consider using smaller limits in your queries, paginating your queries, or using indexed queries with a selective index range expressions.
+    at async handler (../convex/queries.ts:96:40)
+
+  Called by client
+    at async handler (../convex/queries.ts:96:40)
+
+  Called by client
+    at OptimisticQueryResults.queryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:2696:19)
+    at BaseConvexClient.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4545:44)
+    at Object.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6520:44)
+    at QueriesObserver.getLocalResults (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6077:31)
+    at useQueriesHelper.useMemo[subscription] (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6280:41)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6192:43)
+    at basicStateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4828:47)
+    at dispatchSetStateInternal (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:5665:78)
+    at dispatchSetState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:5646:9)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6187:21)
+    at QueriesObserver.notifyListeners (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6144:13)
+    at http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6123:53
+    at ConvexReactClient.transition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6722:21)
+    at ConvexReactClient.handleTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6712:14)
+    at PaginatedQueryClient.onTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6433:363)
+    at PaginatedQueryClient.onBaseTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4974:14)
+    at http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4858:63
+    at BaseConvexClient.handleTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4452:13)
+    at BaseConvexClient.notifyOnQueryResultChanges (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4432:14)
+    at WebSocketManager.onMessage (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4343:34)
+    at ws.onmessage (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:3291:35)
+[ 1825330ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 1825569ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 1825571ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 1825715ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?debug=skip_cache&__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 1826540ms] Error: [CONVEX Q(queries:getTotalPatientCount)] [Request ID: 583b00085e81f6a3] Server Error
+Uncaught Error: Too many bytes read in a single function execution (limit: 16777216 bytes). Consider using smaller limits in your queries, paginating your queries, or using indexed queries with a selective index range expressions.
+    at async handler (../convex/queries.ts:95:40)
+
+  Called by client
+    at async handler (../convex/queries.ts:95:40)
+
+  Called by client
+    at OptimisticQueryResults.queryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:2696:19)
+    at BaseConvexClient.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4545:44)
+    at Object.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6520:44)
+    at QueriesObserver.getLocalResults (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6077:31)
+    at useQueriesHelper.useMemo[subscription] (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6280:41)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6192:43)
+    at basicStateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4828:47)
+    at updateReducerImpl (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4910:79)
+    at updateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4860:16)
+    at Object.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:15282:24)
+    at exports.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:1754:36)
+    at useSubscription (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6163:412)
+    at useQueriesHelper (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6294:275)
+    at useQueries (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6260:12)
+    at useQuery (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6757:274)
+    at PatientSidebar (http://localhost:3000/_next/static/chunks/_a0d998cb._.js:706:270)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9105:47)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64)
+[ 1860499ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 1860729ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 1860802ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?debug=skip_cache&__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 1861619ms] Error: [CONVEX Q(queries:getTotalPatientCount)] [Request ID: 45b09a2b1f38df4f] Server Error
+Uncaught Error: Too many bytes read in a single function execution (limit: 16777216 bytes). Consider using smaller limits in your queries, paginating your queries, or using indexed queries with a selective index range expressions.
+    at async handler (../convex/queries.ts:95:40)
+
+  Called by client
+    at async handler (../convex/queries.ts:95:40)
+
+  Called by client
+    at OptimisticQueryResults.queryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:2696:19)
+    at BaseConvexClient.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4545:44)
+    at Object.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6520:44)
+    at QueriesObserver.getLocalResults (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6077:31)
+    at useQueriesHelper.useMemo[subscription] (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6280:41)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6192:43)
+    at basicStateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4828:47)
+    at updateReducerImpl (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4910:79)
+    at updateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4860:16)
+    at Object.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:15282:24)
+    at exports.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:1754:36)
+    at useSubscription (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6163:412)
+    at useQueriesHelper (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6294:275)
+    at useQueries (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6260:12)
+    at useQuery (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6757:274)
+    at PatientSidebar (http://localhost:3000/_next/static/chunks/_a0d998cb._.js:706:270)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9105:47)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64)
+[ 1861829ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 1917486ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 1917647ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 1917740ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 1917809ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?debug=skip_cache&__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 1918512ms] Error: [CONVEX Q(queries:getTotalPatientCount)] [Request ID: 854d75af671663ac] Server Error
+Uncaught Error: Too many bytes read in a single function execution (limit: 16777216 bytes). Consider using smaller limits in your queries, paginating your queries, or using indexed queries with a selective index range expressions.
+    at async handler (../convex/queries.ts:95:36)
+
+  Called by client
+    at async handler (../convex/queries.ts:95:36)
+
+  Called by client
+    at OptimisticQueryResults.queryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:2696:19)
+    at BaseConvexClient.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4545:44)
+    at Object.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6520:44)
+    at QueriesObserver.getLocalResults (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6077:31)
+    at useQueriesHelper.useMemo[subscription] (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6280:41)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6192:43)
+    at basicStateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4828:47)
+    at updateReducerImpl (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4910:79)
+    at updateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4860:16)
+    at Object.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:15282:24)
+    at exports.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:1754:36)
+    at useSubscription (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6163:412)
+    at useQueriesHelper (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6294:275)
+    at useQueries (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6260:12)
+    at useQuery (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6757:274)
+    at PatientSidebar (http://localhost:3000/_next/static/chunks/_a0d998cb._.js:706:270)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9105:47)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64)
+[ 1972957ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 1973143ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 1973177ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 1973247ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?debug=skip_cache&__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 1974124ms] Error: [CONVEX Q(queries:getTotalPatientCount)] [Request ID: e455ee888062d8a8] Server Error
+Uncaught Error: Too many bytes read in a single function execution (limit: 16777216 bytes). Consider using smaller limits in your queries, paginating your queries, or using indexed queries with a selective index range expressions.
+    at async handler (../convex/queries.ts:95:36)
+
+  Called by client
+    at async handler (../convex/queries.ts:95:36)
+
+  Called by client
+    at OptimisticQueryResults.queryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:2696:19)
+    at BaseConvexClient.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4545:44)
+    at Object.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6520:44)
+    at QueriesObserver.getLocalResults (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6077:31)
+    at useQueriesHelper.useMemo[subscription] (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6280:41)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6192:43)
+    at basicStateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4828:47)
+    at updateReducerImpl (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4910:79)
+    at updateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4860:16)
+    at Object.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:15282:24)
+    at exports.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:1754:36)
+    at useSubscription (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6163:412)
+    at useQueriesHelper (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6294:275)
+    at useQueries (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6260:12)
+    at useQuery (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6757:274)
+    at PatientSidebar (http://localhost:3000/_next/static/chunks/_a0d998cb._.js:706:270)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9105:47)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64)
+[ 2079556ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2081625ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2081878ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard:0
+[ 2082840ms] ReferenceError: filteredPatients is not defined
+    at PatientSidebar (http://localhost:3000/_next/static/chunks/_e066f64f._.js:800:37)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9105:47)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64)
+[ 2082985ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2086100ms] [WARNING] The resource http://localhost:3000/_next/static/chunks/%5Broot-of-the-server%5D__c49d240e._.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2086100ms] [WARNING] The resource http://localhost:3000/_next/static/chunks/a5e17_%40copilotkit_react-ui_dist_index_33dc295b.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2130222ms] [WARNING] The resource http://localhost:3000/_next/static/chunks/%5Broot-of-the-server%5D__c49d240e._.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2130223ms] [WARNING] The resource http://localhost:3000/_next/static/chunks/a5e17_%40copilotkit_react-ui_dist_index_33dc295b.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2151901ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard:0
+[ 2152195ms] ReferenceError: filteredPatients is not defined
+    at PatientSidebar (http://localhost:3000/_next/static/chunks/_e066f64f._.js:800:37)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9105:47)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64)
+[ 2152372ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2155462ms] [WARNING] The resource http://localhost:3000/_next/static/chunks/%5Broot-of-the-server%5D__c49d240e._.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2155462ms] [WARNING] The resource http://localhost:3000/_next/static/chunks/a5e17_%40copilotkit_react-ui_dist_index_33dc295b.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2187763ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2189326ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard:0
+[ 2190249ms] ReferenceError: useQuery is not defined
+    at PatientSidebar (http://localhost:3000/_next/static/chunks/_e066f64f._.js:667:24)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9105:47)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64)
+[ 2190389ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2193542ms] [WARNING] The resource http://localhost:3000/_next/static/chunks/%5Broot-of-the-server%5D__c49d240e._.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2193543ms] [WARNING] The resource http://localhost:3000/_next/static/chunks/a5e17_%40copilotkit_react-ui_dist_index_33dc295b.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2199065ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2200719ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard:0
+[ 2205992ms] ReferenceError: useQuery is not defined
+    at PatientSidebar (http://localhost:3000/_next/static/chunks/_e066f64f._.js:667:24)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9105:47)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64)
+[ 2206093ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2214392ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard:0
+[ 2215497ms] ReferenceError: useQuery is not defined
+    at PatientSidebar (http://localhost:3000/_next/static/chunks/_e066f64f._.js:667:24)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9105:47)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64)
+[ 2215592ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2218917ms] [WARNING] The resource http://localhost:3000/_next/static/chunks/%5Broot-of-the-server%5D__c49d240e._.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2218917ms] [WARNING] The resource http://localhost:3000/_next/static/chunks/a5e17_%40copilotkit_react-ui_dist_index_33dc295b.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2261991ms] [WARNING] The resource http://localhost:3000/_next/static/chunks/%5Broot-of-the-server%5D__c49d240e._.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2261991ms] [WARNING] The resource http://localhost:3000/_next/static/chunks/a5e17_%40copilotkit_react-ui_dist_index_33dc295b.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2287372ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard:0
+[ 2287710ms] ReferenceError: useQuery is not defined
+    at PatientSidebar (http://localhost:3000/_next/static/chunks/_e066f64f._.js:667:24)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9105:47)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64)
+[ 2287869ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2290983ms] [WARNING] The resource http://localhost:3000/_next/static/chunks/%5Broot-of-the-server%5D__c49d240e._.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2290983ms] [WARNING] The resource http://localhost:3000/_next/static/chunks/a5e17_%40copilotkit_react-ui_dist_index_33dc295b.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2335003ms] [WARNING] The resource http://localhost:3000/_next/static/chunks/%5Broot-of-the-server%5D__c49d240e._.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2335003ms] [WARNING] The resource http://localhost:3000/_next/static/chunks/a5e17_%40copilotkit_react-ui_dist_index_33dc295b.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2357381ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2360218ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2360487ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 2360559ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?debug=skip_cache&__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 2360767ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2361867ms] Error: [CONVEX Q(queries:getTotalPatientCount)] [Request ID: 977259f7452b6ed4] Server Error
+Uncaught Error: Too many bytes read in a single function execution (limit: 16777216 bytes). Consider using smaller limits in your queries, paginating your queries, or using indexed queries with a selective index range expressions.
+    at async handler (../convex/queries.ts:95:36)
+
+  Called by client
+    at async handler (../convex/queries.ts:95:36)
+
+  Called by client
+    at OptimisticQueryResults.queryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:2696:19)
+    at BaseConvexClient.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4545:44)
+    at Object.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6520:44)
+    at QueriesObserver.getLocalResults (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6077:31)
+    at useQueriesHelper.useMemo[subscription] (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6280:41)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6192:43)
+    at basicStateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4828:47)
+    at updateReducerImpl (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4910:79)
+    at updateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4860:16)
+    at Object.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:15282:24)
+    at exports.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:1754:36)
+    at useSubscription (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6163:412)
+    at useQueriesHelper (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6294:275)
+    at useQueries (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6260:12)
+    at useQuery (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6757:274)
+    at PatientSidebar (http://localhost:3000/_next/static/chunks/_e066f64f._.js:668:270)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9105:47)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64)
+[ 2382889ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2383175ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 2383256ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?debug=skip_cache&__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 2383829ms] Error: [CONVEX Q(queries:getTotalPatientCount)] [Request ID: a7c3c4bbe0bc877e] Server Error
+Uncaught Error: Too many bytes read in a single function execution (limit: 16777216 bytes). Consider using smaller limits in your queries, paginating your queries, or using indexed queries with a selective index range expressions.
+    at async handler (../convex/queries.ts:95:36)
+
+  Called by client
+    at async handler (../convex/queries.ts:95:36)
+
+  Called by client
+    at OptimisticQueryResults.queryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:2696:19)
+    at BaseConvexClient.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4545:44)
+    at Object.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6520:44)
+    at QueriesObserver.getLocalResults (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6077:31)
+    at useQueriesHelper.useMemo[subscription] (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6280:41)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6192:43)
+    at basicStateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4828:47)
+    at updateReducerImpl (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4910:79)
+    at updateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4860:16)
+    at Object.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:15282:24)
+    at exports.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:1754:36)
+    at useSubscription (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6163:412)
+    at useQueriesHelper (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6294:275)
+    at useQueries (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6260:12)
+    at useQuery (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6757:274)
+    at PatientSidebar (http://localhost:3000/_next/static/chunks/_e066f64f._.js:668:270)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9105:47)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64)
+[ 2388153ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2388154ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2391464ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2391680ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 2391754ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?debug=skip_cache&__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 2391827ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2392402ms] Error: [CONVEX Q(queries:getTotalPatientCount)] [Request ID: a99ea3f601ffce24] Server Error
+Uncaught Error: Too many bytes read in a single function execution (limit: 16777216 bytes). Consider using smaller limits in your queries, paginating your queries, or using indexed queries with a selective index range expressions.
+    at async handler (../convex/queries.ts:95:36)
+
+  Called by client
+    at async handler (../convex/queries.ts:95:36)
+
+  Called by client
+    at OptimisticQueryResults.queryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:2696:19)
+    at BaseConvexClient.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4545:44)
+    at Object.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6520:44)
+    at QueriesObserver.getLocalResults (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6077:31)
+    at useQueriesHelper.useMemo[subscription] (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6280:41)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6192:43)
+    at basicStateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4828:47)
+    at updateReducerImpl (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4910:79)
+    at updateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4860:16)
+    at Object.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:15282:24)
+    at exports.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:1754:36)
+    at useSubscription (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6163:412)
+    at useQueriesHelper (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6294:275)
+    at useQueries (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6260:12)
+    at useQuery (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6757:274)
+    at PatientSidebar (http://localhost:3000/_next/static/chunks/_e066f64f._.js:668:270)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9105:47)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64)
+[ 2458414ms] [ERROR] ./components/patients/patient-sidebar.tsx:194:8
+Parsing ecmascript source code failed
+  192 |           )}
+  193 |         </div>
+> 194 |       </aside>
+      |        ^^^^^^^
+  195 |     </TooltipProvider>
+  196 |   );
+  197 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./components/patients/patient-sidebar.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/patients/patient-sidebar.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 2494483ms] [ERROR] ./components/patients/patient-sidebar.tsx:194:8
+Parsing ecmascript source code failed
+  192 |           )}
+  193 |         </div>
+> 194 |       </aside>
+      |        ^^^^^^^
+  195 |     </TooltipProvider>
+  196 |   );
+  197 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./components/patients/patient-sidebar.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/patients/patient-sidebar.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 2494486ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard:0
+[ 2494564ms] Error: ./components/patients/patient-sidebar.tsx:194:8
+Parsing ecmascript source code failed
+  192 |           )}
+  193 |         </div>
+> 194 |       </aside>
+      |        ^^^^^^^
+  195 |     </TooltipProvider>
+  196 |   );
+  197 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./components/patients/patient-sidebar.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/patients/patient-sidebar.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+
+    at <unknown> (Error: ./components/patients/patient-sidebar.tsx:194:8)
+    at Object.getCompilationErrors (file:///Users/karanbalaji/Documents/coding-projects/the-team/node_modules/.pnpm/next@16.1.6_@babel+core@7.29.0_@opentelemetry+api@1.9.0_@playwright+test@1.58.2_react-d_92e089280fbb2cb51d985b7d6387c615/node_modules/next/dist/server/dev/hot-reloader-turbopack.js:1008:59)
+    at DevBundlerService.getCompilationError (file:///Users/karanbalaji/Documents/coding-projects/the-team/node_modules/.pnpm/next@16.1.6_@babel+core@7.29.0_@opentelemetry+api@1.9.0_@playwright+test@1.58.2_react-d_92e089280fbb2cb51d985b7d6387c615/node_modules/next/dist/server/lib/dev-bundler-service.js:44:55)
+    at DevServer.getCompilationError (file:///Users/karanbalaji/Documents/coding-projects/the-team/node_modules/.pnpm/next@16.1.6_@babel+core@7.29.0_@opentelemetry+api@1.9.0_@playwright+test@1.58.2_react-d_92e089280fbb2cb51d985b7d6387c615/node_modules/next/dist/server/dev/next-dev-server.js:706:42)
+    at DevServer.findPageComponents (file:///Users/karanbalaji/Documents/coding-projects/the-team/node_modules/.pnpm/next@16.1.6_@babel+core@7.29.0_@opentelemetry+api@1.9.0_@playwright+test@1.58.2_react-d_92e089280fbb2cb51d985b7d6387c615/node_modules/next/dist/server/dev/next-dev-server.js:676:43)
+    at async DevServer.renderErrorToResponseImpl (file:///Users/karanbalaji/Documents/coding-projects/the-team/node_modules/.pnpm/next@16.1.6_@babel+core@7.29.0_@opentelemetry+api@1.9.0_@playwright+test@1.58.2_react-d_92e089280fbb2cb51d985b7d6387c615/node_modules/next/dist/server/base-server.js:1733:26)
+[ 2494566ms] [ERROR] ./components/patients/patient-sidebar.tsx:194:8
+Parsing ecmascript source code failed
+  192 |           )}
+  193 |         </div>
+> 194 |       </aside>
+      |        ^^^^^^^
+  195 |     </TooltipProvider>
+  196 |   );
+  197 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./components/patients/patient-sidebar.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/patients/patient-sidebar.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_95022686._.js:1920
+[ 2494566ms] [ERROR] ./components/patients/patient-sidebar.tsx:194:8
+Parsing ecmascript source code failed
+  192 |           )}
+  193 |         </div>
+> 194 |       </aside>
+      |        ^^^^^^^
+  195 |     </TooltipProvider>
+  196 |   );
+  197 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./components/patients/patient-sidebar.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/patients/patient-sidebar.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_95022686._.js:1920
+[ 2494779ms] [ERROR] ./components/patients/patient-sidebar.tsx:194:8
+Parsing ecmascript source code failed
+  192 |           )}
+  193 |         </div>
+> 194 |       </aside>
+      |        ^^^^^^^
+  195 |     </TooltipProvider>
+  196 |   );
+  197 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./components/patients/patient-sidebar.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/patients/patient-sidebar.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_95022686._.js:1920
+[ 2525063ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ http://localhost:3000/_next/static/chunks/189f2_next_dist_95022686._.js:1206
+[ 2528619ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2528876ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 2528941ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2528952ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?debug=skip_cache&__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 2651717ms] [ERROR] %o
+
+%s Error: [CONVEX Q(queries:getTotalPatientCount)] [Request ID: cc34c1527d2e0a0b] Server Error
+Uncaught Error: Too many bytes read in a single function execution (limit: 16777216 bytes). Consider using smaller limits in your queries, paginating your queries, or using indexed queries with a selective index range expressions.
+    at async handler (../convex/queries.ts:95:36)
+
+  Called by client
+    at async handler (../convex/queries.ts:95:36)
+
+  Called by client
+    at OptimisticQueryResults.queryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:2696:19)
+    at BaseConvexClient.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4545:44)
+    at Object.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6520:44)
+    at QueriesObserver.getLocalResults (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6077:31)
+    at useQueriesHelper.useMemo[subscription] (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6280:41)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6192:43)
+    at basicStateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4828:47)
+    at updateReducerImpl (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4910:79)
+    at updateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4860:16)
+    at Object.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:15282:24)
+    at exports.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:1754:36)
+    at useSubscription (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6163:412)
+    at useQueriesHelper (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6294:275)
+    at useQueries (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6260:12)
+    at useQuery (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6757:274)
+    at RecordsPage (http://localhost:3000/_next/static/chunks/_0b7f0899._.js:76:270)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9068:186)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64) The above error occurred in the <RecordsPage> component. It was handled by the <ErrorBoundary> error boundary. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_client_2eeeb089._.js:1342
+[ 2651719ms] [ERROR] ErrorBoundary caught: Error: [CONVEX Q(queries:getTotalPatientCount)] [Request ID: cc34c1527d2e0a0b] Server Error
+Uncaught Error: Too many bytes read in a single function execution (limit: 16777216 bytes). Consider using smaller limits in your queries, paginating your queries, or using indexed queries with a selective index range expressions.
+    at async handler (../convex/queries.ts:95:36)
+
+  Called by client
+    at async handler (../convex/queries.ts:95:36)
+
+  Called by client
+    at OptimisticQueryResults.queryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:2696:19)
+    at BaseConvexClient.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4545:44)
+    at Object.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6520:44)
+    at QueriesObserver.getLocalResults (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6077:31)
+    at useQueriesHelper.useMemo[subscription] (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6280:41)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6192:43)
+    at basicStateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4828:47)
+    at updateReducerImpl (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4910:79)
+    at updateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4860:16)
+    at Object.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:15282:24)
+    at exports.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:1754:36)
+    at useSubscription (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6163:412)
+    at useQueriesHelper (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6294:275)
+    at useQueries (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6260:12)
+    at useQuery (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6757:274)
+    at RecordsPage (http://localhost:3000/_next/static/chunks/_0b7f0899._.js:76:270)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9068:186)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64) {componentStack: 
+    at RecordsPage (http://localhost:3000/_next/s…ks/189f2_next_dist_client_2eeeb089._.js:12602:17)} @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 2666396ms] [ERROR] %o
+
+%s Error: [CONVEX Q(queries:getTotalPatientCount)] [Request ID: fcac7afb9cc90052] Server Error
+Uncaught Error: Too many bytes read in a single function execution (limit: 16777216 bytes). Consider using smaller limits in your queries, paginating your queries, or using indexed queries with a selective index range expressions.
+    at async handler (../convex/queries.ts:95:36)
+
+  Called by client
+    at async handler (../convex/queries.ts:95:36)
+
+  Called by client
+    at OptimisticQueryResults.queryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:2696:19)
+    at BaseConvexClient.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4545:44)
+    at Object.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6520:44)
+    at QueriesObserver.getLocalResults (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6077:31)
+    at useQueriesHelper.useMemo[subscription] (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6280:41)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6192:43)
+    at basicStateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4828:47)
+    at updateReducerImpl (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4910:79)
+    at updateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4860:16)
+    at Object.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:15282:24)
+    at exports.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:1754:36)
+    at useSubscription (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6163:412)
+    at useQueriesHelper (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6294:275)
+    at useQueries (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6260:12)
+    at useQuery (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6757:274)
+    at RecordsPage (http://localhost:3000/_next/static/chunks/_0b7f0899._.js:76:270)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9105:47)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64) The above error occurred in the <RecordsPage> component. It was handled by the <ErrorBoundary> error boundary. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_client_2eeeb089._.js:1342
+[ 2666397ms] [ERROR] ErrorBoundary caught: Error: [CONVEX Q(queries:getTotalPatientCount)] [Request ID: fcac7afb9cc90052] Server Error
+Uncaught Error: Too many bytes read in a single function execution (limit: 16777216 bytes). Consider using smaller limits in your queries, paginating your queries, or using indexed queries with a selective index range expressions.
+    at async handler (../convex/queries.ts:95:36)
+
+  Called by client
+    at async handler (../convex/queries.ts:95:36)
+
+  Called by client
+    at OptimisticQueryResults.queryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:2696:19)
+    at BaseConvexClient.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4545:44)
+    at Object.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6520:44)
+    at QueriesObserver.getLocalResults (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6077:31)
+    at useQueriesHelper.useMemo[subscription] (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6280:41)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6192:43)
+    at basicStateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4828:47)
+    at updateReducerImpl (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4910:79)
+    at updateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4860:16)
+    at Object.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:15282:24)
+    at exports.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:1754:36)
+    at useSubscription (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6163:412)
+    at useQueriesHelper (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6294:275)
+    at useQueries (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6260:12)
+    at useQuery (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6757:274)
+    at RecordsPage (http://localhost:3000/_next/static/chunks/_0b7f0899._.js:76:270)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9105:47)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64) {componentStack: 
+    at RecordsPage (http://localhost:3000/_next/s…ks/189f2_next_dist_client_2eeeb089._.js:12602:17)} @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 2938863ms] Error: [CONVEX Q(queries:searchPatients)] [Request ID: 6bffc67128c11aef] Server Error
+Uncaught Error: Too many bytes read in a single function execution (limit: 16777216 bytes). Consider using smaller limits in your queries, paginating your queries, or using indexed queries with a selective index range expressions.
+    at async handler (../convex/queries.ts:72:10)
+
+  Called by client
+    at async handler (../convex/queries.ts:72:10)
+
+  Called by client
+    at OptimisticQueryResults.queryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:2696:19)
+    at BaseConvexClient.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4545:44)
+    at Object.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6520:44)
+    at QueriesObserver.getLocalResults (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6077:31)
+    at useQueriesHelper.useMemo[subscription] (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6280:41)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6192:43)
+    at basicStateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4828:47)
+    at dispatchSetStateInternal (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:5665:78)
+    at dispatchSetState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:5646:9)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6187:21)
+    at QueriesObserver.notifyListeners (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6144:13)
+    at http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6123:53
+    at ConvexReactClient.transition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6722:21)
+    at ConvexReactClient.handleTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6712:14)
+    at PaginatedQueryClient.onTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6433:363)
+    at PaginatedQueryClient.onBaseTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4974:14)
+    at http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4858:63
+    at BaseConvexClient.handleTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4452:13)
+    at BaseConvexClient.notifyOnQueryResultChanges (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4432:14)
+    at WebSocketManager.onMessage (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4343:34)
+    at ws.onmessage (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:3291:35)
+[ 2981246ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2981489ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 2981513ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2981590ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?debug=skip_cache&__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 2983930ms] [ERROR] Agent execution failed: TypeError: Failed to fetch
+    at http://localhost:3000/_next/static/chunks/89bd6_%40ag-ui_client_dist_index_mjs_27ce17c7._.js:717:489
+    at Observable._subscribe (http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:1474:251)
+    at Observable._trySubscribe (http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:669:25)
+    at http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:663:121
+    at errorContext (http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:366:9)
+    at Observable.subscribe (http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:661:250)
+    at http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:2287:16
+    at SafeSubscriber.<anonymous> (http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:1497:28)
+    at http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:663:48
+    at errorContext (http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:366:9)
+    at Observable.subscribe (http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:661:250)
+    at L (http://localhost:3000/_next/static/chunks/89bd6_%40ag-ui_client_dist_index_mjs_27ce17c7._.js:824:14)
+    at ProxiedCopilotRuntimeAgent.connect (http://localhost:3000/_next/static/chunks/node_modules__pnpm_19343917._.js:20995:311)
+    at http://localhost:3000/_next/static/chunks/89bd6_%40ag-ui_client_dist_index_mjs_27ce17c7._.js:1611:494
+    at http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:620:20
+    at Array.reduce (<anonymous>)
+    at piped (http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:619:20)
+    at ProxiedCopilotRuntimeAgent.connectAgent (http://localhost:3000/_next/static/chunks/89bd6_%40ag-ui_client_dist_index_mjs_27ce17c7._.js:1613:16)
+    at async RunHandler.connectAgent (http://localhost:3000/_next/static/chunks/node_modules__pnpm_19343917._.js:21700:36)
+    at async useCopilotChatInternal.useEffect.connect (http://localhost:3000/_next/static/chunks/9d83e_%40copilotkit_react-core_dist_index_mjs_f2be57aa._.js:2631:25) @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 2985916ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2986123ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 2986205ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?debug=skip_cache&__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 2992195ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 3017183ms] Error: [CONVEX Q(queries:searchPatients)] [Request ID: 2d1efa36f22e4140] Server Error
+Uncaught Error: Too many bytes read in a single function execution (limit: 16777216 bytes). Consider using smaller limits in your queries, paginating your queries, or using indexed queries with a selective index range expressions.
+    at async handler (../convex/queries.ts:72:10)
+
+  Called by client
+    at async handler (../convex/queries.ts:72:10)
+
+  Called by client
+    at OptimisticQueryResults.queryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:2696:19)
+    at BaseConvexClient.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4545:44)
+    at Object.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6520:44)
+    at QueriesObserver.getLocalResults (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6077:31)
+    at useQueriesHelper.useMemo[subscription] (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6280:41)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6192:43)
+    at basicStateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4828:47)
+    at dispatchSetStateInternal (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:5665:78)
+    at dispatchSetState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:5646:9)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6187:21)
+    at QueriesObserver.notifyListeners (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6144:13)
+    at http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6123:53
+    at ConvexReactClient.transition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6722:21)
+    at ConvexReactClient.handleTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6712:14)
+    at PaginatedQueryClient.onTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6433:363)
+    at PaginatedQueryClient.onBaseTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4974:14)
+    at http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4858:63
+    at BaseConvexClient.handleTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4452:13)
+    at BaseConvexClient.notifyOnQueryResultChanges (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4432:14)
+    at WebSocketManager.onMessage (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4343:34)
+    at ws.onmessage (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:3291:35)
+[ 3125961ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 3126002ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 3126192ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 3126263ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?debug=skip_cache&__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 3174697ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 3174829ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 3174872ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[ 3174948ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?debug=skip_cache&__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0

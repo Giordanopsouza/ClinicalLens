@@ -5,6 +5,7 @@ import { Bell, Search, Settings, Activity, PanelLeftClose, PanelLeftOpen } from 
 import { ThemeSwitcher } from "@/components/kibo-ui/theme-switcher";
 import { UserButton } from "@clerk/nextjs";
 import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
 import { useSidebar } from "@/context/sidebar-context";
 import {
   Tooltip,
@@ -22,10 +23,58 @@ const ROUTE_LABELS: Record<string, string> = {
   "/settings": "Settings",
 };
 
+import { useState, useEffect, useRef } from "react";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { usePatient } from "@/context/patient-context";
+import { useRouter } from "next/navigation";
+
 export function GlobalHeader() {
   const pathname = usePathname();
+  const router = useRouter();
   const pageLabel = ROUTE_LABELS[pathname] ?? "Dashboard";
   const { isLeftCollapsed, toggleLeft } = useSidebar();
+  const { setSelectedHadmId } = usePatient();
+  
+  const [searchQuery, setSearchQuery] = useState("");
+  const [showResults, setShowResults] = useState(false);
+  const searchRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const searchResults = useQuery(
+    api.queries.searchPatients,
+    searchQuery.length >= 2 ? { query: searchQuery, limit: 10 } : "skip"
+  );
+
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        inputRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+        setShowResults(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleSelectPatient = (hadmId: number) => {
+    setSelectedHadmId(hadmId);
+    setSearchQuery("");
+    setShowResults(false);
+    if (pathname !== "/dashboard") {
+      router.push("/dashboard");
+    }
+  };
 
   return (
     <TooltipProvider delayDuration={300}>
@@ -82,12 +131,74 @@ export function GlobalHeader() {
           </span>
 
           {/* Global Search Bar */}
-          <div className="relative w-full max-w-md group hidden md:block">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground group-focus-within:text-primary transition-colors" />
-            <Input
-              placeholder="Search clinical data..."
-              className="h-8 pl-9 text-[10px] bg-muted/30 border-transparent focus-visible:ring-1 focus-visible:ring-primary transition-all rounded-lg"
-            />
+          <div className="relative w-full max-w-md group hidden md:block" ref={searchRef}>
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground group-focus-within:text-primary transition-colors" />
+              <Input
+                ref={inputRef}
+                placeholder="Search registry (e.g. COPD, AEG-123)..."
+                className="h-9 pl-9 pr-12 text-[11px] bg-muted/30 border-border/50 focus-visible:ring-1 focus-visible:ring-primary transition-all rounded-xl shadow-inner"
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setShowResults(true);
+                }}
+                onFocus={() => setShowResults(true)}
+              />
+              <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none hidden lg:flex items-center gap-1">
+                <kbd className="h-5 px-1.5 rounded border border-border bg-background text-[9px] font-black text-muted-foreground/50 shadow-sm uppercase">
+                  ⌘K
+                </kbd>
+              </div>
+            </div>
+            
+            {showResults && searchQuery.length >= 2 && (
+              <div className="absolute top-full mt-3 w-full bg-card border border-border/50 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.2)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden z-[100] animate-in fade-in slide-in-from-top-2 duration-200 backdrop-blur-xl">
+                <div className="p-3 border-b border-border/50 bg-muted/20 flex items-center justify-between">
+                  <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest px-1">Registry Results</p>
+                  {searchResults && (
+                    <Badge variant="secondary" className="text-[8px] h-4 px-1 font-black opacity-60">{searchResults.length} matches</Badge>
+                  )}
+                </div>
+                <div className="max-h-[350px] overflow-y-auto custom-scrollbar">
+                  {searchResults === undefined ? (
+                    <div className="p-8 text-center">
+                      <div className="size-5 border-2 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-3" />
+                      <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest animate-pulse">Scanning Registry...</p>
+                    </div>
+                  ) : searchResults.length === 0 ? (
+                    <div className="p-10 text-center">
+                      <div className="size-10 bg-muted rounded-full flex items-center justify-center mx-auto mb-4 opacity-20">
+                        <Search className="h-5 w-5" />
+                      </div>
+                      <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest opacity-40">No patients found</p>
+                      <p className="text-[9px] text-muted-foreground/60 mt-1">Try searching by ID (e.g. 123) or Diagnosis</p>
+                    </div>
+                  ) : (
+                    <div className="p-1.5 space-y-0.5">
+                      {searchResults.map((p) => (
+                        <button
+                          key={p.hadm_id}
+                          onClick={() => handleSelectPatient(p.hadm_id)}
+                          className="w-full flex flex-col items-start gap-1 p-3.5 rounded-xl hover:bg-primary/[0.04] dark:hover:bg-primary/[0.1] transition-all text-left group border border-transparent hover:border-primary/10"
+                        >
+                          <div className="flex w-full items-center justify-between">
+                            <div className="flex items-center gap-2">
+                              <div className="size-6 rounded-lg bg-primary/10 flex items-center justify-center">
+                                <Activity className="h-3 w-3 text-primary" />
+                              </div>
+                              <span className="text-[11px] font-black font-mono text-primary group-hover:scale-105 transition-transform origin-left">AEG-{p.hadm_id}</span>
+                            </div>
+                            <Badge variant="outline" className="text-[8px] h-4 px-1.5 font-black uppercase tracking-tighter opacity-60 group-hover:opacity-100 transition-opacity">{p.gender} · {p.age}y</Badge>
+                          </div>
+                          <p className="text-xs font-bold text-foreground/80 group-hover:text-foreground transition-colors line-clamp-1 pl-8">{p.admission_diagnosis}</p>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Actions pushed to right */}

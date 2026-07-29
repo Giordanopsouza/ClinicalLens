@@ -10,29 +10,24 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 
+import { usePaginatedQuery } from "convex/react";
+
 export default function RecordsPage() {
   const { selectedHadmId, setSelectedHadmId } = usePatient();
-  const [registrySearch, setRegistrySearch] = useState("");
   const [recordSearch, setRecordSearch] = useState("");
 
-  const patients = useQuery(api.queries.getPatientList, { limit: 100 });
+  const { results: patients, status, loadMore } = usePaginatedQuery(
+    api.queries.getPatientList,
+    {},
+    { initialNumItems: 48 }
+  );
+  const totalCount = useQuery(api.queries.getTotalPatientCount);
   const patient = useQuery(
     api.queries.getPatientById,
     selectedHadmId ? { hadm_id: selectedHadmId } : "skip"
   );
 
   const patientList = patients ?? [];
-  const filteredPatients = patientList.filter((p: { admission_diagnosis?: string; hadm_id: number; subject_id: number }) => {
-    const searchLower = registrySearch.toLowerCase().trim();
-    // Strip "AEG-" if present for ID matching
-    const idSearch = searchLower.startsWith("aeg-") ? searchLower.slice(4) : searchLower;
-    
-    return (
-      p.admission_diagnosis?.toLowerCase().includes(searchLower) ||
-      String(p.hadm_id).includes(idSearch) ||
-      String(p.subject_id).includes(idSearch)
-    );
-  });
 
   if (!selectedHadmId) {
     return (
@@ -45,7 +40,7 @@ export default function RecordsPage() {
             <div>
               <h1 className="text-2xl font-black tracking-tight text-foreground uppercase">Patient Records</h1>
               <p className="text-xs text-muted-foreground font-bold uppercase tracking-widest leading-none mt-1 opacity-60">
-                Search the registry to open a patient chart
+                Browse clinical records across 2,000 cases
               </p>
             </div>
           </div>
@@ -53,25 +48,11 @@ export default function RecordsPage() {
 
         <div className="flex-1 overflow-y-auto p-8 custom-scrollbar">
           <div className="max-w-[1200px] mx-auto space-y-6">
-            {/* Registry Search */}
-            <div className="relative group">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
-              <Input
-                autoFocus
-                placeholder="Search patients by diagnosis, admission ID, subject ID..."
-                className="h-14 pl-12 bg-card border-border/50 text-base rounded-2xl shadow-sm focus-visible:ring-1 focus-visible:ring-primary transition-all"
-                value={registrySearch}
-                onChange={(e) => setRegistrySearch(e.target.value)}
-              />
-            </div>
-
             {/* Results header */}
-            <div className="flex items-center justify-between px-1">
-              <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest opacity-60">
-                Registry Results
-              </p>
-              <Badge variant="outline" className="text-[9px] h-4 px-1.5 font-black border-border/50">
-                {patients === undefined ? "..." : filteredPatients.length}
+            <div className="flex items-center justify-between px-1 mb-4">
+              <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest opacity-60">Registry Results</p>
+              <Badge variant="outline" className="text-[9px] h-4 px-1.5 font-black border-border/50 bg-background">
+                {totalCount ?? "..."}
               </Badge>
             </div>
 
@@ -83,31 +64,53 @@ export default function RecordsPage() {
                 ))}
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
-                {filteredPatients.map((p: { hadm_id: number; gender: string; age: number; admission_diagnosis?: string }) => (
-                  <button
-                    key={p.hadm_id}
-                    onClick={() => setSelectedHadmId(p.hadm_id)}
-                    className="flex flex-col items-start gap-2 rounded-xl p-4 text-left border border-border/50 bg-card hover:border-primary/30 hover:bg-primary/[0.03] transition-all duration-200 group shadow-sm"
-                  >
-                    <div className="flex w-full items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <div className="size-7 rounded-full bg-muted flex items-center justify-center group-hover:bg-primary/10 group-hover:text-primary transition-all">
-                          <User className="h-3.5 w-3.5 text-muted-foreground group-hover:text-primary" />
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+                  {patientList.map((p: { hadm_id: number; gender: string; age: number; admission_diagnosis?: string }) => (
+                    <button
+                      key={p.hadm_id}
+                      onClick={() => setSelectedHadmId(p.hadm_id)}
+                      className="flex flex-col items-start gap-2 rounded-xl p-4 text-left border border-border/50 bg-card hover:border-primary/30 hover:bg-primary/[0.03] transition-all duration-200 group shadow-sm"
+                    >
+                      <div className="flex w-full items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <div className="size-7 rounded-full bg-muted flex items-center justify-center group-hover:bg-primary/10 group-hover:text-primary transition-all">
+                            <User className="h-3.5 w-3.5 text-muted-foreground group-hover:text-primary" />
+                          </div>
+                          <span className="font-black font-mono text-[11px] text-foreground/80 group-hover:text-primary transition-colors">
+                            AEG-{p.hadm_id}
+                          </span>
                         </div>
-                        <span className="font-black font-mono text-[11px] text-foreground/80 group-hover:text-primary transition-colors">
-                          AEG-{p.hadm_id}
-                        </span>
+                        <Badge variant="outline" className="text-[9px] px-1.5 h-4 font-black uppercase tracking-tighter text-muted-foreground/60 border-border/50">
+                          {p.gender} · {p.age}y
+                        </Badge>
                       </div>
-                      <Badge variant="outline" className="text-[9px] px-1.5 h-4 font-black uppercase tracking-tighter text-muted-foreground/60 border-border/50">
-                        {p.gender} · {p.age}y
-                      </Badge>
+                      <p className="line-clamp-2 text-xs leading-relaxed pl-9 font-medium text-muted-foreground/80 group-hover:text-foreground/70 transition-colors">
+                        {p.admission_diagnosis || "No primary diagnosis recorded"}
+                      </p>
+                    </button>
+                  ))}
+                </div>
+
+                {status === "CanLoadMore" && (
+                  <div className="flex justify-center pt-4">
+                    <button
+                      onClick={() => loadMore(48)}
+                      className="px-8 py-2.5 rounded-full bg-primary text-white text-[10px] font-black uppercase tracking-widest shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all"
+                    >
+                      Load More Results
+                    </button>
+                  </div>
+                )}
+                
+                {status === "LoadingMore" && (
+                  <div className="flex justify-center pt-4">
+                    <div className="flex items-center gap-2 px-8 py-2.5 rounded-full bg-muted/50 text-muted-foreground text-[10px] font-black uppercase tracking-widest animate-pulse">
+                      <div className="size-2 bg-primary rounded-full animate-bounce" />
+                      Loading Records...
                     </div>
-                    <p className="line-clamp-2 text-xs leading-relaxed pl-9 font-medium text-muted-foreground/80 group-hover:text-foreground/70 transition-colors">
-                      {p.admission_diagnosis || "No primary diagnosis recorded"}
-                    </p>
-                  </button>
-                ))}
+                  </div>
+                )}
               </div>
             )}
           </div>

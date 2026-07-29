@@ -20,6 +20,9 @@ export default defineSchema({
       vectorField: "embedding",
       dimensions: 1536, // text-embedding-3-small
       filterFields: ["hadm_id", "gender"],
+    })
+    .searchIndex("search_diagnosis", {
+      searchField: "admission_diagnosis",
     }),
 
   // ─── Laboratory Measurements ───────────────────────────────────
