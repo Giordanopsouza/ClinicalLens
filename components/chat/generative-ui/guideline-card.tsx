@@ -22,6 +22,10 @@ interface GuidelineCardProps {
 }
 
 export function GuidelineCard({ query, results, answer }: GuidelineCardProps) {
+  const normalizedResults: GuidelineResult[] = Array.isArray(results)
+    ? results
+    : [];
+
   const formatFreshness = (dateStr?: string) => {
     if (!dateStr) return null;
     try {
@@ -69,7 +73,14 @@ export function GuidelineCard({ query, results, answer }: GuidelineCardProps) {
         
         <div className="space-y-3">
           <p className="text-[9px] font-black text-muted-foreground uppercase tracking-[0.2em] px-1 opacity-60">Evidence Sources</p>
-          {results.map((r, i) => (
+          {normalizedResults.length === 0 && (
+            <div className="rounded-xl border border-dashed border-border/60 p-3 bg-muted/20">
+              <p className="text-[10px] text-muted-foreground font-medium">
+                No evidence sources were returned for this response.
+              </p>
+            </div>
+          )}
+          {normalizedResults.map((r, i) => (
             <div key={i} className="rounded-xl border border-border/50 p-3 bg-card hover:bg-muted/5 transition-all group shadow-sm">
               <div className="flex items-start justify-between gap-3 mb-2">
                 <a

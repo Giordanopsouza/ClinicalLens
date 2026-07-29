@@ -1,10 +1,41 @@
 import { createTool } from "@mastra/core/tools";
 import { z } from "zod";
 import OpenAI from "openai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import { getConvexClient } from "./convex-client";
 import { api } from "@/convex/_generated/api";
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+async function createQueryEmbedding(query: string): Promise<number[]> {
+  const openAiKey = process.env.OPENAI_API_KEY;
+  if (openAiKey) {
+    const openai = new OpenAI({ apiKey: openAiKey });
+    const embeddingResponse = await openai.embeddings.create({
+      model: "text-embedding-3-small",
+      input: query,
+    });
+    return embeddingResponse.data[0].embedding;
+  }
+
+  const googleKey =
+    process.env.GOOGLE_GENERATIVE_AI_API_KEY ?? process.env.GOOGLE_API_KEY;
+  if (!googleKey) {
+    throw new Error(
+      "Missing embedding API key. Set OPENAI_API_KEY or GOOGLE_GENERATIVE_AI_API_KEY."
+    );
+  }
+
+  const modelName = process.env.GEMINI_EMBEDDING_MODEL ?? "gemini-embedding-001";
+  const genAI = new GoogleGenerativeAI(googleKey);
+  const model = genAI.getGenerativeModel({ model: modelName });
+  const response = await model.embedContent(query);
+  const embedding = response.embedding?.values;
+
+  if (!embedding?.length) {
+    throw new Error("Gemini embedding request returned no embedding values.");
+  }
+
+  return embedding;
+}
 
 export const dischargeSummarySearchTool = createTool({
   id: "discharge-summary-search",
@@ -35,11 +66,7 @@ export const dischargeSummarySearchTool = createTool({
     ),
   }),
   execute: async ({ query, limit }) => {
-    const embeddingResponse = await openai.embeddings.create({
-      model: "text-embedding-3-small",
-      input: query,
-    });
-    const queryEmbedding = embeddingResponse.data[0].embedding;
+    const queryEmbedding = await createQueryEmbedding(query);
 
     const client = getConvexClient();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

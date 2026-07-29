@@ -1,6 +1,7 @@
 import { createTool } from "@mastra/core/tools";
 import { z } from "zod";
 import { tavily } from "@tavily/core";
+import { deidentifyForExternalUse } from "./presidio-deid";
 
 let _tavilyClient: ReturnType<typeof tavily> | null = null;
 
@@ -48,13 +49,23 @@ export const tavilyResearchTool = createTool({
       })
     ),
     answer: z.string().optional(),
+    citations: z.array(z.string()).optional(),
+    safety_disclaimer: z.string().optional(),
+    deidentification: z
+      .object({
+        redacted: z.boolean(),
+        entities_detected: z.number(),
+      })
+      .optional(),
   }),
   execute: async ({ query, icd9_code, search_depth }) => {
     const tavilyClient = getTavilyClient();
+    const deid = await deidentifyForExternalUse(query);
 
+    const safeQuery = deid.sanitizedText;
     const searchQuery = icd9_code
-      ? `${query} ICD-9 ${icd9_code} clinical guidelines`
-      : query;
+      ? `${safeQuery} ICD-9 ${icd9_code} clinical guidelines`
+      : safeQuery;
 
     const response = await tavilyClient.search(searchQuery, {
       searchDepth: search_depth || "advanced",
@@ -98,21 +109,49 @@ export const tavilyResearchTool = createTool({
       return "unclear";
     };
 
+    const normalizedResults = (response.results as Array<{
+      title: string;
+      url: string;
+      content: string;
+      score: number;
+      published_date?: string;
+    }>).map((r) => {
+      const source = getSource(r.url);
+      return {
+        title: r.title,
+        url: r.url,
+        content: r.content,
+        score: r.score,
+        source,
+        published_date: r.published_date,
+        evidence_strength: getEvidenceStrength(source, r.content),
+      };
+    });
+
+    const citations = normalizedResults.slice(0, 3).map((result) => result.url);
+    const safetyDisclaimer =
+      "Clinical decision support only. Verify guidance against local protocols and clinician judgment.";
+
+    const answerBase =
+      (response.answer?.trim() && response.answer.trim().length > 0
+        ? response.answer.trim()
+        : `Retrieved ${normalizedResults.length} relevant guideline sources for "${searchQuery}".`) ?? "";
+
+    const groundedAnswer =
+      citations.length > 0
+        ? `${answerBase}\n\nSources:\n${citations.map((url) => `- ${url}`).join("\n")}\n\n${safetyDisclaimer}`
+        : `${answerBase}\n\n${safetyDisclaimer}`;
+
     return {
       query: searchQuery,
-      results: (response.results as Array<{ title: string; url: string; content: string; score: number; published_date?: string }>).map((r) => {
-        const source = getSource(r.url);
-        return {
-          title: r.title,
-          url: r.url,
-          content: r.content,
-          score: r.score,
-          source,
-          published_date: r.published_date,
-          evidence_strength: getEvidenceStrength(source, r.content),
-        };
-      }),
-      answer: response.answer || undefined,
+      results: normalizedResults,
+      answer: groundedAnswer,
+      citations,
+      safety_disclaimer: safetyDisclaimer,
+      deidentification: {
+        redacted: deid.redacted,
+        entities_detected: deid.entitiesDetected,
+      },
     };
   },
 });
