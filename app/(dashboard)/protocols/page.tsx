@@ -20,12 +20,22 @@ interface ResearchResult {
   evidence_strength?: string;
 }
 
+interface GroundednessReport {
+  score: number;
+  verdict: "high" | "medium" | "low";
+  supported_claims: number;
+  total_claims: number;
+  unsupported_claims: string[];
+  cited_urls: string[];
+}
+
 export default function ProtocolsPage() {
   const { selectedHadmId } = usePatient();
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearching, setIsSearching] = useState(false);
   const [results, setResults] = useState<ResearchResult[]>([]);
   const [answer, setAnswer] = useState<string | null>(null);
+  const [groundedness, setGroundedness] = useState<GroundednessReport | null>(null);
 
   const patient = useQuery(
     api.queries.getPatientById,
@@ -49,6 +59,7 @@ export default function ProtocolsPage() {
       if (data.results) {
         setResults(data.results);
         setAnswer(data.answer || null);
+        setGroundedness(data.groundedness || null);
       }
     } catch (error) {
       console.error("Search failed:", error);
@@ -112,6 +123,35 @@ export default function ProtocolsPage() {
                 <span className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">Synthesis</span>
               </div>
               <p className="text-sm leading-relaxed text-foreground/90 font-medium">{answer}</p>
+            </div>
+          )}
+
+          {groundedness && (
+            <div className="p-4 rounded-2xl border border-border/50 bg-card">
+              <div className="flex items-center justify-between gap-3">
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">
+                  Groundedness Check
+                </p>
+                <Badge
+                  variant="outline"
+                  className={cn(
+                    "text-[9px] font-black uppercase tracking-wider",
+                    groundedness.verdict === "high" && "border-emerald-500/30 text-emerald-600",
+                    groundedness.verdict === "medium" && "border-amber-500/30 text-amber-600",
+                    groundedness.verdict === "low" && "border-red-500/30 text-red-600"
+                  )}
+                >
+                  {Math.round(groundedness.score * 100)}% · {groundedness.verdict}
+                </Badge>
+              </div>
+              <p className="mt-2 text-xs text-muted-foreground">
+                Supported claims: {groundedness.supported_claims}/{groundedness.total_claims}
+              </p>
+              {groundedness.unsupported_claims.length > 0 && (
+                <p className="mt-1 text-xs text-amber-600">
+                  Review needed: {groundedness.unsupported_claims[0]}
+                </p>
+              )}
             </div>
           )}
 

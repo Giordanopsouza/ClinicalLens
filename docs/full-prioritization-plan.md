@@ -14,8 +14,8 @@ Scoring: Value = business/clinical impact (5 = high), Ease = implementation simp
 | 8 | Protocol search page wired to real Tavily/agent outputs | 4 | 3 | 12 | Converts a visible feature into real utility | **DONE** |
 | 9 | Cohort explorer for similar-patient outcomes | 5 | 2 | 10 | Strong differentiator | **DONE** |
 | 10 | Safety audit v2 with RxNorm/interactions/renal rules | 5 | 2 | 10 | Huge clinical value | **DONE** |
-| 11 | Evaluation harness (groundedness/citation suite) | 4 | 2 | 8 | Essential for scale | In progress (demo scope) |
-| 12 | FHIR-native ingestion/export + terminology normalization | 5 | 1 | 5 | Strategic enterprise moat | In progress (Presidio-only demo scope) |
+| 11 | Evaluation harness (groundedness/citation suite) | 4 | 2 | 8 | Essential for scale | Pending |
+| 12 | FHIR-native ingestion/export + terminology normalization | 5 | 1 | 5 | Strategic enterprise moat | Pending |
 
 ## Recommended Execution Plan
 
@@ -26,4 +26,4 @@ Scoring: Value = business/clinical impact (5 = high), Ease = implementation simp
 | **Sprint 3** | **Operational Clinical Workflow** | **#7** | **COMPLETED** |
 | **Sprint 4** | **Advanced Analysis & Foundations** | **#1, #5, #9** | **COMPLETED** |
 | **Sprint 5** | **Hardened Safety & Advanced Auditing** | **#2, #6, #10** | **COMPLETED** |
-| Sprint 6 | Demo Hardening | Reduced #11 (groundedness+safety), Reduced #12 (Presidio de-id) | **IN PROGRESS** |
+| Sprint 6+ | Enterprise & Scale | #11, #12 | Roadmap |

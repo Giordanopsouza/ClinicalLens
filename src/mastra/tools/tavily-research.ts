@@ -1,7 +1,6 @@
 import { createTool } from "@mastra/core/tools";
 import { z } from "zod";
 import { tavily } from "@tavily/core";
-import { deidentifyForExternalUse } from "./presidio-deid";
 
 let _tavilyClient: ReturnType<typeof tavily> | null = null;
 
@@ -10,6 +9,83 @@ function getTavilyClient() {
     _tavilyClient = tavily({ apiKey: process.env.TAVILY_API_KEY! });
   }
   return _tavilyClient;
+}
+
+type TavilyResult = {
+  title: string;
+  url: string;
+  content: string;
+  score: number;
+  published_date?: string;
+};
+
+type GroundednessReport = {
+  score: number;
+  verdict: "high" | "medium" | "low";
+  supported_claims: number;
+  total_claims: number;
+  unsupported_claims: string[];
+  cited_urls: string[];
+};
+
+const STOPWORDS = new Set([
+  "a", "an", "the", "and", "or", "but", "if", "for", "to", "of", "in", "on",
+  "at", "by", "with", "as", "from", "is", "are", "was", "were", "be", "been",
+  "this", "that", "these", "those", "it", "its", "into", "than", "then",
+  "can", "could", "should", "would", "may", "might", "will", "also", "about",
+]);
+
+function tokenize(text: string): string[] {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, " ")
+    .split(/\s+/)
+    .filter((token) => token.length > 2 && !STOPWORDS.has(token));
+}
+
+function sentenceCoverageRatio(sentence: string, sourceTokens: Set<string>): number {
+  const tokens = tokenize(sentence);
+  if (tokens.length === 0) return 0;
+  const covered = tokens.filter((token) => sourceTokens.has(token)).length;
+  return covered / tokens.length;
+}
+
+function computeGroundedness(answer: string | undefined, results: TavilyResult[]): GroundednessReport | undefined {
+  if (!answer || !answer.trim()) return undefined;
+
+  const claims = answer
+    .split(/[.!?]\s+/)
+    .map((part) => part.trim())
+    .filter((part) => part.length >= 25);
+
+  if (claims.length === 0) return undefined;
+
+  const sourceTokens = new Set<string>();
+  for (const result of results) {
+    for (const token of tokenize(`${result.title} ${result.content}`)) {
+      sourceTokens.add(token);
+    }
+  }
+
+  const supportedClaims = claims.filter(
+    (claim) => sentenceCoverageRatio(claim, sourceTokens) >= 0.35
+  );
+  const unsupportedClaims = claims.filter(
+    (claim) => sentenceCoverageRatio(claim, sourceTokens) < 0.35
+  );
+
+  const score = supportedClaims.length / claims.length;
+  const verdict: GroundednessReport["verdict"] =
+    score >= 0.8 ? "high" : score >= 0.5 ? "medium" : "low";
+
+  return {
+    score,
+    verdict,
+    supported_claims: supportedClaims.length,
+    total_claims: claims.length,
+    unsupported_claims: unsupportedClaims.slice(0, 5),
+    cited_urls: results.slice(0, 5).map((result) => result.url),
+  };
 }
 
 export const tavilyResearchTool = createTool({
@@ -49,23 +125,23 @@ export const tavilyResearchTool = createTool({
       })
     ),
     answer: z.string().optional(),
-    citations: z.array(z.string()).optional(),
-    safety_disclaimer: z.string().optional(),
-    deidentification: z
+    groundedness: z
       .object({
-        redacted: z.boolean(),
-        entities_detected: z.number(),
+        score: z.number(),
+        verdict: z.enum(["high", "medium", "low"]),
+        supported_claims: z.number(),
+        total_claims: z.number(),
+        unsupported_claims: z.array(z.string()),
+        cited_urls: z.array(z.string()),
       })
       .optional(),
   }),
   execute: async ({ query, icd9_code, search_depth }) => {
     const tavilyClient = getTavilyClient();
-    const deid = await deidentifyForExternalUse(query);
 
-    const safeQuery = deid.sanitizedText;
     const searchQuery = icd9_code
-      ? `${safeQuery} ICD-9 ${icd9_code} clinical guidelines`
-      : safeQuery;
+      ? `${query} ICD-9 ${icd9_code} clinical guidelines`
+      : query;
 
     const response = await tavilyClient.search(searchQuery, {
       searchDepth: search_depth || "advanced",
@@ -109,13 +185,7 @@ export const tavilyResearchTool = createTool({
       return "unclear";
     };
 
-    const normalizedResults = (response.results as Array<{
-      title: string;
-      url: string;
-      content: string;
-      score: number;
-      published_date?: string;
-    }>).map((r) => {
+    const normalizedResults = (response.results as TavilyResult[]).map((r) => {
       const source = getSource(r.url);
       return {
         title: r.title,
@@ -128,30 +198,14 @@ export const tavilyResearchTool = createTool({
       };
     });
 
-    const citations = normalizedResults.slice(0, 3).map((result) => result.url);
-    const safetyDisclaimer =
-      "Clinical decision support only. Verify guidance against local protocols and clinician judgment.";
-
-    const answerBase =
-      (response.answer?.trim() && response.answer.trim().length > 0
-        ? response.answer.trim()
-        : `Retrieved ${normalizedResults.length} relevant guideline sources for "${searchQuery}".`) ?? "";
-
-    const groundedAnswer =
-      citations.length > 0
-        ? `${answerBase}\n\nSources:\n${citations.map((url) => `- ${url}`).join("\n")}\n\n${safetyDisclaimer}`
-        : `${answerBase}\n\n${safetyDisclaimer}`;
+    const answer = response.answer || undefined;
+    const groundedness = computeGroundedness(answer, response.results as TavilyResult[]);
 
     return {
       query: searchQuery,
       results: normalizedResults,
-      answer: groundedAnswer,
-      citations,
-      safety_disclaimer: safetyDisclaimer,
-      deidentification: {
-        redacted: deid.redacted,
-        entities_detected: deid.entitiesDetected,
-      },
+      answer,
+      groundedness,
     };
   },
 });
