@@ -1,8 +1,8 @@
-import { mutation, internalMutation } from "./_generated/server";
+import { mutation, internalMutation, MutationCtx } from "./_generated/server";
 import { v } from "convex/values";
 
 // Helper to check authentication for client-facing mutations (if any)
-async function requireAuth(ctx: any) {
+async function requireAuth(ctx: MutationCtx) {
   const identity = await ctx.auth.getUserIdentity();
   if (!identity) {
     throw new Error("Unauthenticated call. Please sign in.");
@@ -170,5 +170,105 @@ export const updateCaseEmbedding = internalMutation({
     }
 
     await ctx.db.patch(clinicalCase._id, { embedding: args.embedding });
+  },
+});
+
+export const assignAlert = mutation({
+  args: {
+    alertId: v.id("alerts"),
+    assignee: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const identity = await requireAuth(ctx);
+    const alert = await ctx.db.get(args.alertId);
+    if (!alert) throw new Error("Alert not found");
+
+    const history = alert.history ?? [];
+    history.push({
+      action: "assigned",
+      user: identity.name ?? identity.email ?? "Unknown",
+      timestamp: Date.now(),
+      note: `Assigned to ${args.assignee}`,
+    });
+
+    await ctx.db.patch(args.alertId, {
+      assignedTo: args.assignee,
+      history,
+    });
+  },
+});
+
+export const snoozeAlert = mutation({
+  args: {
+    alertId: v.id("alerts"),
+    durationMinutes: v.number(),
+  },
+  handler: async (ctx, args) => {
+    const identity = await requireAuth(ctx);
+    const alert = await ctx.db.get(args.alertId);
+    if (!alert) throw new Error("Alert not found");
+
+    const snoozedUntil = Date.now() + args.durationMinutes * 60 * 1000;
+    const history = alert.history ?? [];
+    history.push({
+      action: "snoozed",
+      user: identity.name ?? identity.email ?? "Unknown",
+      timestamp: Date.now(),
+      note: `Snoozed for ${args.durationMinutes} minutes`,
+    });
+
+    await ctx.db.patch(args.alertId, {
+      snoozedUntil,
+      history,
+    });
+  },
+});
+
+export const resolveAlert = mutation({
+  args: {
+    alertId: v.id("alerts"),
+    note: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const identity = await requireAuth(ctx);
+    const alert = await ctx.db.get(args.alertId);
+    if (!alert) throw new Error("Alert not found");
+
+    const history = alert.history ?? [];
+    history.push({
+      action: "resolved",
+      user: identity.name ?? identity.email ?? "Unknown",
+      timestamp: Date.now(),
+      note: args.note,
+    });
+
+    await ctx.db.patch(args.alertId, {
+      status: "resolved",
+      resolutionNote: args.note,
+      history,
+    });
+  },
+});
+
+export const archiveAlert = mutation({
+  args: {
+    alertId: v.id("alerts"),
+  },
+  handler: async (ctx, args) => {
+    const identity = await requireAuth(ctx);
+    const alert = await ctx.db.get(args.alertId);
+    if (!alert) throw new Error("Alert not found");
+
+    const history = alert.history ?? [];
+    history.push({
+      action: "archived",
+      user: identity.name ?? identity.email ?? "Unknown",
+      timestamp: Date.now(),
+    });
+
+    await ctx.db.patch(args.alertId, {
+      status: "archived",
+      history,
+    });
   },
 });

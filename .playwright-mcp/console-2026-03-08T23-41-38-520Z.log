@@ -1,0 +1,93 @@
+[     483ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[     644ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[     753ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[     830ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?debug=skip_cache&__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[  300292ms] [ERROR] [CONVEX M(mutations:resolveAlert)] [Request ID: 331880acfed23b47] Server Error
+Uncaught Error: Unauthenticated call. Please sign in.
+    at requireAuth (../convex/mutations.ts:9:9)
+    at async handler (../convex/mutations.ts:234:16)
+ @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  300298ms] Error: [CONVEX M(mutations:resolveAlert)] [Request ID: 331880acfed23b47] Server Error
+Uncaught Error: Unauthenticated call. Please sign in.
+    at requireAuth (../convex/mutations.ts:9:9)
+    at async handler (../convex/mutations.ts:234:16)
+
+  Called by client
+    at requireAuth (../convex/mutations.ts:9:9)
+    at async handler (../convex/mutations.ts:234:16)
+
+  Called by client
+    at BaseConvexClient.mutation (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4635:19)
+[  544756ms] [ERROR] %o
+
+%s Error: [CONVEX Q(queries:getCohortStats)] [Request ID: 843e5e1d7f50d44f] Server Error
+Uncaught Error: Too many bytes read in a single function execution (limit: 16777216 bytes). Consider using smaller limits in your queries, paginating your queries, or using indexed queries with a selective index range expressions.
+    at async handler (../convex/queries.ts:311:15)
+
+  Called by client
+    at async handler (../convex/queries.ts:311:15)
+
+  Called by client
+    at OptimisticQueryResults.queryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:2696:19)
+    at BaseConvexClient.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4545:44)
+    at Object.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6520:44)
+    at QueriesObserver.getLocalResults (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6077:31)
+    at useQueriesHelper.useMemo[subscription] (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6280:41)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6192:43)
+    at basicStateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4828:47)
+    at updateReducerImpl (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4910:79)
+    at updateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4860:16)
+    at Object.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:15282:24)
+    at exports.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:1754:36)
+    at useSubscription (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6163:412)
+    at useQueriesHelper (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6294:275)
+    at useQueries (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6260:12)
+    at useQuery (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6757:274)
+    at CohortsPage (http://localhost:3000/_next/static/chunks/_563cd8d7._.js:32:265)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9105:47)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64) The above error occurred in the <CohortsPage> component. It was handled by the <ErrorBoundary> error boundary. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_client_2eeeb089._.js:1342
+[  544757ms] [ERROR] ErrorBoundary caught: Error: [CONVEX Q(queries:getCohortStats)] [Request ID: 843e5e1d7f50d44f] Server Error
+Uncaught Error: Too many bytes read in a single function execution (limit: 16777216 bytes). Consider using smaller limits in your queries, paginating your queries, or using indexed queries with a selective index range expressions.
+    at async handler (../convex/queries.ts:311:15)
+
+  Called by client
+    at async handler (../convex/queries.ts:311:15)
+
+  Called by client
+    at OptimisticQueryResults.queryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:2696:19)
+    at BaseConvexClient.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4545:44)
+    at Object.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6520:44)
+    at QueriesObserver.getLocalResults (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6077:31)
+    at useQueriesHelper.useMemo[subscription] (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6280:41)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6192:43)
+    at basicStateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4828:47)
+    at updateReducerImpl (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4910:79)
+    at updateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4860:16)
+    at Object.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:15282:24)
+    at exports.useState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:1754:36)
+    at useSubscription (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6163:412)
+    at useQueriesHelper (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6294:275)
+    at useQueries (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6260:12)
+    at useQuery (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6757:274)
+    at CohortsPage (http://localhost:3000/_next/static/chunks/_563cd8d7._.js:32:265)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9105:47)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64) {componentStack: 
+    at CohortsPage (http://localhost:3000/_next/s…ks/189f2_next_dist_client_2eeeb089._.js:12602:17)} @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127

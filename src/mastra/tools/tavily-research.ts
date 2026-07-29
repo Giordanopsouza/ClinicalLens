@@ -42,6 +42,9 @@ export const tavilyResearchTool = createTool({
         url: z.string(),
         content: z.string(),
         score: z.number(),
+        source: z.string().optional(),
+        published_date: z.string().optional(),
+        evidence_strength: z.enum(["high", "moderate", "low", "unclear"]).optional(),
       })
     ),
     answer: z.string().optional(),
@@ -70,14 +73,45 @@ export const tavilyResearchTool = createTool({
       ],
     });
 
+    const getSource = (url: string) => {
+      if (url.includes("pubmed.ncbi.nlm.nih.gov")) return "PubMed";
+      if (url.includes("nih.gov")) return "NIH";
+      if (url.includes("fda.gov")) return "FDA";
+      if (url.includes("who.int")) return "WHO";
+      if (url.includes("uptodate.com")) return "UpToDate";
+      if (url.includes("medscape.com")) return "Medscape";
+      if (url.includes("mayoclinic.org")) return "Mayo Clinic";
+      if (url.includes("nejm.org")) return "NEJM";
+      if (url.includes("thelancet.com")) return "The Lancet";
+      return new URL(url).hostname.replace("www.", "");
+    };
+
+    const getEvidenceStrength = (source: string, content: string) => {
+      const highValueSources = ["NEJM", "The Lancet", "PubMed", "FDA", "NIH"];
+      const lowerContent = content.toLowerCase();
+      if (highValueSources.includes(source) || lowerContent.includes("meta-analysis") || lowerContent.includes("randomized controlled trial")) {
+        return "high";
+      }
+      if (lowerContent.includes("observational study") || lowerContent.includes("cohort study")) {
+        return "moderate";
+      }
+      return "unclear";
+    };
+
     return {
       query: searchQuery,
-      results: response.results.map((r) => ({
-        title: r.title,
-        url: r.url,
-        content: r.content,
-        score: r.score,
-      })),
+      results: (response.results as Array<{ title: string; url: string; content: string; score: number; published_date?: string }>).map((r) => {
+        const source = getSource(r.url);
+        return {
+          title: r.title,
+          url: r.url,
+          content: r.content,
+          score: r.score,
+          source,
+          published_date: r.published_date,
+          evidence_strength: getEvidenceStrength(source, r.content),
+        };
+      }),
       answer: response.answer || undefined,
     };
   },

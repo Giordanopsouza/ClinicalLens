@@ -4,7 +4,7 @@ import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { FileText, History, AlertCircle } from "lucide-react";
+import { History, AlertCircle } from "lucide-react";
 import { ClinicalNarrative } from "./clinical-narrative";
 
 export function PatientSummary({ hadmId }: { hadmId: number }) {

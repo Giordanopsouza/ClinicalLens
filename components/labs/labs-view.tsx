@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { LabChart } from "./lab-chart";
 import { VitalsGrid } from "./vitals-grid";
@@ -62,7 +61,7 @@ export function LabsView({ hadmId }: { hadmId: number }) {
         </CardHeader>
         <CardContent className="pt-6">
           <div className="flex flex-wrap gap-2">
-            {filteredLabs.map((lt: any) => (
+            {filteredLabs.map((lt: { itemid: number; lab_name: string; count: number }) => (
               <button
                 key={lt.itemid}
                 onClick={() => setSelectedItemId(selectedItemId === lt.itemid ? null : lt.itemid)}

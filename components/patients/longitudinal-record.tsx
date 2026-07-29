@@ -1,6 +1,5 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { History, ArrowRight, Activity, FlaskConical, Pill } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -11,11 +10,10 @@ interface TimelineEventProps {
   title: string;
   description: string;
   color: string;
-  icon: React.ReactNode;
   isLast?: boolean;
 }
 
-function TimelineEvent({ type, date, title, description, color, icon, isLast }: TimelineEventProps) {
+function TimelineEvent({ type, date, title, description, color, isLast }: TimelineEventProps) {
   return (
     <div className="relative pl-8 pb-8 last:pb-0">
       {!isLast && <div className="absolute left-[11px] top-4 bottom-0 w-0.5 bg-border/50" />}
@@ -68,7 +66,6 @@ export function LongitudinalRecord() {
           title="Acute Decompensated Heart Failure"
           description="Patient presented with 3-day history of worsening orthopnea and peripheral edema. BP 155/92, SpO2 91% on RA."
           color="bg-blue-500"
-          icon={<Activity className="h-3 w-3 text-white" />}
         />
 
         <TimelineEvent 
@@ -77,7 +74,6 @@ export function LongitudinalRecord() {
           title="Comprehensive Metabolic Panel (CMP)"
           description="Creatinine elevated to 1.8 mg/dL. BNP critical at 1,240 pg/mL. Electrolytes within normal limits."
           color="bg-amber-500"
-          icon={<FlaskConical className="h-3 w-3 text-white" />}
         />
 
         <TimelineEvent 
@@ -86,7 +82,6 @@ export function LongitudinalRecord() {
           title="Medication Change: Furosemide"
           description="IV Furosemide 40mg BID initiated for acute diuresis. Monitor daily weights and electrolytes closely."
           color="bg-emerald-500"
-          icon={<Pill className="h-3 w-3 text-white" />}
         />
 
         <div className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em] my-10 flex items-center gap-2 px-1">
@@ -100,7 +95,6 @@ export function LongitudinalRecord() {
           title="Cardiology Follow-up (Outpatient)"
           description="Stable NYHA Class II symptoms. Discussed strict salt restriction and weight monitoring."
           color="bg-slate-400"
-          icon={<Activity className="h-3 w-3 text-white" />}
           isLast
         />
       </div>

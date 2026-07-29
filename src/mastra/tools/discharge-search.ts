@@ -1,15 +1,10 @@
 import { createTool } from "@mastra/core/tools";
 import { z } from "zod";
-import { GoogleGenerativeAI, TaskType } from "@google/generative-ai";
+import OpenAI from "openai";
 import { getConvexClient } from "./convex-client";
 import { api } from "@/convex/_generated/api";
 
-const genAI = new GoogleGenerativeAI(
-  process.env.GOOGLE_GENERATIVE_AI_API_KEY!
-);
-const embeddingModel = genAI.getGenerativeModel({
-  model: "models/text-embedding-004",
-});
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 export const dischargeSummarySearchTool = createTool({
   id: "discharge-summary-search",
@@ -40,11 +35,11 @@ export const dischargeSummarySearchTool = createTool({
     ),
   }),
   execute: async ({ query, limit }) => {
-    const embeddingResponse = await embeddingModel.embedContent({
-      content: { role: "user", parts: [{ text: query }] },
-      taskType: TaskType.RETRIEVAL_QUERY,
+    const embeddingResponse = await openai.embeddings.create({
+      model: "text-embedding-3-small",
+      input: query,
     });
-    const queryEmbedding = embeddingResponse.embedding.values;
+    const queryEmbedding = embeddingResponse.data[0].embedding;
 
     const client = getConvexClient();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

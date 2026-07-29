@@ -18,13 +18,14 @@ const ROUTE_LABELS: Record<string, string> = {
   "/records": "Patient Records",
   "/protocols": "Protocols",
   "/alerts": "Alert Center",
+  "/cohorts": "Cohort Explorer",
   "/settings": "Settings",
 };
 
 export function GlobalHeader() {
   const pathname = usePathname();
   const pageLabel = ROUTE_LABELS[pathname] ?? "Dashboard";
-  const { isCollapsed, toggle } = useSidebar();
+  const { isLeftCollapsed, toggleLeft } = useSidebar();
 
   return (
     <TooltipProvider delayDuration={300}>
@@ -32,14 +33,14 @@ export function GlobalHeader() {
         {/* Left brand zone — matches sidebar width, contains logo + toggle */}
         <div
           className="flex items-center shrink-0 border-r border-border/50 h-full transition-all duration-300"
-          style={{ width: isCollapsed ? 64 : 280 }}
+          style={{ width: isLeftCollapsed ? 64 : 280 }}
         >
-          {isCollapsed ? (
+          {isLeftCollapsed ? (
             /* Collapsed: full-zone toggle button for easy clicking */
             <Tooltip>
               <TooltipTrigger asChild>
                 <button
-                  onClick={toggle}
+                  onClick={toggleLeft}
                   className="flex items-center justify-center w-full h-full text-muted-foreground hover:bg-muted hover:text-foreground transition-all duration-200"
                   aria-label="Expand sidebar"
                 >
@@ -60,7 +61,7 @@ export function GlobalHeader() {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <button
-                    onClick={toggle}
+                    onClick={toggleLeft}
                     className="p-1.5 rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground transition-all duration-200 shrink-0"
                     aria-label="Collapse sidebar"
                   >

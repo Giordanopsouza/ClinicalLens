@@ -1,4 +1,4 @@
-import { internalQuery, query } from "./_generated/server";
+import { internalQuery, query, QueryCtx } from "./_generated/server";
 import { v } from "convex/values";
 
 type LabDictionaryEntry = {
@@ -18,7 +18,7 @@ function toTimestamp(value: string): number {
 }
 
 // Helper to check authentication - returns identity or null
-async function getAuth(ctx: any) {
+async function getAuth(ctx: QueryCtx) {
   return await ctx.auth.getUserIdentity();
 }
 
@@ -53,6 +53,9 @@ export const getPatientList = query({
 export const getPatientById = query({
   args: { hadm_id: v.number() },
   handler: async (ctx, args) => {
+    const identity = await getAuth(ctx);
+    if (!identity) return null;
+
     return await ctx.db
       .query("clinical_cases")
       .withIndex("by_hadm_id", (q) => q.eq("hadm_id", args.hadm_id))
@@ -63,6 +66,9 @@ export const getPatientById = query({
 export const getLabsByAdmission = query({
   args: { hadm_id: v.number() },
   handler: async (ctx, args) => {
+    const identity = await getAuth(ctx);
+    if (!identity) return [];
+
     const labs = await ctx.db
       .query("labs")
       .withIndex("by_hadm_id", (q) => q.eq("hadm_id", args.hadm_id))
@@ -104,6 +110,9 @@ export const getLabTrend = query({
     itemid: v.number(),
   },
   handler: async (ctx, args) => {
+    const identity = await getAuth(ctx);
+    if (!identity) return { lab_name: "Unauthenticated", data: [] };
+
     const labs = await ctx.db
       .query("labs")
       .withIndex("by_hadm_id_itemid", (q) =>
@@ -135,6 +144,9 @@ export const getLabTrend = query({
 export const getLabTypesForAdmission = query({
   args: { hadm_id: v.number() },
   handler: async (ctx, args) => {
+    const identity = await getAuth(ctx);
+    if (!identity) return [];
+
     const labs = await ctx.db
       .query("labs")
       .withIndex("by_hadm_id", (q) => q.eq("hadm_id", args.hadm_id))
@@ -180,6 +192,9 @@ export const getLabTypesForAdmission = query({
 export const getPrescriptionsByAdmission = query({
   args: { hadm_id: v.number() },
   handler: async (ctx, args) => {
+    const identity = await getAuth(ctx);
+    if (!identity) return [];
+
     return await ctx.db
       .query("prescriptions")
       .withIndex("by_hadm_id", (q) => q.eq("hadm_id", args.hadm_id))
@@ -190,6 +205,9 @@ export const getPrescriptionsByAdmission = query({
 export const getDiagnosesByAdmission = query({
   args: { hadm_id: v.number() },
   handler: async (ctx, args) => {
+    const identity = await getAuth(ctx);
+    if (!identity) return [];
+
     const diagnoses = await ctx.db
       .query("diagnoses")
       .withIndex("by_hadm_id", (q) => q.eq("hadm_id", args.hadm_id))
@@ -230,6 +248,93 @@ export const getPatientByDocId = internalQuery({
   args: { id: v.id("clinical_cases") },
   handler: async (ctx, args) => {
     return await ctx.db.get(args.id);
+  },
+});
+
+export const internalSearchLabDictionary = internalQuery({
+  args: { searchTerm: v.string() },
+  handler: async (ctx, args) => {
+    return await ctx.db
+      .query("lab_dictionary")
+      .filter((q) => q.contains(q.field("lab_name"), args.searchTerm))
+      .collect();
+  },
+});
+
+export const getAlerts = query({
+  args: {
+    hadm_id: v.optional(v.number()),
+    status: v.optional(v.union(v.literal("unresolved"), v.literal("archived"), v.literal("resolved"))),
+  },
+  handler: async (ctx, args) => {
+    const identity = await getAuth(ctx);
+    if (!identity) return [];
+
+    let q = ctx.db.query("alerts");
+
+    if (args.hadm_id !== undefined) {
+      q = q.withIndex("by_hadm_id", (query) => query.eq("hadm_id", args.hadm_id));
+    } else if (args.status !== undefined) {
+      q = q.withIndex("by_status", (query) => query.eq("status", args.status));
+    }
+
+    let alerts = await q.order("desc").collect();
+
+    // If both were provided, we filter the status in memory since we can't use two indexes
+    if (args.hadm_id !== undefined && args.status !== undefined) {
+      alerts = alerts.filter((a) => a.status === args.status);
+    }
+
+    // Filter out snoozed alerts for 'unresolved' view
+    if (args.status === "unresolved") {
+      const now = Date.now();
+      alerts = alerts.filter((a) => !a.snoozedUntil || a.snoozedUntil < now);
+    }
+
+    return alerts;
+  },
+});
+
+export const getCohortStats = query({
+  args: {},
+  handler: async (ctx) => {
+    const identity = await getAuth(ctx);
+    if (!identity) return null;
+
+    // Use .take to limit read bytes for large documents (discharge summaries + embeddings)
+    const cases = await ctx.db
+      .query("clinical_cases")
+      .order("desc")
+      .take(500); 
+    
+    const total = cases.length;
+    const genderSplit = { M: 0, F: 0 };
+    const ageGroups = { "0-18": 0, "19-40": 0, "41-65": 0, "66+": 0 };
+    const diagnosisCounts: Record<string, number> = {};
+
+    for (const c of cases) {
+      genderSplit[c.gender as "M" | "F"] = (genderSplit[c.gender as "M" | "F"] ?? 0) + 1;
+      
+      if (c.age <= 18) ageGroups["0-18"]++;
+      else if (c.age <= 40) ageGroups["19-40"]++;
+      else if (c.age <= 65) ageGroups["41-65"]++;
+      else ageGroups["66+"]++;
+
+      const diag = c.admission_diagnosis || "Unknown";
+      diagnosisCounts[diag] = (diagnosisCounts[diag] ?? 0) + 1;
+    }
+
+    const topDiagnoses = Object.entries(diagnosisCounts)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([name, count]) => ({ name, count }));
+
+    return {
+      total,
+      genderSplit,
+      ageGroups,
+      topDiagnoses,
+    };
   },
 });
 

@@ -34,12 +34,6 @@ export function Navbar() {
             >
               Dashboard
             </Link>
-            <Link
-              href="/docs"
-              className="text-xs font-black uppercase tracking-widest transition-colors hover:text-primary"
-            >
-              Docs
-            </Link>
           </div>
           
           <ThemeSwitcher className="scale-90" />

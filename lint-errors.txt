@@ -1,0 +1,113 @@
+
+> clinical-lens@0.1.0 lint
+> eslint
+
+
+/Users/karanbalaji/Documents/coding-projects/the-team/app/api/copilotkit/route.ts
+  17:7  error  Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+  22:7  error  Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+
+/Users/karanbalaji/Documents/coding-projects/the-team/components/chat/generative-ui/lab-chart-card.tsx
+  28:49  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/karanbalaji/Documents/coding-projects/the-team/components/diagnoses/diagnosis-list.tsx
+  37:35  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/karanbalaji/Documents/coding-projects/the-team/components/labs/lab-chart.tsx
+  32:40  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/karanbalaji/Documents/coding-projects/the-team/components/labs/labs-view.tsx
+   7:10  warning  'Badge' is defined but never used         @typescript-eslint/no-unused-vars
+  65:36  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/karanbalaji/Documents/coding-projects/the-team/components/labs/vitals-grid.tsx
+  4:10  warning  'ArrowUpRight' is defined but never used    @typescript-eslint/no-unused-vars
+  4:24  warning  'ArrowDownRight' is defined but never used  @typescript-eslint/no-unused-vars
+  4:40  warning  'Activity' is defined but never used        @typescript-eslint/no-unused-vars
+  4:50  warning  'Droplets' is defined but never used        @typescript-eslint/no-unused-vars
+  4:60  warning  'Thermometer' is defined but never used     @typescript-eslint/no-unused-vars
+
+/Users/karanbalaji/Documents/coding-projects/the-team/components/patients/clinical-narrative.tsx
+  5:10  warning  'Badge' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/karanbalaji/Documents/coding-projects/the-team/components/patients/longitudinal-record.tsx
+   3:10  warning  'Card' is defined but never used         @typescript-eslint/no-unused-vars
+   3:16  warning  'CardContent' is defined but never used  @typescript-eslint/no-unused-vars
+   3:29  warning  'CardHeader' is defined but never used   @typescript-eslint/no-unused-vars
+   3:41  warning  'CardTitle' is defined but never used    @typescript-eslint/no-unused-vars
+  18:65  warning  'icon' is defined but never used         @typescript-eslint/no-unused-vars
+
+/Users/karanbalaji/Documents/coding-projects/the-team/components/patients/patient-detail.tsx
+  14:10  warning  'cn' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/karanbalaji/Documents/coding-projects/the-team/components/patients/patient-sidebar.tsx
+  61:49  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/karanbalaji/Documents/coding-projects/the-team/components/patients/patient-summary.tsx
+  7:10  warning  'FileText' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/karanbalaji/Documents/coding-projects/the-team/components/prescriptions/prescription-table.tsx
+  16:10  warning  'cn' is defined but never used            @typescript-eslint/no-unused-vars
+  53:43  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/karanbalaji/Documents/coding-projects/the-team/convex/_generated/api.js
+  1:1  warning  Unused eslint-disable directive (no problems were reported)
+
+/Users/karanbalaji/Documents/coding-projects/the-team/convex/_generated/dataModel.d.ts
+  1:1  warning  Unused eslint-disable directive (no problems were reported)
+
+/Users/karanbalaji/Documents/coding-projects/the-team/convex/_generated/server.d.ts
+  1:1  warning  Unused eslint-disable directive (no problems were reported)
+
+/Users/karanbalaji/Documents/coding-projects/the-team/convex/_generated/server.js
+  1:1  warning  Unused eslint-disable directive (no problems were reported)
+
+/Users/karanbalaji/Documents/coding-projects/the-team/proxy.ts
+  13:36  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  13:48  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/karanbalaji/Documents/coding-projects/the-team/src/mastra/tools/lab-trend.ts
+  30:31  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  71:32  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/karanbalaji/Documents/coding-projects/the-team/types/routes.d.ts
+  13:8  error  The `{}` ("empty object") type allows any non-nullish value, including literals like `0` and `""`.
+- If that's what you want, disable this lint rule with an inline comment or configure the 'allowObjectTypes' rule option.
+- If you want a type meaning "any object", you probably want `object` instead.
+- If you want a type meaning "any value", you probably want `unknown` instead  @typescript-eslint/no-empty-object-type
+
+/Users/karanbalaji/Documents/coding-projects/the-team/types/validator.ts
+   9:71   error    Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+   9:126  error    Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  10:74   error    Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  10:83   error    Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  12:51   error    Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  14:16   error    Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  14:23   error    Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  16:51   error    Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  18:16   error    Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  18:23   error    Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  19:14   error    Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  20:14   error    Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  25:74   error    Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  25:83   error    Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  27:51   error    Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  29:16   error    Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  29:23   error    Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  31:51   error    Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  33:16   error    Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  33:23   error    Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  34:14   error    Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  35:14   error    Unexpected any. Specify a different type                                                                             @typescript-eslint/no-explicit-any
+  42:3    error    Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+  43:9    warning  'handler' is assigned a value but only used as a type                                                                @typescript-eslint/no-unused-vars
+  45:3    error    Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+  46:8    warning  '__Unused' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+  58:3    error    Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+  59:9    warning  'handler' is assigned a value but only used as a type                                                                @typescript-eslint/no-unused-vars
+  61:3    error    Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free  @typescript-eslint/ban-ts-comment
+  62:8    warning  '__Unused' is defined but never used                                                                                 @typescript-eslint/no-unused-vars
+
+✖ 62 problems (39 errors, 23 warnings)
+  0 errors and 4 warnings potentially fixable with the `--fix` option.
+

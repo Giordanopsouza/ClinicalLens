@@ -11,7 +11,6 @@ import { PrescriptionTable } from "../prescriptions/prescription-table";
 import { DiagnosisList } from "../diagnoses/diagnosis-list";
 import { LongitudinalRecord } from "./longitudinal-record";
 import { FileText, FlaskConical, Pill, Stethoscope, User, AlertTriangle, HeartPulse, History, Activity } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 export function PatientDetail() {
   const { selectedHadmId } = usePatient();

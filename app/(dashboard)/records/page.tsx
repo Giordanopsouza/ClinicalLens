@@ -9,7 +9,6 @@ import { FileText, Search, History, Download, ExternalLink, User } from "lucide-
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { cn } from "@/lib/utils";
 
 export default function RecordsPage() {
   const { selectedHadmId, setSelectedHadmId } = usePatient();
@@ -23,12 +22,17 @@ export default function RecordsPage() {
   );
 
   const patientList = patients ?? [];
-  const filteredPatients = patientList.filter(
-    (p) =>
-      p.admission_diagnosis?.toLowerCase().includes(registrySearch.toLowerCase()) ||
-      String(p.hadm_id).includes(registrySearch) ||
-      String(p.subject_id).includes(registrySearch)
-  );
+  const filteredPatients = patientList.filter((p) => {
+    const searchLower = registrySearch.toLowerCase().trim();
+    // Strip "AEG-" if present for ID matching
+    const idSearch = searchLower.startsWith("aeg-") ? searchLower.slice(4) : searchLower;
+    
+    return (
+      p.admission_diagnosis?.toLowerCase().includes(searchLower) ||
+      String(p.hadm_id).includes(idSearch) ||
+      String(p.subject_id).includes(idSearch)
+    );
+  });
 
   if (!selectedHadmId) {
     return (
@@ -235,7 +239,7 @@ export default function RecordsPage() {
                     <p className="text-[10px] font-black uppercase tracking-widest">Smart Analysis</p>
                   </div>
                   <p className="text-xs leading-relaxed text-muted-foreground">
-                    Our AI models have indexed this record for semantic similarity. Use the "Case Search" tool in the chat to find clinically similar cases.
+                    Our AI models have indexed this record for semantic similarity. Use the &quot;Case Search&quot; tool in the chat to find clinically similar cases.
                   </p>
                 </CardContent>
               </Card>

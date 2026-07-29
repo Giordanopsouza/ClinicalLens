@@ -80,4 +80,33 @@ export default defineSchema({
     email: v.optional(v.string()),
     role: v.string(), // 'clinician', 'admin', 'researcher'
   }).index("by_token", ["tokenIdentifier"]),
+
+  // ─── Alerts & Safety Queue ─────────────────────────────────────
+  alerts: defineTable({
+    hadm_id: v.optional(v.number()),
+    severity: v.union(v.literal("critical"), v.literal("warning"), v.literal("info")),
+    title: v.string(),
+    description: v.string(),
+    status: v.union(v.literal("unresolved"), v.literal("archived"), v.literal("resolved")),
+    timestamp: v.number(),
+    category: v.optional(v.string()),
+
+    // Sprint 3 Workflow Fields
+    assignedTo: v.optional(v.string()), // tokenIdentifier or Name
+    snoozedUntil: v.optional(v.number()), // timestamp
+    resolutionNote: v.optional(v.string()),
+    history: v.optional(
+      v.array(
+        v.object({
+          action: v.string(),
+          user: v.string(),
+          timestamp: v.number(),
+          note: v.optional(v.string()),
+        }),
+      ),
+    ),
+  })
+    .index("by_hadm_id", ["hadm_id"])
+    .index("by_status", ["status"])
+    .index("by_severity", ["severity"]),
 });

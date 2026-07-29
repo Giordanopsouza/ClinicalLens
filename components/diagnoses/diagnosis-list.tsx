@@ -34,7 +34,7 @@ export function DiagnosisList({ hadmId }: { hadmId: number }) {
             </div>
           ) : (
             <div className="space-y-4">
-              {diagnoses.map((dx: any, i: number) => (
+              {diagnoses.map((dx: { icd9_code: string; seq_num: number; short_title: string; long_title: string }, i: number) => (
                 <div
                   key={i}
                   className={cn(

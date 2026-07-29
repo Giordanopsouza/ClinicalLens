@@ -5,10 +5,11 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { ShieldAlert, AlertTriangle, Info } from "lucide-react";
 
-interface SafetyFlag {
+export interface SafetyFlag {
   drug: string;
   issue: string;
   severity: "info" | "warning" | "critical";
+  category?: "diagnosis" | "interaction" | "renal" | "documentation";
 }
 
 interface SafetyAlertCardProps {
@@ -67,9 +68,16 @@ export function SafetyAlertCard({
                     <span className="font-bold text-[11px] text-foreground underline decoration-dotted">
                       {flag.drug}
                     </span>
-                    <Badge variant={config.badge} className="text-[8px] h-3.5 px-1 uppercase tracking-tighter font-black">
-                      {flag.severity}
-                    </Badge>
+                    <div className="flex gap-1">
+                      <Badge variant={config.badge} className="text-[8px] h-3.5 px-1 uppercase tracking-tighter font-black">
+                        {flag.severity}
+                      </Badge>
+                      {flag.category && (
+                        <Badge variant="outline" className="text-[8px] h-3.5 px-1 uppercase tracking-tighter font-bold border-muted-foreground/20 text-muted-foreground/70">
+                          {flag.category}
+                        </Badge>
+                      )}
+                    </div>
                   </div>
                   <p className="text-[10px] text-muted-foreground leading-tight">{flag.issue}</p>
                 </AlertDescription>

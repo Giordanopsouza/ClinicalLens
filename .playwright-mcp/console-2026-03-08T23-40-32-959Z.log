@@ -1,0 +1,48 @@
+[     620ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[     628ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[     892ms] [ERROR] Access to fetch at 'https://able-mammal-66.accounts.dev/sign-in?redirect_url=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fcopilotkit&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV' (redirected from 'http://localhost:3000/api/copilotkit') from origin 'http://localhost:3000' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3000/:0
+[     893ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://able-mammal-66.accounts.dev/sign-in?redirect_url=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fcopilotkit&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[     893ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[     895ms] [WARNING] Agent clinicalCopilotAgent not found @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[     895ms] [WARNING] Agent clinicalCopilotAgent not found @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[    4236ms] [ERROR] Access to fetch at 'https://able-mammal-66.accounts.dev/sign-in?redirect_url=http%3A%2F%2Flocalhost%3A3000%2Fdashboard&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV' (redirected from 'http://localhost:3000/dashboard?_rsc=vusbg') from origin 'http://localhost:3000' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3000/:0
+[    4236ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://able-mammal-66.accounts.dev/sign-in?redirect_url=http%3A%2F%2Flocalhost%3A3000%2Fdashboard&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[    4237ms] [ERROR] Failed to fetch RSC payload for http://localhost:3000/dashboard. Falling back to browser navigation. TypeError: Failed to fetch
+    at createFetch (http://localhost:3000/_next/static/chunks/189f2_next_dist_client_2eeeb089._.js:2588:24)
+    at fetchServerResponse (http://localhost:3000/_next/static/chunks/189f2_next_dist_client_2eeeb089._.js:2490:27)
+    at navigateDynamicallyWithNoPrefetch (http://localhost:3000/_next/static/chunks/189f2_next_dist_client_2eeeb089._.js:7943:90)
+    at navigate (http://localhost:3000/_next/static/chunks/189f2_next_dist_client_2eeeb089._.js:7728:15)
+    at navigateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_client_2eeeb089._.js:8239:45)
+    at clientReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_client_2eeeb089._.js:9065:61)
+    at Object.action (http://localhost:3000/_next/static/chunks/189f2_next_dist_client_2eeeb089._.js:9310:55)
+    at runAction (http://localhost:3000/_next/static/chunks/189f2_next_dist_client_2eeeb089._.js:9215:38)
+    at dispatchAction (http://localhost:3000/_next/static/chunks/189f2_next_dist_client_2eeeb089._.js:9278:9)
+    at Object.dispatch (http://localhost:3000/_next/static/chunks/189f2_next_dist_client_2eeeb089._.js:9308:40)
+    at http://localhost:3000/_next/static/chunks/189f2_next_dist_client_2eeeb089._.js:1489:29
+    at startTransition (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:5500:31)
+    at dispatch (http://localhost:3000/_next/static/chunks/189f2_next_dist_client_2eeeb089._.js:1488:13)
+    at dispatchAppRouterAction (http://localhost:3000/_next/static/chunks/189f2_next_dist_client_2eeeb089._.js:1470:5)
+    at dispatchNavigateAction (http://localhost:3000/_next/static/chunks/189f2_next_dist_client_2eeeb089._.js:9362:49)
+    at http://localhost:3000/_next/static/chunks/node_modules__pnpm_7f241fbb._.js:186:13
+    at Object.startTransition (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:1279:31)
+    at linkClicked (http://localhost:3000/_next/static/chunks/node_modules__pnpm_7f241fbb._.js:185:24)
+    at onClick (http://localhost:3000/_next/static/chunks/node_modules__pnpm_7f241fbb._.js:426:13)
+    at executeDispatch (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10314:13)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at processDispatchQueue (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10340:41)
+    at http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10615:13
+    at batchedUpdates$1 (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:2253:44)
+    at dispatchEventForPluginEventSystem (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10416:9)
+    at dispatchEvent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:12935:37)
+    at dispatchDiscreteEvent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:12917:64) @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[    4702ms] [ERROR]  Note that 'script-src' was not explicitly set, so 'default-src' is used as a fallback. @ https://able-mammal-66.accounts.dev/_next/static/chunks/pages/_app-ae82798d2d1e6bbf.js:23
+[    4815ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ https://able-mammal-66.accounts.dev/_next/static/chunks/pages/_app-ae82798d2d1e6bbf.js:19
+[    4926ms] [ERROR] Access to fetch at 'https://clerk-telemetry.com/v1/event' from origin 'https://able-mammal-66.accounts.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ https://able-mammal-66.accounts.dev/sign-in?redirect_url=http%3A%2F%2Flocalhost%3A3000%2Fdashboard:0
+[    4926ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://clerk-telemetry.com/v1/event:0
+[    4990ms] [ERROR] Access to fetch at 'https://clerk-telemetry.com/v1/event' from origin 'https://able-mammal-66.accounts.dev' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ https://able-mammal-66.accounts.dev/sign-in?redirect_url=http%3A%2F%2Flocalhost%3A3000%2Fdashboard:0
+[    4990ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://clerk-telemetry.com/v1/event:0
+[   20161ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/favicon.ico:0
+[   21067ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[   21231ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[   21257ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[   21336ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?debug=skip_cache&__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0

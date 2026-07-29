@@ -1,16 +1,19 @@
 "use client";
 
+import { useState } from "react";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { usePatient } from "@/context/patient-context";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
-import { User } from "lucide-react";
+import { User, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { NavigationMenu } from "./navigation-menu";
 import { ThemeSwitcher } from "@/components/kibo-ui/theme-switcher";
 import { useUser, UserButton } from "@clerk/nextjs";
 import { useSidebar } from "@/context/sidebar-context";
+import { usePathname } from "next/navigation";
+import { Input } from "@/components/ui/input";
 import {
   Tooltip,
   TooltipContent,
@@ -20,9 +23,26 @@ import {
 
 export function PatientSidebar() {
   const { user } = useUser();
+  const pathname = usePathname();
+  const [searchQuery, setSearchQuery] = useState("");
+  const isRecordsPage = pathname === "/records";
   const patients = useQuery(api.queries.getPatientList, { limit: 100 });
   const { selectedHadmId, setSelectedHadmId } = usePatient();
-  const { isCollapsed } = useSidebar();
+  const { isLeftCollapsed } = useSidebar();
+
+  const filteredPatients = (patients ?? []).filter((p) => {
+    const searchLower = searchQuery.toLowerCase().trim();
+    if (!searchLower) return true;
+    
+    // Strip "AEG-" if present for ID matching
+    const idSearch = searchLower.startsWith("aeg-") ? searchLower.slice(4) : searchLower;
+    
+    return (
+      p.admission_diagnosis?.toLowerCase().includes(searchLower) ||
+      String(p.hadm_id).includes(idSearch) ||
+      (p.subject_id && String(p.subject_id).includes(idSearch))
+    );
+  });
 
   return (
     <TooltipProvider delayDuration={300}>
@@ -30,17 +50,17 @@ export function PatientSidebar() {
         className={cn(
           "flex flex-col border-r border-border bg-card dark:bg-brand-surface z-10 transition-all duration-300 ease-in-out overflow-hidden shrink-0",
           "shadow-[4px_0_24px_rgba(0,0,0,0.02)] dark:shadow-[4px_0_24px_rgba(0,0,0,0.2)]",
-          isCollapsed ? "w-[64px]" : "w-[280px]"
+          isLeftCollapsed ? "w-[64px]" : "w-[280px]"
         )}
       >
         {/* Main Navigation */}
-        <NavigationMenu isCollapsed={isCollapsed} />
+        <NavigationMenu isCollapsed={isLeftCollapsed} />
 
         {/* Patient List — hidden when collapsed */}
-        {!isCollapsed && (
+        {!isLeftCollapsed && (
           <div className="flex-1 flex flex-col min-h-0">
-            <div className="px-4 py-3 bg-muted/5 z-10 border-b border-border/50 shadow-sm relative">
-              <div className="flex items-center justify-between px-1">
+            <div className="bg-muted/5 z-10 border-b border-border/50 shadow-sm relative">
+              <div className="px-4 py-3 flex items-center justify-between">
                 <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest opacity-60">
                   Registry
                 </p>
@@ -48,14 +68,25 @@ export function PatientSidebar() {
                   variant="outline"
                   className="text-[9px] h-4 px-1.5 font-black border-border/50 bg-background"
                 >
-                  {(patients ?? []).length}
+                  {filteredPatients.length}
                 </Badge>
+              </div>
+              <div className="px-3 pb-3">
+                <div className="relative group">
+                  <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3 w-3 text-muted-foreground group-focus-within:text-primary transition-colors" />
+                  <Input
+                    placeholder="Filter registry..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="h-7 pl-8 text-[11px] bg-background border-border/50 rounded-lg focus-visible:ring-1 focus-visible:ring-primary transition-all"
+                  />
+                </div>
               </div>
             </div>
 
             <ScrollArea className="flex-1">
               <div className="space-y-1 p-2 pb-8">
-                {(patients ?? []).map((patient: any) => (
+                {filteredPatients.map((patient: { hadm_id: number; gender: string; age: number; admission_diagnosis: string }) => (
                   <button
                     key={patient.hadm_id}
                     onClick={() => setSelectedHadmId(patient.hadm_id)}
@@ -118,22 +149,29 @@ export function PatientSidebar() {
                     </p>
                   </button>
                 ))}
+                {filteredPatients.length === 0 && (
+                  <div className="px-4 py-8 text-center">
+                    <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest opacity-40">
+                      No matching records
+                    </p>
+                  </div>
+                )}
               </div>
             </ScrollArea>
           </div>
         )}
 
         {/* Collapsed: spacer to push footer down */}
-        {isCollapsed && <div className="flex-1" />}
+        {isLeftCollapsed && <div className="flex-1" />}
 
         {/* Footer Status */}
         <div
           className={cn(
             "border-t border-border/50 bg-card shrink-0",
-            isCollapsed ? "p-3 flex flex-col items-center gap-3" : "p-4 flex flex-col gap-4"
+            isLeftCollapsed ? "p-3 flex flex-col items-center gap-3" : "p-4 flex flex-col gap-4"
           )}
         >
-          {!isCollapsed && (
+          {!isLeftCollapsed && (
             <div className="flex items-center justify-between">
               <ThemeSwitcher className="scale-90 origin-left" />
               <span className="text-[10px] font-bold text-muted-foreground opacity-60">
@@ -143,7 +181,7 @@ export function PatientSidebar() {
           )}
 
           {/* User Profile */}
-          {isCollapsed ? (
+          {isLeftCollapsed ? (
             <Tooltip>
               <TooltipTrigger asChild>
                 <div className="size-9 rounded-lg flex items-center justify-center relative overflow-hidden bg-muted cursor-pointer">

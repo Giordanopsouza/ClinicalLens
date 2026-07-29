@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { LayoutDashboard, FileText, BookOpen, Bell, Settings } from "lucide-react";
+import { LayoutDashboard, FileText, BookOpen, Bell, Settings, Users } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -106,6 +106,12 @@ export function NavigationMenu({ isCollapsed }: NavigationMenuProps) {
           href="/alerts"
           icon={<Bell className="h-4 w-4" />}
           label="Alert Center"
+          isCollapsed={isCollapsed}
+        />
+        <NavItem
+          href="/cohorts"
+          icon={<Users className="h-4 w-4" />}
+          label="Cohort Explorer"
           isCollapsed={isCollapsed}
         />
       </div>

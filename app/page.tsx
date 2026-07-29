@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { ArrowRight, Activity, Shield, BarChart3, Search } from "lucide-react";
-import { motion } from "motion/react";
+import { motion, Variants } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/layout/navbar";
 import { cn } from "@/lib/utils";
 
 export default function Home() {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -18,13 +18,13 @@ export default function Home() {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring" as any,
+        type: "spring",
         stiffness: 100,
       },
     },
@@ -70,9 +70,6 @@ export default function Home() {
                 <Link href="/dashboard">
                   Launch Dashboard <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
-              </Button>
-              <Button size="lg" variant="outline" className="h-12 px-8 text-base" asChild>
-                <Link href="/docs">View Documentation</Link>
               </Button>
             </motion.div>
           </motion.div>
@@ -151,11 +148,11 @@ export default function Home() {
   );
 }
 
-function FeatureCard({ variants, icon, title, description }: { variants: any; icon: React.ReactNode; title: string; description: string }) {
+function FeatureCard({ variants, icon, title, description }: { variants: Variants; icon: React.ReactNode; title: string; description: string }) {
   return (
     <motion.div 
       variants={variants}
-      whileHover={{ y: -8, transition: { duration: 0.2 } as any }}
+      whileHover={{ y: -8, transition: { duration: 0.2 } }}
       className={cn(
         "group relative rounded-2xl border border-border bg-card p-8 transition-all hover:border-primary/50",
         "dark:card-glow"

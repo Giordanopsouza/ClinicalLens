@@ -1,4 +1,5 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { NextRequest, NextFetchEvent } from "next/server";
 
 const isPublicRoute = createRouteMatcher(["/", "/sign-in(.*)", "/sign-up(.*)"]);
 
@@ -10,7 +11,7 @@ const middleware = clerkMiddleware(async (auth, request) => {
 
 // Next.js 16 renamed Middleware to Proxy
 // This function name matches the new convention
-export default function proxy(req: any, event: any) {
+export default function proxy(req: NextRequest, event: NextFetchEvent) {
   return middleware(req, event);
 }
 

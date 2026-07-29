@@ -3,9 +3,11 @@
 import { action } from "./_generated/server";
 import { internal } from "./_generated/api";
 import { v } from "convex/values";
+import { ActionCtx } from "./_generated/server";
+import { Doc } from "./_generated/dataModel";
 
 // Helper to check authentication
-async function requireAuth(ctx: any) {
+async function requireAuth(ctx: ActionCtx) {
   const identity = await ctx.auth.getUserIdentity();
   if (!identity) {
     throw new Error("Unauthenticated call. Please sign in.");
@@ -18,7 +20,7 @@ export const searchDischargeSummaries = action({
     embedding: v.array(v.float64()),
     limit: v.optional(v.number()),
   },
-  handler: async (ctx, args): Promise<any[]> => {
+  handler: async (ctx, args) => {
     await requireAuth(ctx);
 
     const limit = Math.min(Math.max(args.limit ?? 5, 1), 20);
@@ -27,9 +29,9 @@ export const searchDischargeSummaries = action({
       limit,
     });
 
-    const hydrated: any[] = await Promise.all(
-      matches.map(async (match: any) => {
-        const clinicalCase: any = await ctx.runQuery(internal.queries.getPatientByDocId, {
+    const hydrated = await Promise.all(
+      matches.map(async (match) => {
+        const clinicalCase: Doc<"clinical_cases"> | null = await ctx.runQuery(internal.queries.getPatientByDocId, {
           id: match._id,
         });
 
@@ -44,6 +46,6 @@ export const searchDischargeSummaries = action({
       }),
     );
 
-    return hydrated.filter((item: any): item is NonNullable<typeof item> => item !== null);
+    return hydrated.filter((item): item is NonNullable<typeof item> => item !== null);
   },
 });

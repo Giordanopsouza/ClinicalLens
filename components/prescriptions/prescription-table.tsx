@@ -13,7 +13,6 @@ import {
 } from "@/components/ui/table";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Pill } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 export function PrescriptionTable({ hadmId }: { hadmId: number }) {
   const prescriptions = useQuery(api.queries.getPrescriptionsByAdmission, {
@@ -50,7 +49,7 @@ export function PrescriptionTable({ hadmId }: { hadmId: number }) {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {prescriptions.map((rx: any, i: number) => (
+                  {prescriptions.map((rx: { drug: string; dose_value?: string; dose_unit?: string; route?: string; startdate?: string; enddate?: string }, i: number) => (
                     <TableRow key={i} className="border-border/40 hover:bg-muted/5 transition-colors">
                       <TableCell className="font-semibold text-sm py-3">{rx.drug}</TableCell>
                       <TableCell className="text-sm py-3 whitespace-nowrap">

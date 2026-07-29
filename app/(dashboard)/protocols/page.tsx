@@ -1,19 +1,61 @@
 "use client";
 
+import { useState } from "react";
 import { usePatient } from "@/context/patient-context";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BookOpen, Search, Sparkles, ShieldCheck, Zap, Globe, Scale } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { BookOpen, Search, Sparkles, ShieldCheck, Zap, Globe, Scale, ExternalLink, Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
+
+interface ResearchResult {
+  title: string;
+  url: string;
+  content: string;
+  score: number;
+  source?: string;
+  published_date?: string;
+  evidence_strength?: string;
+}
 
 export default function ProtocolsPage() {
   const { selectedHadmId } = usePatient();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isSearching, setIsSearching] = useState(false);
+  const [results, setResults] = useState<ResearchResult[]>([]);
+  const [answer, setAnswer] = useState<string | null>(null);
+
   const patient = useQuery(
     api.queries.getPatientById,
     selectedHadmId ? { hadm_id: selectedHadmId } : "skip"
   );
+
+  const handleSearch = async () => {
+    if (!searchQuery.trim()) return;
+    
+    setIsSearching(true);
+    try {
+      const response = await fetch("/api/research", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+          query: searchQuery,
+        }),
+      });
+      
+      const data = await response.json();
+      if (data.results) {
+        setResults(data.results);
+        setAnswer(data.answer || null);
+      }
+    } catch (error) {
+      console.error("Search failed:", error);
+    } finally {
+      setIsSearching(false);
+    }
+  };
 
   return (
     <div className="h-full flex flex-col bg-muted/5">
@@ -46,14 +88,32 @@ export default function ProtocolsPage() {
             <div className="relative group">
               <Sparkles className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-primary animate-pulse" />
               <Input 
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleSearch()}
                 placeholder="Ask Aegis about the latest 2026 guidelines for CHF, AKI, or Sepsis management..." 
-                className="h-16 pl-14 bg-card border-primary/20 text-lg rounded-2xl shadow-xl shadow-primary/5 focus-visible:ring-2 focus-visible:ring-primary transition-all placeholder:text-muted-foreground/40"
+                className="h-16 pl-14 pr-40 bg-card border-primary/20 text-lg rounded-2xl shadow-xl shadow-primary/5 focus-visible:ring-2 focus-visible:ring-primary transition-all placeholder:text-muted-foreground/40"
               />
-              <button className="absolute right-4 top-1/2 -translate-y-1/2 px-4 py-2 bg-primary text-white text-[10px] font-black uppercase tracking-widest rounded-xl shadow-lg shadow-primary/20 hover:opacity-90 transition-all">
+              <button 
+                onClick={handleSearch}
+                disabled={isSearching}
+                className="absolute right-4 top-1/2 -translate-y-1/2 px-6 py-2 bg-primary text-white text-[10px] font-black uppercase tracking-widest rounded-xl shadow-lg shadow-primary/20 hover:opacity-90 transition-all disabled:opacity-50 flex items-center gap-2"
+              >
+                {isSearching ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Search className="h-3.5 w-3.5" />}
                 Search Guidelines
               </button>
             </div>
           </div>
+
+          {answer && (
+            <div className="p-6 rounded-3xl bg-primary/5 border border-primary/10 animate-in slide-in-from-top-4 duration-500">
+              <div className="flex items-center gap-2 mb-3">
+                <Sparkles className="h-4 w-4 text-primary" />
+                <span className="text-[10px] font-black text-primary uppercase tracking-[0.2em]">Synthesis</span>
+              </div>
+              <p className="text-sm leading-relaxed text-foreground/90 font-medium">{answer}</p>
+            </div>
+          )}
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <ProtocolCategoryCard 
@@ -77,31 +137,46 @@ export default function ProtocolsPage() {
           </div>
 
           {/* Active Guidelines List */}
-          <div className="space-y-6">
+          <div className="space-y-6 pb-20">
             <div className="flex items-center justify-between px-1">
-              <h3 className="text-sm font-black text-foreground uppercase tracking-widest">Recommended Guidelines</h3>
-              <button className="text-[10px] font-black text-primary uppercase tracking-widest hover:underline">View All Library</button>
+              <h3 className="text-sm font-black text-foreground uppercase tracking-widest">
+                {results.length > 0 ? "Search Results" : "Recommended Guidelines"}
+              </h3>
+              <button className="text-[10px] font-black text-primary uppercase tracking-widest hover:underline opacity-60">View All Library</button>
             </div>
             
             <div className="space-y-3">
-              <GuidelineItem 
-                title="Management of Acute Decompensated Heart Failure (2026 Update)"
-                source="American College of Cardiology"
-                date="Jan 2026"
-                tags={["CHF", "Cardiology", "Acute"]}
-              />
-              <GuidelineItem 
-                title="Sepsis-4 Clinical Diagnostic Criteria and Treatment"
-                source="International Sepsis Forum"
-                date="Dec 2025"
-                tags={["Sepsis", "Infection", "Critical Care"]}
-              />
-              <GuidelineItem 
-                title="Renal Replacement Therapy in AKI Stage 3"
-                source="KDIGO Clinical Practice"
-                date="Feb 2026"
-                tags={["AKI", "Nephrology"]}
-              />
+              {results.length > 0 ? (
+                results.map((r, i) => (
+                  <GuidelineItem 
+                    key={i}
+                    title={r.title}
+                    source={r.source || "Web Resource"}
+                    date={r.published_date || "Current"}
+                    url={r.url}
+                    strength={r.evidence_strength}
+                    content={r.content}
+                  />
+                ))
+              ) : (
+                <>
+                  <GuidelineItem 
+                    title="Management of Acute Decompensated Heart Failure (2026 Update)"
+                    source="American College of Cardiology"
+                    date="Jan 2026"
+                  />
+                  <GuidelineItem 
+                    title="Sepsis-4 Clinical Diagnostic Criteria and Treatment"
+                    source="International Sepsis Forum"
+                    date="Dec 2025"
+                  />
+                  <GuidelineItem 
+                    title="Renal Replacement Therapy in AKI Stage 3"
+                    source="KDIGO Clinical Practice"
+                    date="Feb 2026"
+                  />
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -112,7 +187,7 @@ export default function ProtocolsPage() {
 
 function ProtocolCategoryCard({ icon, title, count, description }: { icon: React.ReactNode; title: string; count: number; description: string }) {
   return (
-    <Card className="border-border/50 shadow-sm hover:border-primary/30 transition-all duration-300 group cursor-pointer dark:card-glow">
+    <Card className="border-border/50 shadow-sm hover:border-primary/30 transition-all duration-300 group cursor-pointer dark:card-glow bg-card">
       <CardContent className="p-6">
         <div className="flex justify-between items-start mb-4">
           <div className="p-2.5 rounded-xl bg-muted group-hover:bg-primary/10 transition-colors">
@@ -127,26 +202,57 @@ function ProtocolCategoryCard({ icon, title, count, description }: { icon: React
   );
 }
 
-function GuidelineItem({ title, source, date, tags }: { title: string; source: string; date: string; tags: string[] }) {
+function GuidelineItem({ 
+  title, 
+  source, 
+  date, 
+  url, 
+  strength, 
+  content 
+}: { 
+  title: string; 
+  source: string; 
+  date: string; 
+  url?: string;
+  strength?: string;
+  content?: string;
+}) {
   return (
-    <div className="flex items-center justify-between p-5 rounded-2xl bg-card border border-border/50 shadow-sm hover:shadow-md hover:border-primary/20 transition-all group cursor-pointer dark:card-glow">
-      <div className="flex items-center gap-5">
-        <div className="size-10 rounded-xl bg-muted flex items-center justify-center text-muted-foreground group-hover:text-primary group-hover:bg-primary/5 transition-all">
-          <Scale className="h-5 w-5" />
-        </div>
-        <div>
-          <h4 className="text-sm font-bold text-foreground group-hover:text-primary transition-colors">{title}</h4>
-          <div className="flex items-center gap-3 mt-1 text-[10px] font-bold text-muted-foreground uppercase tracking-widest opacity-60">
-            <span>{source}</span>
-            <span className="size-1 bg-border rounded-full" />
-            <span>{date}</span>
+    <div 
+      className="p-5 rounded-2xl bg-card border border-border/50 shadow-sm hover:shadow-md hover:border-primary/20 transition-all group dark:card-glow cursor-pointer"
+      onClick={() => url && window.open(url, "_blank")}
+    >
+      <div className="flex items-start justify-between gap-5">
+        <div className="flex items-start gap-5 flex-1 min-w-0">
+          <div className="size-10 rounded-xl bg-muted flex items-center justify-center text-muted-foreground group-hover:text-primary group-hover:bg-primary/5 transition-all shrink-0">
+            <Scale className="h-5 w-5" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <h4 className="text-sm font-bold text-foreground group-hover:text-primary transition-colors leading-tight mb-1">{title}</h4>
+            <div className="flex flex-wrap items-center gap-3 text-[10px] font-bold text-muted-foreground uppercase tracking-widest opacity-60">
+              <span className="flex items-center gap-1.5">{source}</span>
+              <span className="size-1 bg-border rounded-full" />
+              <span>{date}</span>
+              {strength && (
+                <>
+                  <span className="size-1 bg-border rounded-full" />
+                  <span className={cn(
+                    "px-1.5 py-0.5 rounded text-[8px] border",
+                    strength === "high" ? "bg-emerald-500/5 text-emerald-600 border-emerald-500/10" : "bg-blue-500/5 text-blue-600 border-blue-500/10"
+                  )}>
+                    {strength} Evidence
+                  </span>
+                </>
+              )}
+            </div>
+            {content && (
+              <p className="mt-3 text-[11px] text-muted-foreground leading-relaxed line-clamp-2">{content}</p>
+            )}
           </div>
         </div>
-      </div>
-      <div className="flex items-center gap-2">
-        {tags.map(t => (
-          <Badge key={t} variant="secondary" className="bg-muted/50 text-[9px] font-black uppercase tracking-tighter h-5">{t}</Badge>
-        ))}
+        {url && (
+          <ExternalLink className="h-4 w-4 text-muted-foreground opacity-30 group-hover:opacity-100 transition-opacity shrink-0" />
+        )}
       </div>
     </div>
   );
