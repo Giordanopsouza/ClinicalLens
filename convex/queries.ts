@@ -28,8 +28,8 @@ export const getPatientList = query({
     cursor: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
-    const identity = await getAuth(ctx);
-    if (!identity) return [];
+    // const identity = await getAuth(ctx);
+    // if (!identity) return [];
     
     const limit = Math.min(Math.max(args.limit ?? 50, 1), 200);
 
@@ -53,8 +53,8 @@ export const getPatientList = query({
 export const getPatientById = query({
   args: { hadm_id: v.number() },
   handler: async (ctx, args) => {
-    const identity = await getAuth(ctx);
-    if (!identity) return null;
+    // const identity = await getAuth(ctx);
+    // if (!identity) return null;
 
     return await ctx.db
       .query("clinical_cases")
