@@ -254,10 +254,10 @@ export const getPatientByDocId = internalQuery({
 export const internalSearchLabDictionary = internalQuery({
   args: { searchTerm: v.string() },
   handler: async (ctx, args) => {
-    return await ctx.db
+    const labs = await ctx.db
       .query("lab_dictionary")
-      .filter((q) => q.contains(q.field("lab_name"), args.searchTerm))
       .collect();
+    return labs.filter((lab) => lab.lab_name.toLowerCase().includes(args.searchTerm.toLowerCase()));
   },
 });
 
@@ -270,19 +270,31 @@ export const getAlerts = query({
     const identity = await getAuth(ctx);
     if (!identity) return [];
 
-    let q = ctx.db.query("alerts");
+    let alerts;
 
     if (args.hadm_id !== undefined) {
-      q = q.withIndex("by_hadm_id", (query) => query.eq("hadm_id", args.hadm_id));
+      alerts = await ctx.db
+        .query("alerts")
+        .withIndex("by_hadm_id", (query) => query.eq("hadm_id", args.hadm_id))
+        .order("desc")
+        .collect();
+      
+      // Filter status in memory if both were provided
+      if (args.status !== undefined) {
+        alerts = alerts.filter((a) => a.status === args.status);
+      }
     } else if (args.status !== undefined) {
-      q = q.withIndex("by_status", (query) => query.eq("status", args.status));
-    }
-
-    let alerts = await q.order("desc").collect();
-
-    // If both were provided, we filter the status in memory since we can't use two indexes
-    if (args.hadm_id !== undefined && args.status !== undefined) {
-      alerts = alerts.filter((a) => a.status === args.status);
+      const status = args.status;
+      alerts = await ctx.db
+        .query("alerts")
+        .withIndex("by_status", (query) => query.eq("status", status))
+        .order("desc")
+        .collect();
+    } else {
+      alerts = await ctx.db
+        .query("alerts")
+        .order("desc")
+        .collect();
     }
 
     // Filter out snoozed alerts for 'unresolved' view

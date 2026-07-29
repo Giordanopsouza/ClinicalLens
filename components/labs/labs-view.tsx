@@ -31,7 +31,7 @@ export function LabsView({ hadmId }: { hadmId: number }) {
     );
   }
 
-  const filteredLabs = labTypes.filter(lt => 
+  const filteredLabs = labTypes.filter((lt: { lab_name: string }) => 
     lt.lab_name.toLowerCase().includes(search.toLowerCase())
   );
 

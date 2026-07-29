@@ -67,12 +67,12 @@ export default function CohortsPage() {
                   <div key={group} className="space-y-1.5">
                     <div className="flex justify-between text-[10px] font-black uppercase tracking-widest opacity-60">
                       <span>{group}</span>
-                      <span>{count} patients</span>
+                      <span>{count as number} patients</span>
                     </div>
                     <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
                       <div 
                         className="h-full bg-primary transition-all duration-1000" 
-                        style={{ width: `${(count / stats.total) * 100}%` }}
+                        style={{ width: `${((count as number) / stats.total) * 100}%` }}
                       />
                     </div>
                   </div>
@@ -90,7 +90,7 @@ export default function CohortsPage() {
               </CardHeader>
               <CardContent className="p-6">
                 <div className="space-y-3">
-                  {stats.topDiagnoses.map((diag, i) => (
+                  {stats.topDiagnoses.map((diag: { name: string; count: number }, i: number) => (
                     <div key={i} className="flex items-center justify-between p-3 rounded-xl bg-muted/30 hover:bg-primary/5 transition-colors group">
                       <div className="flex items-center gap-3">
                         <div className="size-6 rounded-lg bg-primary/10 flex items-center justify-center text-[10px] font-bold text-primary">

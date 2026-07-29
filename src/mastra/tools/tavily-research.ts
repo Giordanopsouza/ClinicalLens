@@ -86,7 +86,7 @@ export const tavilyResearchTool = createTool({
       return new URL(url).hostname.replace("www.", "");
     };
 
-    const getEvidenceStrength = (source: string, content: string) => {
+    const getEvidenceStrength = (source: string, content: string): "high" | "moderate" | "low" | "unclear" => {
       const highValueSources = ["NEJM", "The Lancet", "PubMed", "FDA", "NIH"];
       const lowerContent = content.toLowerCase();
       if (highValueSources.includes(source) || lowerContent.includes("meta-analysis") || lowerContent.includes("randomized controlled trial")) {

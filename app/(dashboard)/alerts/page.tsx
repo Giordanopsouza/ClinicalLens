@@ -38,14 +38,14 @@ export default function AlertsPage() {
   // Filter archived tab to show both resolved and archived
   const filteredAlerts = statusTab === "unresolved" 
     ? alerts 
-    : alerts?.filter(a => a.status === "resolved" || a.status === "archived");
+    : alerts?.filter((a: Alert) => a.status === "resolved" || a.status === "archived");
 
   const stats = useQuery(api.queries.getAlerts, {});
 
-  const criticalCount = stats?.filter(a => a.severity === "critical" && a.status === "unresolved").length ?? 0;
-  const warningCount = stats?.filter(a => a.severity === "warning" && a.status === "unresolved").length ?? 0;
-  const infoCount = stats?.filter(a => a.severity === "info" && a.status === "unresolved").length ?? 0;
-  const resolvedCount = stats?.filter(a => a.status === "resolved" || a.status === "archived").length ?? 0;
+  const criticalCount = stats?.filter((a: Alert) => a.severity === "critical" && a.status === "unresolved").length ?? 0;
+  const warningCount = stats?.filter((a: Alert) => a.severity === "warning" && a.status === "unresolved").length ?? 0;
+  const infoCount = stats?.filter((a: Alert) => a.severity === "info" && a.status === "unresolved").length ?? 0;
+  const resolvedCount = stats?.filter((a: Alert) => a.status === "resolved" || a.status === "archived").length ?? 0;
 
   return (
     <div className="h-full flex flex-col bg-muted/5">
@@ -121,7 +121,7 @@ export default function AlertsPage() {
                   <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">No historical alerts found.</p>
                 </div>
               ) : (
-                filteredAlerts.map((alert) => (
+                filteredAlerts.map((alert: Alert) => (
                   <AlertCard 
                     key={alert._id}
                     alert={alert}

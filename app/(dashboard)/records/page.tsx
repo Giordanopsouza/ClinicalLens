@@ -22,7 +22,7 @@ export default function RecordsPage() {
   );
 
   const patientList = patients ?? [];
-  const filteredPatients = patientList.filter((p) => {
+  const filteredPatients = patientList.filter((p: { admission_diagnosis?: string; hadm_id: number; subject_id: number }) => {
     const searchLower = registrySearch.toLowerCase().trim();
     // Strip "AEG-" if present for ID matching
     const idSearch = searchLower.startsWith("aeg-") ? searchLower.slice(4) : searchLower;
@@ -84,7 +84,7 @@ export default function RecordsPage() {
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
-                {filteredPatients.map((p) => (
+                {filteredPatients.map((p: { hadm_id: number; gender: string; age: number; admission_diagnosis?: string }) => (
                   <button
                     key={p.hadm_id}
                     onClick={() => setSelectedHadmId(p.hadm_id)}

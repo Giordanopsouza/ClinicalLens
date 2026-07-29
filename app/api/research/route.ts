@@ -9,11 +9,15 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Query is required" }, { status: 400 });
     }
 
-    const results = await tavilyResearchTool.execute({
-      query,
-      icd9_code,
-      search_depth: "advanced",
-    });
+    const results = await tavilyResearchTool.execute!(
+      {
+        query,
+        icd9_code,
+        search_depth: "advanced",
+      },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      {} as any
+    );
 
     return NextResponse.json(results);
   } catch (error) {

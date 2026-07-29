@@ -12,7 +12,6 @@ import { NavigationMenu } from "./navigation-menu";
 import { ThemeSwitcher } from "@/components/kibo-ui/theme-switcher";
 import { useUser, UserButton } from "@clerk/nextjs";
 import { useSidebar } from "@/context/sidebar-context";
-import { usePathname } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import {
   Tooltip,
@@ -23,14 +22,12 @@ import {
 
 export function PatientSidebar() {
   const { user } = useUser();
-  const pathname = usePathname();
   const [searchQuery, setSearchQuery] = useState("");
-  const isRecordsPage = pathname === "/records";
   const patients = useQuery(api.queries.getPatientList, { limit: 100 });
   const { selectedHadmId, setSelectedHadmId } = usePatient();
   const { isLeftCollapsed } = useSidebar();
 
-  const filteredPatients = (patients ?? []).filter((p) => {
+  const filteredPatients = (patients ?? []).filter((p: { admission_diagnosis?: string; hadm_id: number; subject_id: number }) => {
     const searchLower = searchQuery.toLowerCase().trim();
     if (!searchLower) return true;
     

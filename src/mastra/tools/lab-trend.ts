@@ -27,7 +27,7 @@ export const labTypesTool = createTool({
     });
 
     return {
-      labs: labTypes.map((lt: any) => ({
+      labs: labTypes.map((lt: { itemid: number; lab_name: string; category: string | null; count: number }) => ({
         itemid: lt.itemid,
         lab_name: lt.lab_name,
         category: lt.category ?? null,
@@ -68,7 +68,7 @@ export const labTrendTool = createTool({
       lab_name: trend.lab_name,
       fluid: trend.fluid,
       category: trend.category,
-      data: trend.data.map((d: any) => ({
+      data: trend.data.map((d: { charttime: string; value?: number; valuestr?: string; unit?: string }) => ({
         charttime: d.charttime,
         value: d.value ?? null,
         unit: d.unit ?? null,

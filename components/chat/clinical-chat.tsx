@@ -11,7 +11,7 @@ import { api } from "@/convex/_generated/api";
 import { LabChartCard } from "./generative-ui/lab-chart-card";
 import { SafetyAlertCard, SafetyFlag } from "./generative-ui/safety-alert-card";
 import { GuidelineCard, GuidelineResult } from "./generative-ui/guideline-card";
-import { Activity, Mic, Upload, Sparkles, ChevronRight, PanelRightClose, PanelRightOpen } from "lucide-react";
+import { Activity, Mic, Upload, Sparkles, PanelRightClose, PanelRightOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   Tooltip,

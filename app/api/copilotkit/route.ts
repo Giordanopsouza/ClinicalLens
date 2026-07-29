@@ -14,12 +14,10 @@ const runtime = new CopilotRuntime({
   // Use an object for agents to ensure keys are used as IDs for frontend discovery
   agents: {
     clinicalCopilotAgent: new MastraAgent({ 
-      // @ts-expect-error - Mastra core and Mastra CopilotKit adapter versions have slight type mismatches
       agent: clinicalCopilotAgent,
       resourceId: "clinicalCopilotAgent"
     }),
     safetyAuditAgent: new MastraAgent({ 
-      // @ts-expect-error - Mastra core and Mastra CopilotKit adapter versions have slight type mismatches
       agent: safetyAuditAgent,
       resourceId: "safetyAuditAgent"
     }),

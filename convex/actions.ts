@@ -20,7 +20,7 @@ export const searchDischargeSummaries = action({
     embedding: v.array(v.float64()),
     limit: v.optional(v.number()),
   },
-  handler: async (ctx, args) => {
+  handler: async (ctx, args): Promise<Array<Doc<"clinical_cases"> & { score: number }>> => {
     await requireAuth(ctx);
 
     const limit = Math.min(Math.max(args.limit ?? 5, 1), 20);

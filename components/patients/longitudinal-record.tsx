@@ -1,6 +1,6 @@
 "use client";
 
-import { History, ArrowRight, Activity, FlaskConical, Pill } from "lucide-react";
+import { History, ArrowRight, Activity } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
