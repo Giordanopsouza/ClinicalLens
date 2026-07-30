@@ -61,59 +61,95 @@ export default function CohortsPage() {
           {/* Top Level Metrics */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <MetricCard title="Total Cohort" value={stats.total} icon={<Users className="h-4 w-4" />} />
-            <MetricCard title="Avg Age" value="54.2y" icon={<Activity className="h-4 w-4" />} />
+            <MetricCard title="Avg Age" value={`${stats.averageAge.toFixed(1)}y`} icon={<Activity className="h-4 w-4" />} />
             <MetricCard title="Male" value={`${((stats.genderSplit.M / stats.total) * 100).toFixed(1)}%`} icon={<User className="h-4 w-4" />} />
             <MetricCard title="Female" value={`${((stats.genderSplit.F / stats.total) * 100).toFixed(1)}%`} icon={<User className="h-4 w-4" />} />
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Age Distribution */}
-            <Card className="border-border/50 shadow-sm dark:card-glow">
-              <CardHeader className="pb-2">
+            <Card className="lg:col-span-2 border-border/50 shadow-sm dark:card-glow">
+              <CardHeader className="pb-2 flex flex-row items-center justify-between">
                 <CardTitle className="text-xs font-black uppercase tracking-widest flex items-center gap-2">
                   <TrendingUp className="h-3.5 w-3.5 text-primary" />
-                  Age Distribution
+                  Cohort Demographics
                 </CardTitle>
+                <Badge variant="outline" className="text-[8px] font-black tracking-widest opacity-50">BY AGE GROUP</Badge>
               </CardHeader>
-              <CardContent className="p-6 space-y-4">
-                {Object.entries(stats.ageGroups).map(([group, count]) => (
-                  <div key={group} className="space-y-1.5">
-                    <div className="flex justify-between text-[10px] font-black uppercase tracking-widest opacity-60">
-                      <span>{group}</span>
-                      <span>{count as number} patients</span>
+              <CardContent className="p-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                  <div className="space-y-5">
+                    {Object.entries(stats.ageGroups).map(([group, count]) => (
+                      <div key={group} className="space-y-1.5">
+                        <div className="flex justify-between text-[10px] font-black uppercase tracking-widest opacity-60">
+                          <span>{group} years</span>
+                          <span>{count as number} patients</span>
+                        </div>
+                        <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
+                          <div 
+                            className="h-full bg-primary transition-all duration-1000 shadow-[0_0_8px_rgba(13,59,165,0.3)]" 
+                            style={{ width: `${((count as number) / stats.total) * 100}%` }}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  {/* Additional Analysis: Gender Density */}
+                  <div className="flex flex-col justify-center items-center p-6 bg-muted/20 rounded-[2rem] border border-border/50 relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                      <PieChart className="size-24" />
                     </div>
-                    <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
-                      <div 
-                        className="h-full bg-primary transition-all duration-1000" 
-                        style={{ width: `${((count as number) / stats.total) * 100}%` }}
-                      />
+                    <div className="text-center space-y-4 relative z-10">
+                      <p className="text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em]">Gender Density</p>
+                      <div className="flex items-center gap-6">
+                        <div className="text-center">
+                          <p className="text-2xl font-black text-primary italic">M</p>
+                          <p className="text-[10px] font-bold text-foreground/60">{((stats.genderSplit.M / stats.total) * 100).toFixed(0)}%</p>
+                        </div>
+                        <div className="h-10 w-px bg-border/50" />
+                        <div className="text-center">
+                          <p className="text-2xl font-black text-pink-500 italic">F</p>
+                          <p className="text-[10px] font-bold text-foreground/60">{((stats.genderSplit.F / stats.total) * 100).toFixed(0)}%</p>
+                        </div>
+                        <div className="h-10 w-px bg-border/50" />
+                        <div className="text-center">
+                          <p className="text-2xl font-black text-emerald-500 italic">O</p>
+                          <p className="text-[10px] font-bold text-foreground/60">{((stats.genderSplit.O / stats.total) * 100).toFixed(0)}%</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                ))}
+                </div>
               </CardContent>
             </Card>
 
             {/* Top Diagnoses */}
-            <Card className="border-border/50 shadow-sm dark:card-glow">
-              <CardHeader className="pb-2">
+            <Card className="border-border/50 shadow-sm dark:card-glow overflow-hidden">
+              <CardHeader className="pb-2 bg-muted/30 border-b border-border/50">
                 <CardTitle className="text-xs font-black uppercase tracking-widest flex items-center gap-2">
                   <PieChart className="h-3.5 w-3.5 text-primary" />
-                  Primary Admission Drivers
+                  Primary Drivers
                 </CardTitle>
               </CardHeader>
-              <CardContent className="p-6">
-                <div className="space-y-3">
+              <CardContent className="p-0">
+                <div className="divide-y divide-border/50">
                   {stats.topDiagnoses.map((diag: { name: string; count: number }, i: number) => (
-                    <div key={i} className="flex items-center justify-between p-3 rounded-xl bg-muted/30 hover:bg-primary/5 transition-colors group">
+                    <div key={i} className="flex items-center justify-between p-4 hover:bg-primary/5 transition-all group">
                       <div className="flex items-center gap-3">
-                        <div className="size-6 rounded-lg bg-primary/10 flex items-center justify-center text-[10px] font-bold text-primary">
-                          #{i + 1}
+                        <div className="size-6 rounded-lg bg-primary/10 flex items-center justify-center text-[10px] font-black text-primary group-hover:scale-110 transition-transform">
+                          {i + 1}
                         </div>
-                        <span className="text-xs font-bold text-foreground/80 group-hover:text-primary transition-colors">
+                        <span className="text-xs font-bold text-foreground/80 group-hover:text-foreground transition-colors line-clamp-1">
                           {diag.name}
                         </span>
                       </div>
-                      <Badge variant="secondary" className="text-[10px] font-black">{diag.count}</Badge>
+                      <div className="flex items-center gap-2">
+                        <div className="text-right">
+                          <p className="text-[10px] font-black leading-none">{diag.count}</p>
+                          <p className="text-[8px] font-bold text-muted-foreground uppercase mt-0.5 tracking-tighter">{((diag.count / stats.total) * 100).toFixed(1)}%</p>
+                        </div>
+                      </div>
                     </div>
                   ))}
                 </div>

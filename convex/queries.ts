@@ -387,19 +387,22 @@ export const getCohortStats = query({
     // const identity = await getAuth(ctx);
     // if (!identity) return null;
 
-    // Use .take to limit read bytes for large documents (discharge summaries + embeddings)
+    // We use the lightweight patient_discovery table which has NO heavy summaries or embeddings.
+    // This allows us to analyze all 2000+ cases instantly without hitting memory limits.
     const cases = await ctx.db
-      .query("clinical_cases")
-      .order("desc")
-      .take(500); 
+      .query("patient_discovery")
+      .collect(); 
     
     const total = cases.length;
-    const genderSplit = { M: 0, F: 0 };
+    const genderSplit = { M: 0, F: 0, O: 0 };
     const ageGroups = { "0-18": 0, "19-40": 0, "41-65": 0, "66+": 0 };
     const diagnosisCounts: Record<string, number> = {};
 
+    let totalAge = 0;
     for (const c of cases) {
-      genderSplit[c.gender as "M" | "F"] = (genderSplit[c.gender as "M" | "F"] ?? 0) + 1;
+      totalAge += c.age;
+      const gender = (c.gender as "M" | "F" | "O") || "O";
+      genderSplit[gender] = (genderSplit[gender] ?? 0) + 1;
       
       if (c.age <= 18) ageGroups["0-18"]++;
       else if (c.age <= 40) ageGroups["19-40"]++;
@@ -412,14 +415,17 @@ export const getCohortStats = query({
 
     const topDiagnoses = Object.entries(diagnosisCounts)
       .sort((a, b) => b[1] - a[1])
-      .slice(0, 5)
+      .slice(0, 10)
       .map(([name, count]) => ({ name, count }));
+
+    const averageAge = total > 0 ? totalAge / total : 0;
 
     return {
       total,
       genderSplit,
       ageGroups,
       topDiagnoses,
+      averageAge,
     };
   },
 });
