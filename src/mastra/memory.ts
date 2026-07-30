@@ -1,8 +1,15 @@
 import { Memory } from "@mastra/memory";
+import { LibSQLStore } from "@mastra/libsql";
+
+const databaseUrl = process.env.NODE_ENV === 'production' 
+  ? "file:/tmp/clinical-lens.db" 
+  : "file:./clinical-lens.db";
 
 export const memory = new Memory({
-  // Storage removed for Vercel deployment to avoid "Unable to open connection to local database" error.
-  // Defaults to in-memory storage which is compatible with serverless environments.
+  storage: new LibSQLStore({
+    id: "clinical-lens-memory",
+    url: databaseUrl,
+  }),
   options: {
     lastMessages: 40,
     workingMemory: { enabled: true, scope: "thread" },
