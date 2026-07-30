@@ -174,3 +174,37 @@
 .button-glow:hover {
   box-shadow: 0 0 12px rgba(30, 94, 255, 0.4);
 }
+
+@media print {
+  .no-print, 
+  header, 
+  aside, 
+  nav, 
+  button, 
+  .document-map-sidebar, 
+  .verification-sidebar {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .paper-container {
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  @page {
+    margin: 2cm;
+  }
+}

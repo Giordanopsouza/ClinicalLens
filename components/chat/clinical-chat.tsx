@@ -34,7 +34,7 @@ export function ClinicalChat() {
   const patientInfo = useMemo(() => {
     if (!patient) return "No patient selected";
     return `Patient AEG-${patient.hadm_id}, Age ${patient.age}, Gender ${patient.gender}, Diagnosis: ${patient.admission_diagnosis}`;
-  }, [patient?.hadm_id, patient?.admission_diagnosis]);
+  }, [patient]);
 
   useCopilotReadable({
     description: "Currently selected patient information",

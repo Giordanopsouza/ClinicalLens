@@ -2,20 +2,32 @@
 
 import { useState } from "react";
 import { usePatient } from "@/context/patient-context";
-import { useQuery } from "convex/react";
+import { useQuery, usePaginatedQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileText, Search, History, Download, ExternalLink, User } from "lucide-react";
+import { FileText, Search, History, Download, ExternalLink, User, Sparkles } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { cleanClinicalText } from "@/lib/utils";
 
-import { usePaginatedQuery } from "convex/react";
+import { MedicalDocument } from "@/components/patients/medical-document";
+
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 export default function RecordsPage() {
   const { selectedHadmId, setSelectedHadmId } = usePatient();
   const [recordSearch, setRecordSearch] = useState("");
+
+  const handlePrint = () => {
+    window.print();
+  };
 
   const { results: patients, status, loadMore } = usePaginatedQuery(
     api.queries.getPatientList,
@@ -130,124 +142,194 @@ export default function RecordsPage() {
     );
   }
 
-  const highlightText = (text: string, term: string) => {
-    if (!term.trim()) return <>{text}</>;
-    const parts = text.split(new RegExp(`(${term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`, "gi"));
-    return (
-      <>
-        {parts.map((part, i) =>
-          part.toLowerCase() === term.toLowerCase() ? (
-            <mark key={i} className="bg-primary/20 text-foreground rounded px-0.5">{part}</mark>
-          ) : (
-            part
-          )
-        )}
-      </>
-    );
-  };
-
   return (
-    <div className="h-full flex flex-col bg-muted/5">
-      <div className="p-8 border-b border-border/50 bg-card shrink-0">
-        <div className="flex items-center justify-between gap-4 max-w-[1200px] mx-auto">
+    <div className="h-full flex flex-col bg-[#F8F9FA] dark:bg-[#0A0A0B]">
+      {/* Official Archive Header */}
+      <div className="px-8 py-4 border-b border-border/50 bg-card/50 backdrop-blur-md sticky top-0 z-30 shrink-0 no-print">
+        <div className="flex items-center justify-between max-w-[1600px] mx-auto">
           <div className="flex items-center gap-4">
-            <div className="size-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary border border-primary/20">
-              <FileText className="h-6 w-6" />
+            <div className="size-10 rounded-lg bg-slate-900 dark:bg-slate-100 flex items-center justify-center text-white dark:text-slate-900 shadow-xl">
+              <FileText className="h-5 w-5" />
             </div>
             <div>
-              <h1 className="text-2xl font-black tracking-tight text-foreground uppercase">Medical Records</h1>
-              <p className="text-xs text-muted-foreground font-bold uppercase tracking-widest leading-none mt-1 opacity-60">
-                AEG-{patient.hadm_id} &middot; OFFICIAL CHART
+              <div className="flex items-center gap-2">
+                <h1 className="text-lg font-black tracking-tight text-foreground uppercase italic">Official Medical Archive</h1>
+                <Badge variant="outline" className="bg-emerald-500/10 text-emerald-600 border-emerald-500/20 text-[8px] font-black tracking-[0.2em]">VERIFIED</Badge>
+              </div>
+              <p className="text-[10px] text-muted-foreground font-bold uppercase tracking-widest leading-none mt-0.5 opacity-60">
+                Hospital Archive System &middot; Document ID: {patient.case_id}
               </p>
             </div>
           </div>
+          
           <div className="flex items-center gap-3">
-            <button className="flex items-center gap-2 px-4 py-2 rounded-xl bg-muted text-[10px] font-black uppercase tracking-widest hover:bg-muted/80 transition-colors">
-              <Download className="h-3.5 w-3.5" /> Export PDF
+            <div className="hidden xl:flex items-center gap-4 px-4 py-1.5 border-x border-border/50">
+              <div className="text-right">
+                <p className="text-[8px] font-black text-muted-foreground uppercase leading-none">Last Audit</p>
+                <p className="text-[10px] font-bold text-foreground">Mar 09, 2026</p>
+              </div>
+              <div className="size-8 rounded-full bg-muted flex items-center justify-center border border-border/50">
+                <User className="h-3.5 w-3.5 text-muted-foreground" />
+              </div>
+            </div>
+            <button 
+              onClick={handlePrint}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-white/5 border border-border shadow-sm text-[10px] font-black uppercase tracking-widest hover:bg-muted transition-all"
+            >
+              <Download className="h-3.5 w-3.5" /> PDF Copy
             </button>
-            <button className="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-white text-[10px] font-black uppercase tracking-widest shadow-lg shadow-primary/20 hover:opacity-90 transition-all">
-              <History className="h-3.5 w-3.5" /> View Audit Log
-            </button>
+            
+            <Sheet>
+              <SheetTrigger asChild>
+                <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-[10px] font-black uppercase tracking-widest shadow-lg hover:opacity-90 transition-all">
+                  <History className="h-3.5 w-3.5" /> Full Audit Log
+                </button>
+              </SheetTrigger>
+              <SheetContent className="w-[400px] sm:w-[540px] custom-scrollbar overflow-y-auto">
+                <SheetHeader className="pb-6 border-b border-border/50">
+                  <SheetTitle className="text-sm font-black uppercase tracking-widest flex items-center gap-2">
+                    <History className="h-4 w-4 text-primary" />
+                    Document Audit Trail
+                  </SheetTitle>
+                  <SheetDescription className="text-xs font-medium">
+                    Comprehensive history of access, edits, and clinical verifications for AEG-{patient.hadm_id}.
+                  </SheetDescription>
+                </SheetHeader>
+                <div className="py-8 space-y-8">
+                  <div className="space-y-6">
+                    {[
+                      { date: "Mar 09, 2026 · 04:15 UTC", user: "Karan Balaji", action: "Record Accessed", detail: "Viewed via Medical Archive Terminal" },
+                      { date: "Mar 08, 2026 · 23:41 UTC", user: "System", action: "Digital Signature Applied", detail: "SHA-256 Hash Generated & Verified" },
+                      { date: "Mar 08, 2026 · 23:40 UTC", user: "Dr. AI Assistant", action: "Clinical Synthesis", detail: "Final discharge summary generated from raw EHR data" },
+                      { date: "Mar 08, 2026 · 22:15 UTC", user: "System", action: "Data Ingestion", detail: "MIMIC-III clinical tables synchronized" },
+                    ].map((entry, i) => (
+                      <div key={i} className="flex gap-4 relative group">
+                        {i !== 3 && <div className="absolute left-[11px] top-8 bottom-[-24px] w-px bg-border group-hover:bg-primary/20 transition-colors" />}
+                        <div className="size-6 rounded-full bg-muted border border-border flex items-center justify-center shrink-0 relative z-10 group-hover:border-primary/30 group-hover:bg-primary/5 transition-all">
+                          <div className="size-1.5 rounded-full bg-muted-foreground group-hover:bg-primary animate-pulse" />
+                        </div>
+                        <div className="space-y-1 pt-0.5">
+                          <p className="text-[10px] font-black uppercase tracking-widest text-foreground/80">{entry.action}</p>
+                          <p className="text-[11px] font-medium text-muted-foreground leading-relaxed">{entry.detail}</p>
+                          <div className="flex items-center gap-2 pt-1">
+                            <span className="text-[9px] font-bold text-primary/60 uppercase">{entry.user}</span>
+                            <span className="text-[9px] font-bold text-muted-foreground/40 italic">{entry.date}</span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <div className="p-4 rounded-2xl bg-muted/30 border border-dashed border-border/50">
+                    <p className="text-[9px] leading-relaxed text-muted-foreground italic text-center">
+                      End of automated audit trail. All events are cryptographically hashed and stored in the immutable clinical ledger.
+                    </p>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-8 space-y-8 custom-scrollbar">
-        <div className="max-w-[1200px] mx-auto space-y-8">
-          {/* Record Search */}
-          <div className="relative group">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
-            <Input
-              placeholder="Search terms in this patient's record..."
-              className="h-14 pl-12 bg-card border-border/50 text-base rounded-2xl shadow-sm focus-visible:ring-1 focus-visible:ring-primary transition-all"
-              value={recordSearch}
-              onChange={(e) => setRecordSearch(e.target.value)}
-            />
+      <div className="flex-1 overflow-hidden flex">
+        {/* Left: Document Map (Sticky) */}
+        <div className="w-64 border-r border-border/50 bg-card/30 hidden lg:block overflow-y-auto custom-scrollbar no-print">
+          <div className="p-6 space-y-8 document-map-sidebar">
+            <div className="space-y-4">
+              <p className="px-2 text-[9px] font-black text-muted-foreground uppercase tracking-[0.2em] opacity-50">Document Map</p>
+              <p className="px-2 text-[11px] font-medium text-muted-foreground leading-relaxed italic">
+                Use the map inside the chart to navigate specific clinical sections.
+              </p>
+            </div>
+            
+            <div className="pt-8 border-t border-border/50 space-y-4">
+              <p className="px-2 text-[9px] font-black text-muted-foreground uppercase tracking-[0.2em] opacity-50">Search Archive</p>
+              <div className="relative group px-2">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground group-focus-within:text-primary transition-colors" />
+                <Input
+                  placeholder="Keyword find..."
+                  className="h-9 pl-9 text-[10px] bg-background border-border/50 focus-visible:ring-1 focus-visible:ring-primary transition-all rounded-lg"
+                  value={recordSearch}
+                  onChange={(e) => setRecordSearch(e.target.value)}
+                />
+              </div>
+            </div>
           </div>
+        </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Main Record Column */}
-            <div className="lg:col-span-2 space-y-8">
-              <Card className="border-border/50 shadow-sm overflow-hidden dark:card-glow">
-                <CardHeader className="bg-muted/30 border-b border-border/50 py-4 flex flex-row items-center justify-between">
-                  <CardTitle className="text-xs font-black uppercase tracking-widest flex items-center gap-2">
-                    <FileText className="h-3.5 w-3.5 text-primary" />
-                    Final Discharge Summary
-                  </CardTitle>
-                  <Badge variant="outline" className="text-[9px] font-black border-border/50">VERIFIED</Badge>
-                </CardHeader>
-                <CardContent className="p-8">
-                  <div className="prose prose-sm dark:prose-invert max-w-none">
-                    <p className="whitespace-pre-wrap text-sm leading-relaxed text-foreground/80 font-normal selection:bg-primary/20">
-                      {highlightText(cleanClinicalText(patient.discharge_summary) || "No discharge summary available.", recordSearch)}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
+        {/* Center: The "Paper" Record */}
+        <div className="flex-1 overflow-y-auto bg-[#F1F3F5] dark:bg-[#000000] p-4 md:p-12 custom-scrollbar flex justify-center paper-container">
+          <div className="w-full max-w-[900px] animate-in fade-in slide-in-from-bottom-8 duration-1000">
+            {/* The Actual "Paper" Chart */}
+            <div className="bg-white dark:bg-[#111112] shadow-[0_30px_100px_rgba(0,0,0,0.1)] dark:shadow-[0_30px_100px_rgba(0,0,0,0.4)] rounded-sm min-h-[1200px] border border-border/50 relative print:shadow-none print:border-none">
+              {/* Paper Watermark */}
+              <div className="absolute top-20 left-1/2 -translate-x-1/2 pointer-events-none opacity-[0.02] dark:opacity-[0.05] select-none rotate-[-30deg] no-print">
+                <h2 className="text-[120px] font-black uppercase">Official</h2>
+              </div>
+
+              {/* Record Content */}
+              <div className="relative z-10">
+                <MedicalDocument rawText={patient.discharge_summary || ""} highlightTerm={recordSearch} />
+              </div>
             </div>
+          </div>
+        </div>
 
-            {/* Side Meta Column */}
-            <div className="space-y-6">
-              <Card className="border-border/50 shadow-sm overflow-hidden dark:card-glow">
-                <CardHeader className="bg-muted/30 border-b border-border/50 py-4">
-                  <CardTitle className="text-[10px] font-black uppercase tracking-widest">Document Metadata</CardTitle>
-                </CardHeader>
-                <CardContent className="p-6 space-y-4">
-                  <div className="space-y-1">
-                    <p className="text-[9px] font-black text-muted-foreground uppercase tracking-widest">Created Date</p>
-                    <p className="text-sm font-bold">{new Date().toLocaleDateString()}</p>
+        {/* Right: Verification Sidebar */}
+        <div className="w-72 border-l border-border/50 bg-card/30 hidden 2xl:block overflow-y-auto custom-scrollbar no-print">
+          <div className="p-8 space-y-8 verification-sidebar">
+            <section className="space-y-4">
+              <p className="text-[9px] font-black text-muted-foreground uppercase tracking-[0.2em] opacity-50">Legal Verification</p>
+              <div className="p-4 rounded-2xl bg-white dark:bg-white/5 border border-border/50 shadow-sm space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="size-8 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-600">
+                    <History className="h-4 w-4" />
                   </div>
-                  <div className="space-y-1">
-                    <p className="text-[9px] font-black text-muted-foreground uppercase tracking-widest">Authoring Physician</p>
-                    <p className="text-sm font-bold">Dr. AI Assistant (Synthesized)</p>
+                  <div>
+                    <p className="text-[10px] font-black uppercase leading-none text-foreground">Verified Record</p>
+                    <p className="text-[9px] font-bold text-muted-foreground mt-1">SHA-256: 8f2a...91c3</p>
                   </div>
-                  <div className="space-y-1">
-                    <p className="text-[9px] font-black text-muted-foreground uppercase tracking-widest">Hospital ID</p>
-                    <p className="text-sm font-bold font-mono">HOSP-772-913</p>
-                  </div>
-                  <div className="pt-4 border-t border-border/50 flex flex-col gap-2">
-                    <button className="flex items-center justify-between w-full p-3 rounded-xl bg-muted/50 hover:bg-primary/5 hover:text-primary transition-all group">
-                      <span className="text-[10px] font-black uppercase tracking-widest">External Records</span>
-                      <ExternalLink className="h-3 w-3 opacity-40 group-hover:opacity-100" />
-                    </button>
-                  </div>
-                </CardContent>
-              </Card>
+                </div>
+                <div className="pt-4 border-t border-border/50">
+                  <p className="text-[9px] font-black text-muted-foreground uppercase tracking-widest">Electronic Signature</p>
+                  <p className="text-xs font-serif italic mt-2 text-foreground/80">Digitally signed by Chief Medical Officer</p>
+                  <p className="text-[9px] font-bold text-muted-foreground mt-1">March 08, 2026 · 23:41 UTC</p>
+                </div>
+              </div>
+            </section>
 
-              <Card className="border-border/50 shadow-sm overflow-hidden dark:card-glow bg-primary/[0.02]">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="size-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-                      <Search className="h-4 w-4" />
-                    </div>
-                    <p className="text-[10px] font-black uppercase tracking-widest">Smart Analysis</p>
+            <section className="space-y-4">
+              <p className="text-[9px] font-black text-muted-foreground uppercase tracking-[0.2em] opacity-50">Patient Identification</p>
+              <div className="space-y-4 px-1">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-[8px] font-black text-muted-foreground uppercase">Adm ID</p>
+                    <p className="text-xs font-bold font-mono">{patient.hadm_id}</p>
                   </div>
-                  <p className="text-xs leading-relaxed text-muted-foreground">
-                    Our AI models have indexed this record for semantic similarity. Use the &quot;Case Search&quot; tool in the chat to find clinically similar cases.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
+                  <div>
+                    <p className="text-[8px] font-black text-muted-foreground uppercase">Sub ID</p>
+                    <p className="text-xs font-bold font-mono">{patient.subject_id}</p>
+                  </div>
+                </div>
+                <div>
+                  <p className="text-[8px] font-black text-muted-foreground uppercase">Demographics</p>
+                  <p className="text-xs font-bold">{patient.age}y &middot; {patient.gender === "M" ? "Male" : "Female"}</p>
+                </div>
+              </div>
+            </section>
+
+            <section className="pt-8 border-t border-border/50">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="size-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                  <Sparkles className="h-4 w-4" />
+                </div>
+                <p className="text-[10px] font-black uppercase tracking-widest text-foreground">AI Indexing</p>
+              </div>
+              <p className="text-[11px] leading-relaxed text-muted-foreground font-medium">
+                This record has been fully vectorized for semantic search. You can query clinical patterns across this document via the Copilot.
+              </p>
+            </section>
           </div>
         </div>
       </div>

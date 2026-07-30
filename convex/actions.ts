@@ -24,7 +24,7 @@ export const populateDiscoveryTable = action({
     let totalSynced = 0;
 
     while (true) {
-      const result: { page: any[]; continueCursor: string; isDone: boolean } = await ctx.runQuery(internal.queries.getPatientListInternal, {
+      const result: { page: Array<{ hadm_id: number; subject_id: number; admission_diagnosis?: string; gender: string; age: number }>; continueCursor: string; isDone: boolean } = await ctx.runQuery(internal.queries.getPatientListInternal, {
         paginationOpts: {
           numItems: 100,
           cursor: cursor,
