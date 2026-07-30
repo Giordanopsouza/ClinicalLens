@@ -12,16 +12,29 @@ export default function CohortsPage() {
 
   if (!stats) {
     return (
-      <div className="p-8 space-y-8 animate-pulse">
-        <div className="h-12 w-1/4 bg-muted rounded-xl" />
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          {[...Array(4)].map((_, i) => (
-            <div key={i} className="h-24 bg-muted rounded-2xl" />
-          ))}
+      <div className="h-full flex flex-col bg-muted/5">
+        <div className="p-8 border-b border-border/50 bg-card shrink-0">
+          <div className="flex items-center gap-4 max-w-[1200px] mx-auto animate-pulse">
+            <div className="size-12 bg-muted rounded-xl" />
+            <div className="space-y-2">
+              <div className="h-6 w-48 bg-muted rounded-lg" />
+              <div className="h-3 w-64 bg-muted rounded-lg" />
+            </div>
+          </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="h-64 bg-muted rounded-3xl" />
-          <div className="h-64 bg-muted rounded-3xl" />
+        
+        <div className="flex-1 p-8 space-y-10 custom-scrollbar overflow-y-auto">
+          <div className="max-w-[1200px] mx-auto space-y-10">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              {[...Array(4)].map((_, i) => (
+                <div key={i} className="h-28 bg-card border border-border/50 rounded-2xl animate-pulse" />
+              ))}
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="h-80 bg-card border border-border/50 rounded-3xl animate-pulse" />
+              <div className="h-80 bg-card border border-border/50 rounded-3xl animate-pulse" />
+            </div>
+          </div>
         </div>
       </div>
     );

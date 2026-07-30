@@ -29,6 +29,33 @@ export const seedClinicalCase = internalMutation({
   },
 });
 
+export const syncDiscoveryMetadata = internalMutation({
+  args: {
+    patients: v.array(
+      v.object({
+        hadm_id: v.number(),
+        subject_id: v.number(),
+        admission_diagnosis: v.optional(v.string()),
+        gender: v.string(),
+        age: v.number(),
+      }),
+    ),
+  },
+  handler: async (ctx, args) => {
+    for (const patient of args.patients) {
+      // Check if already exists
+      const existing = await ctx.db
+        .query("patient_discovery")
+        .withIndex("by_hadm_id", (q) => q.eq("hadm_id", patient.hadm_id))
+        .first();
+      
+      if (!existing) {
+        await ctx.db.insert("patient_discovery", patient);
+      }
+    }
+  },
+});
+
 export const seedLab = internalMutation({
   args: {
     hadm_id: v.number(),

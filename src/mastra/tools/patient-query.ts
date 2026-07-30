@@ -6,9 +6,9 @@ import { api } from "@/convex/_generated/api";
 export const patientQueryTool = createTool({
   id: "patient-query",
   description:
-    "Look up a patient's full clinical record by their hospital admission ID (hadm_id). Returns demographics (age, gender), admission diagnosis, and discharge summary.",
+    "Look up a patient's full clinical record. If no hadm_id is provided, it will automatically retrieve the most recently accessed/active patient record.",
   inputSchema: z.object({
-    hadm_id: z.number().describe("The hospital admission ID to look up"),
+    hadm_id: z.number().optional().describe("The hospital admission ID to look up"),
   }),
   outputSchema: z.object({
     case_id: z.string(),
@@ -21,12 +21,27 @@ export const patientQueryTool = createTool({
   }),
   execute: async ({ hadm_id }) => {
     const client = getConvexClient();
-    const patient = await client.query(api.queries.getPatientById, {
-      hadm_id,
-    });
+    
+    let patient;
+    if (hadm_id) {
+      patient = await client.query(api.queries.getPatientById, {
+        hadm_id,
+      });
+    } else {
+      // Auto-fallback to the first patient in the list if no ID is provided
+      // This is a robust fallback for the copilot when context is "active"
+      const list = await client.query(api.queries.getPatientList, {
+        paginationOpts: { numItems: 1, cursor: null }
+      });
+      if (list.page.length > 0) {
+        patient = await client.query(api.queries.getPatientById, {
+          hadm_id: list.page[0].hadm_id
+        });
+      }
+    }
 
     if (!patient) {
-      throw new Error(`No patient found with hadm_id: ${hadm_id}`);
+      throw new Error(`No active patient found.`);
     }
 
     return {

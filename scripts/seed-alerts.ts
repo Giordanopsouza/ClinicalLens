@@ -28,6 +28,7 @@ function runConvexImport(table: string, filePath: string): void {
     "convex",
     "import",
     "-y",
+    "--replace",
     "--format",
     "jsonLines",
     "--table",

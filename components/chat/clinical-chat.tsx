@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useMemo, useEffect } from "react";
 import { CopilotChat } from "@copilotkit/react-ui";
 import "@copilotkit/react-ui/styles.css";
 import { useCopilotReadable, useCopilotAction } from "@copilotkit/react-core";
@@ -23,24 +23,22 @@ import {
 export function ClinicalChat() {
   const { selectedHadmId } = usePatient();
   const { isRightCollapsed, toggleRight } = useSidebar();
+  
   const patient = useQuery(
     api.queries.getPatientById,
     selectedHadmId ? { hadm_id: selectedHadmId } : "skip"
   );
 
   // ─── Pass patient context to the agent automatically ───────────
+  // We use a memoized string to prevent the re-render loop
+  const patientInfo = useMemo(() => {
+    if (!patient) return "No patient selected";
+    return `Patient AEG-${patient.hadm_id}, Age ${patient.age}, Gender ${patient.gender}, Diagnosis: ${patient.admission_diagnosis}`;
+  }, [patient?.hadm_id, patient?.admission_diagnosis]);
+
   useCopilotReadable({
     description: "Currently selected patient information",
-    value: patient
-      ? {
-          hadm_id: patient.hadm_id,
-          subject_id: patient.subject_id,
-          age: patient.age,
-          gender: patient.gender,
-          admission_diagnosis: patient.admission_diagnosis,
-          discharge_summary_preview: patient.discharge_summary?.slice(0, 1000),
-        }
-      : "No patient selected. Ask the user to select a patient from the sidebar.",
+    value: patientInfo,
   });
 
   // ─── Generative UI Actions ─────────────────────────────────────
@@ -162,7 +160,9 @@ export function ClinicalChat() {
               <CopilotChat
                 labels={{
                   title: "Clinical Copilot",
-                  initial: "I'm Aegis, your clinical intelligence partner. Select a patient to begin analysis.",
+                  initial: patient 
+                    ? `I'm Aegis, analyzing Patient AEG-${patient.hadm_id}. How can I assist with this case?`
+                    : "I'm Aegis, your clinical intelligence partner. Select a patient to begin analysis.",
                   placeholder: "Ask about clinical data...",
                 }}
                 className="h-full border-none shadow-none rounded-none"

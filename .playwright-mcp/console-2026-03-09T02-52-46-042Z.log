@@ -1,0 +1,41 @@
+[     826ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[    1012ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[    1092ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?debug=skip_cache&__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[    1191ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[  398283ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[  398466ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[  398550ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?debug=skip_cache&__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[  405464ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[  578938ms] Error: [CONVEX Q(queries:searchPatients)] [Request ID: f6a9134befb6ab92] Server Error
+Uncaught Error: Too many bytes read in a single function execution (limit: 16777216 bytes). Consider using smaller limits in your queries, paginating your queries, or using indexed queries with a selective index range expressions.
+    at async handler (../convex/queries.ts:72:14)
+
+  Called by client
+    at async handler (../convex/queries.ts:72:14)
+
+  Called by client
+    at OptimisticQueryResults.queryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:2696:19)
+    at BaseConvexClient.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4545:44)
+    at Object.localQueryResult (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6520:44)
+    at QueriesObserver.getLocalResults (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6077:31)
+    at useQueriesHelper.useMemo[subscription] (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6280:41)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6192:43)
+    at basicStateReducer (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4828:47)
+    at dispatchSetStateInternal (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:5665:78)
+    at dispatchSetState (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:5646:9)
+    at useSubscription.useEffect.checkForUpdates (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6187:21)
+    at QueriesObserver.notifyListeners (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6144:13)
+    at http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6123:53
+    at ConvexReactClient.transition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6722:21)
+    at ConvexReactClient.handleTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6712:14)
+    at PaginatedQueryClient.onTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:6433:363)
+    at PaginatedQueryClient.onBaseTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4974:14)
+    at http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4858:63
+    at BaseConvexClient.handleTransition (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4452:13)
+    at BaseConvexClient.notifyOnQueryResultChanges (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4432:14)
+    at WebSocketManager.onMessage (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:4343:34)
+    at ws.onmessage (http://localhost:3000/_next/static/chunks/4c462_convex_dist_esm_098ccb2c._.js:3291:35)
+[  892324ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[  892554ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[  892560ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[  892650ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?debug=skip_cache&__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0

@@ -112,4 +112,16 @@ export default defineSchema({
     .index("by_hadm_id", ["hadm_id"])
     .index("by_status", ["status"])
     .index("by_severity", ["severity"]),
+  // ─── Discovery Metadata (Optimized for Global Search) ───────────
+  patient_discovery: defineTable({
+    hadm_id: v.number(),
+    subject_id: v.number(),
+    admission_diagnosis: v.optional(v.string()),
+    gender: v.string(),
+    age: v.number(),
+  })
+    .index("by_hadm_id", ["hadm_id"])
+    .searchIndex("search_diagnosis", {
+      searchField: "admission_diagnosis",
+    }),
 });

@@ -1,0 +1,2900 @@
+[    2779ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[    2843ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[    3060ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[    3131ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://able-mammal-66.clerk.accounts.dev/v1/client/sessions/sess_3AgTXSV3svUb9BTXQeBXciZJ20i/tokens/convex?debug=skip_cache&__clerk_api_version=2025-11-10&_clerk_js_version=6.0.0&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[  370002ms] [ERROR] ./components/chat/clinical-chat.tsx:15:1
+Export cn doesn't exist in target module
+  13 | import { GuidelineCard, GuidelineResult } from "./generative-ui/guideline-card";
+  14 | import { Activity, Mic, Upload, Sparkles, PanelRightClose, PanelRightOpen } from "lucide-react";
+> 15 | import { cn } from "@/lib/utils";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  16 | import {
+  17 |   Tooltip,
+  18 |   TooltipContent,
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370003ms] [ERROR] ./components/chat/clinical-chat.tsx:15:1
+Export cn doesn't exist in target module
+  13 | import { GuidelineCard, GuidelineResult } from "./generative-ui/guideline-card";
+  14 | import { Activity, Mic, Upload, Sparkles, PanelRightClose, PanelRightOpen } from "lucide-react";
+> 15 | import { cn } from "@/lib/utils";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  16 | import {
+  17 |   Tooltip,
+  18 |   TooltipContent,
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370003ms] [ERROR] ./components/chat/generative-ui/guideline-card.tsx:6:1
+Export cn doesn't exist in target module
+  4 | import { Badge } from "@/components/ui/badge";
+  5 | import { BookOpen, ExternalLink, Sparkles } from "lucide-react";
+> 6 | import { cn } from "@/lib/utils";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 |
+  8 | export interface GuidelineResult {
+  9 |   title: string;
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/chat/generative-ui/guideline-card.tsx [Client Component Browser]
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/chat/generative-ui/guideline-card.tsx [Client Component SSR]
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370012ms] [ERROR] ./components/chat/generative-ui/guideline-card.tsx:6:1
+Export cn doesn't exist in target module
+  4 | import { Badge } from "@/components/ui/badge";
+  5 | import { BookOpen, ExternalLink, Sparkles } from "lucide-react";
+> 6 | import { cn } from "@/lib/utils";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 |
+  8 | export interface GuidelineResult {
+  9 |   title: string;
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/chat/generative-ui/guideline-card.tsx [Client Component Browser]
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/chat/generative-ui/guideline-card.tsx [Client Component SSR]
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370012ms] [ERROR] ./components/kibo-ui/theme-switcher/index.tsx:7:1
+Export cn doesn't exist in target module
+   5 | import { motion } from "motion/react";
+   6 | import { useEffect, useState } from "react";
+>  7 | import { cn } from "@/lib/utils";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | const themes = [
+  10 |   {
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/kibo-ui/theme-switcher/index.tsx [Client Component Browser]
+    ./components/layout/global-header.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/kibo-ui/theme-switcher/index.tsx [Client Component SSR]
+    ./components/layout/global-header.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370012ms] [ERROR] ./components/kibo-ui/theme-switcher/index.tsx:7:1
+Export cn doesn't exist in target module
+   5 | import { motion } from "motion/react";
+   6 | import { useEffect, useState } from "react";
+>  7 | import { cn } from "@/lib/utils";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | const themes = [
+  10 |   {
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/kibo-ui/theme-switcher/index.tsx [Client Component Browser]
+    ./components/layout/global-header.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/kibo-ui/theme-switcher/index.tsx [Client Component SSR]
+    ./components/layout/global-header.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370012ms] [ERROR] ./components/patients/navigation-menu.tsx:3:1
+Export cn doesn't exist in target module
+  1 | "use client";
+  2 |
+> 3 | import { cn } from "@/lib/utils";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { LayoutDashboard, FileText, BookOpen, Bell, Settings, Users } from "lucide-react";
+  5 | import Link from "next/link";
+  6 | import { usePathname } from "next/navigation";
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/patients/navigation-menu.tsx [Client Component Browser]
+    ./components/patients/patient-sidebar.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/patients/navigation-menu.tsx [Client Component SSR]
+    ./components/patients/patient-sidebar.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370012ms] [ERROR] ./components/patients/navigation-menu.tsx:3:1
+Export cn doesn't exist in target module
+  1 | "use client";
+  2 |
+> 3 | import { cn } from "@/lib/utils";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { LayoutDashboard, FileText, BookOpen, Bell, Settings, Users } from "lucide-react";
+  5 | import Link from "next/link";
+  6 | import { usePathname } from "next/navigation";
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/patients/navigation-menu.tsx [Client Component Browser]
+    ./components/patients/patient-sidebar.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/patients/navigation-menu.tsx [Client Component SSR]
+    ./components/patients/patient-sidebar.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370012ms] [ERROR] ./components/patients/patient-sidebar.tsx:3:1
+Export cn doesn't exist in target module
+  1 | "use client";
+  2 |
+> 3 | import { cn } from "@/lib/utils";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { NavigationMenu } from "./navigation-menu";
+  5 | import { ThemeSwitcher } from "@/components/kibo-ui/theme-switcher";
+  6 | import { useUser, UserButton } from "@clerk/nextjs";
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/patients/patient-sidebar.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/patients/patient-sidebar.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370012ms] [ERROR] ./components/patients/patient-sidebar.tsx:3:1
+Export cn doesn't exist in target module
+  1 | "use client";
+  2 |
+> 3 | import { cn } from "@/lib/utils";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { NavigationMenu } from "./navigation-menu";
+  5 | import { ThemeSwitcher } from "@/components/kibo-ui/theme-switcher";
+  6 | import { useUser, UserButton } from "@clerk/nextjs";
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/patients/patient-sidebar.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/patients/patient-sidebar.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370012ms] [ERROR] ./components/ui/alert.tsx:4:1
+Export cn doesn't exist in target module
+  2 | import { cva, type VariantProps } from "class-variance-authority"
+  3 |
+> 4 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const alertVariants = cva(
+  7 |   "group/alert relative grid w-full gap-0.5 rounded-lg border px-2.5 py-2 text-left text-sm has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pr-18 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-2 *:[svg]:row-span-2 *:[svg]:translate-y-0.5 *:[svg]:text-current *:[svg:not([class*='size-'])]:size-4",
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/ui/alert.tsx [Client Component Browser]
+    ./components/chat/generative-ui/safety-alert-card.tsx [Client Component Browser]
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/alert.tsx [Client Component SSR]
+    ./components/chat/generative-ui/safety-alert-card.tsx [Client Component SSR]
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370014ms] [ERROR] ./components/ui/alert.tsx:4:1
+Export cn doesn't exist in target module
+  2 | import { cva, type VariantProps } from "class-variance-authority"
+  3 |
+> 4 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const alertVariants = cva(
+  7 |   "group/alert relative grid w-full gap-0.5 rounded-lg border px-2.5 py-2 text-left text-sm has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pr-18 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-2 *:[svg]:row-span-2 *:[svg]:translate-y-0.5 *:[svg]:text-current *:[svg:not([class*='size-'])]:size-4",
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/ui/alert.tsx [Client Component Browser]
+    ./components/chat/generative-ui/safety-alert-card.tsx [Client Component Browser]
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/alert.tsx [Client Component SSR]
+    ./components/chat/generative-ui/safety-alert-card.tsx [Client Component SSR]
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370015ms] [ERROR] ./components/ui/badge.tsx:5:1
+Export cn doesn't exist in target module
+  3 | import { Slot } from "radix-ui"
+  4 |
+> 5 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | const badgeVariants = cva(
+  8 |   "group/badge inline-flex h-5 w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-4xl border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3!",
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./components/ui/badge.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #2 [Client Component SSR]:
+    ./components/ui/badge.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #3 [Client Component Browser]:
+    ./components/ui/badge.tsx [Client Component Browser]
+    ./components/layout/global-header.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./components/ui/badge.tsx [Client Component SSR]
+    ./components/layout/global-header.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370015ms] [ERROR] ./components/ui/badge.tsx:5:1
+Export cn doesn't exist in target module
+  3 | import { Slot } from "radix-ui"
+  4 |
+> 5 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | const badgeVariants = cva(
+  8 |   "group/badge inline-flex h-5 w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-4xl border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3!",
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./components/ui/badge.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #2 [Client Component SSR]:
+    ./components/ui/badge.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #3 [Client Component Browser]:
+    ./components/ui/badge.tsx [Client Component Browser]
+    ./components/layout/global-header.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./components/ui/badge.tsx [Client Component SSR]
+    ./components/layout/global-header.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370015ms] [ERROR] ./components/ui/button.tsx:5:1
+Export cn doesn't exist in target module
+  3 | import { Slot } from "radix-ui"
+  4 |
+> 5 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | const buttonVariants = cva(
+  8 |   "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/ui/button.tsx [Client Component Browser]
+    ./components/error-boundary.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/button.tsx [Client Component SSR]
+    ./components/error-boundary.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370015ms] [ERROR] ./components/ui/button.tsx:5:1
+Export cn doesn't exist in target module
+  3 | import { Slot } from "radix-ui"
+  4 |
+> 5 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | const buttonVariants = cva(
+  8 |   "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/ui/button.tsx [Client Component Browser]
+    ./components/error-boundary.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/button.tsx [Client Component SSR]
+    ./components/error-boundary.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370015ms] [ERROR] ./components/ui/card.tsx:3:1
+Export cn doesn't exist in target module
+  1 | import * as React from "react"
+  2 |
+> 3 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | function Card({
+  6 |   className,
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./components/ui/card.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #2 [Client Component SSR]:
+    ./components/ui/card.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #3 [Client Component Browser]:
+    ./components/ui/card.tsx [Client Component Browser]
+    ./components/error-boundary.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./components/ui/card.tsx [Client Component SSR]
+    ./components/error-boundary.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370016ms] [ERROR] ./components/ui/card.tsx:3:1
+Export cn doesn't exist in target module
+  1 | import * as React from "react"
+  2 |
+> 3 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | function Card({
+  6 |   className,
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./components/ui/card.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #2 [Client Component SSR]:
+    ./components/ui/card.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #3 [Client Component Browser]:
+    ./components/ui/card.tsx [Client Component Browser]
+    ./components/error-boundary.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./components/ui/card.tsx [Client Component SSR]
+    ./components/error-boundary.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370016ms] [ERROR] ./components/ui/input.tsx:3:1
+Export cn doesn't exist in target module
+  1 | import * as React from "react"
+  2 |
+> 3 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | function Input({ className, type, ...props }: React.ComponentProps<"input">) {
+  6 |   return (
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./components/ui/input.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #2 [Client Component SSR]:
+    ./components/ui/input.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #3 [Client Component Browser]:
+    ./components/ui/input.tsx [Client Component Browser]
+    ./components/layout/global-header.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./components/ui/input.tsx [Client Component SSR]
+    ./components/layout/global-header.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370016ms] [ERROR] ./components/ui/input.tsx:3:1
+Export cn doesn't exist in target module
+  1 | import * as React from "react"
+  2 |
+> 3 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | function Input({ className, type, ...props }: React.ComponentProps<"input">) {
+  6 |   return (
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./components/ui/input.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #2 [Client Component SSR]:
+    ./components/ui/input.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #3 [Client Component Browser]:
+    ./components/ui/input.tsx [Client Component Browser]
+    ./components/layout/global-header.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./components/ui/input.tsx [Client Component SSR]
+    ./components/layout/global-header.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370016ms] [ERROR] ./components/ui/skeleton.tsx:1:1
+Export cn doesn't exist in target module
+> 1 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
+  4 |   return (
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/ui/skeleton.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/skeleton.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370017ms] [ERROR] ./components/ui/skeleton.tsx:1:1
+Export cn doesn't exist in target module
+> 1 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
+  4 |   return (
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/ui/skeleton.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/skeleton.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370018ms] [ERROR] ./components/ui/tooltip.tsx:6:1
+Export cn doesn't exist in target module
+  4 | import { Tooltip as TooltipPrimitive } from "radix-ui"
+  5 |
+> 6 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 |
+  8 | function TooltipProvider({
+  9 |   delayDuration = 0,
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Server Component:
+    ./components/ui/tooltip.tsx
+    ./app/layout.tsx
+
+  Client Component Browser:
+    ./components/ui/tooltip.tsx [Client Component Browser]
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/tooltip.tsx [Client Component SSR]
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370018ms] [ERROR] ./components/ui/tooltip.tsx:6:1
+Export cn doesn't exist in target module
+  4 | import { Tooltip as TooltipPrimitive } from "radix-ui"
+  5 |
+> 6 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 |
+  8 | function TooltipProvider({
+  9 |   delayDuration = 0,
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Server Component:
+    ./components/ui/tooltip.tsx
+    ./app/layout.tsx
+
+  Client Component Browser:
+    ./components/ui/tooltip.tsx [Client Component Browser]
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/tooltip.tsx [Client Component SSR]
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370018ms] [ERROR] ./app/page.tsx:8:1
+Export cn doesn't exist in target module
+   6 | import { Button } from "@/components/ui/button";
+   7 | import { Navbar } from "@/components/layout/navbar";
+>  8 | import { cn } from "@/lib/utils";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export default function Home() {
+  11 |   const containerVariants: Variants = {
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370018ms] [ERROR] ./app/page.tsx:8:1
+Export cn doesn't exist in target module
+   6 | import { Button } from "@/components/ui/button";
+   7 | import { Navbar } from "@/components/layout/navbar";
+>  8 | import { cn } from "@/lib/utils";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export default function Home() {
+  11 |   const containerVariants: Variants = {
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370212ms] [ERROR] ./components/chat/clinical-chat.tsx:15:1
+Export cn doesn't exist in target module
+  13 | import { GuidelineCard, GuidelineResult } from "./generative-ui/guideline-card";
+  14 | import { Activity, Mic, Upload, Sparkles, PanelRightClose, PanelRightOpen } from "lucide-react";
+> 15 | import { cn } from "@/lib/utils";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  16 | import {
+  17 |   Tooltip,
+  18 |   TooltipContent,
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370212ms] [ERROR] ./components/chat/clinical-chat.tsx:15:1
+Export cn doesn't exist in target module
+  13 | import { GuidelineCard, GuidelineResult } from "./generative-ui/guideline-card";
+  14 | import { Activity, Mic, Upload, Sparkles, PanelRightClose, PanelRightOpen } from "lucide-react";
+> 15 | import { cn } from "@/lib/utils";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  16 | import {
+  17 |   Tooltip,
+  18 |   TooltipContent,
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370212ms] [ERROR] ./components/chat/generative-ui/guideline-card.tsx:6:1
+Export cn doesn't exist in target module
+  4 | import { Badge } from "@/components/ui/badge";
+  5 | import { BookOpen, ExternalLink, Sparkles } from "lucide-react";
+> 6 | import { cn } from "@/lib/utils";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 |
+  8 | export interface GuidelineResult {
+  9 |   title: string;
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/chat/generative-ui/guideline-card.tsx [Client Component Browser]
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/chat/generative-ui/guideline-card.tsx [Client Component SSR]
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370212ms] [ERROR] ./components/chat/generative-ui/guideline-card.tsx:6:1
+Export cn doesn't exist in target module
+  4 | import { Badge } from "@/components/ui/badge";
+  5 | import { BookOpen, ExternalLink, Sparkles } from "lucide-react";
+> 6 | import { cn } from "@/lib/utils";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 |
+  8 | export interface GuidelineResult {
+  9 |   title: string;
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/chat/generative-ui/guideline-card.tsx [Client Component Browser]
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/chat/generative-ui/guideline-card.tsx [Client Component SSR]
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370212ms] [ERROR] ./components/kibo-ui/theme-switcher/index.tsx:7:1
+Export cn doesn't exist in target module
+   5 | import { motion } from "motion/react";
+   6 | import { useEffect, useState } from "react";
+>  7 | import { cn } from "@/lib/utils";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | const themes = [
+  10 |   {
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/kibo-ui/theme-switcher/index.tsx [Client Component Browser]
+    ./components/layout/global-header.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/kibo-ui/theme-switcher/index.tsx [Client Component SSR]
+    ./components/layout/global-header.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370212ms] [ERROR] ./components/kibo-ui/theme-switcher/index.tsx:7:1
+Export cn doesn't exist in target module
+   5 | import { motion } from "motion/react";
+   6 | import { useEffect, useState } from "react";
+>  7 | import { cn } from "@/lib/utils";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | const themes = [
+  10 |   {
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/kibo-ui/theme-switcher/index.tsx [Client Component Browser]
+    ./components/layout/global-header.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/kibo-ui/theme-switcher/index.tsx [Client Component SSR]
+    ./components/layout/global-header.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370212ms] [ERROR] ./components/patients/navigation-menu.tsx:3:1
+Export cn doesn't exist in target module
+  1 | "use client";
+  2 |
+> 3 | import { cn } from "@/lib/utils";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { LayoutDashboard, FileText, BookOpen, Bell, Settings, Users } from "lucide-react";
+  5 | import Link from "next/link";
+  6 | import { usePathname } from "next/navigation";
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/patients/navigation-menu.tsx [Client Component Browser]
+    ./components/patients/patient-sidebar.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/patients/navigation-menu.tsx [Client Component SSR]
+    ./components/patients/patient-sidebar.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370213ms] [ERROR] ./components/patients/navigation-menu.tsx:3:1
+Export cn doesn't exist in target module
+  1 | "use client";
+  2 |
+> 3 | import { cn } from "@/lib/utils";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { LayoutDashboard, FileText, BookOpen, Bell, Settings, Users } from "lucide-react";
+  5 | import Link from "next/link";
+  6 | import { usePathname } from "next/navigation";
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/patients/navigation-menu.tsx [Client Component Browser]
+    ./components/patients/patient-sidebar.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/patients/navigation-menu.tsx [Client Component SSR]
+    ./components/patients/patient-sidebar.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370213ms] [ERROR] ./components/patients/patient-sidebar.tsx:3:1
+Export cn doesn't exist in target module
+  1 | "use client";
+  2 |
+> 3 | import { cn } from "@/lib/utils";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { NavigationMenu } from "./navigation-menu";
+  5 | import { ThemeSwitcher } from "@/components/kibo-ui/theme-switcher";
+  6 | import { useUser, UserButton } from "@clerk/nextjs";
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/patients/patient-sidebar.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/patients/patient-sidebar.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370213ms] [ERROR] ./components/patients/patient-sidebar.tsx:3:1
+Export cn doesn't exist in target module
+  1 | "use client";
+  2 |
+> 3 | import { cn } from "@/lib/utils";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { NavigationMenu } from "./navigation-menu";
+  5 | import { ThemeSwitcher } from "@/components/kibo-ui/theme-switcher";
+  6 | import { useUser, UserButton } from "@clerk/nextjs";
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/patients/patient-sidebar.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/patients/patient-sidebar.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370213ms] [ERROR] ./components/ui/alert.tsx:4:1
+Export cn doesn't exist in target module
+  2 | import { cva, type VariantProps } from "class-variance-authority"
+  3 |
+> 4 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const alertVariants = cva(
+  7 |   "group/alert relative grid w-full gap-0.5 rounded-lg border px-2.5 py-2 text-left text-sm has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pr-18 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-2 *:[svg]:row-span-2 *:[svg]:translate-y-0.5 *:[svg]:text-current *:[svg:not([class*='size-'])]:size-4",
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/ui/alert.tsx [Client Component Browser]
+    ./components/chat/generative-ui/safety-alert-card.tsx [Client Component Browser]
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/alert.tsx [Client Component SSR]
+    ./components/chat/generative-ui/safety-alert-card.tsx [Client Component SSR]
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370213ms] [ERROR] ./components/ui/alert.tsx:4:1
+Export cn doesn't exist in target module
+  2 | import { cva, type VariantProps } from "class-variance-authority"
+  3 |
+> 4 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const alertVariants = cva(
+  7 |   "group/alert relative grid w-full gap-0.5 rounded-lg border px-2.5 py-2 text-left text-sm has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pr-18 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-2 *:[svg]:row-span-2 *:[svg]:translate-y-0.5 *:[svg]:text-current *:[svg:not([class*='size-'])]:size-4",
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/ui/alert.tsx [Client Component Browser]
+    ./components/chat/generative-ui/safety-alert-card.tsx [Client Component Browser]
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/alert.tsx [Client Component SSR]
+    ./components/chat/generative-ui/safety-alert-card.tsx [Client Component SSR]
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370213ms] [ERROR] ./components/ui/badge.tsx:5:1
+Export cn doesn't exist in target module
+  3 | import { Slot } from "radix-ui"
+  4 |
+> 5 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | const badgeVariants = cva(
+  8 |   "group/badge inline-flex h-5 w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-4xl border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3!",
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./components/ui/badge.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #2 [Client Component SSR]:
+    ./components/ui/badge.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #3 [Client Component Browser]:
+    ./components/ui/badge.tsx [Client Component Browser]
+    ./components/layout/global-header.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./components/ui/badge.tsx [Client Component SSR]
+    ./components/layout/global-header.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370213ms] [ERROR] ./components/ui/badge.tsx:5:1
+Export cn doesn't exist in target module
+  3 | import { Slot } from "radix-ui"
+  4 |
+> 5 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | const badgeVariants = cva(
+  8 |   "group/badge inline-flex h-5 w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-4xl border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3!",
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./components/ui/badge.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #2 [Client Component SSR]:
+    ./components/ui/badge.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #3 [Client Component Browser]:
+    ./components/ui/badge.tsx [Client Component Browser]
+    ./components/layout/global-header.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./components/ui/badge.tsx [Client Component SSR]
+    ./components/layout/global-header.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370214ms] [ERROR] ./components/ui/button.tsx:5:1
+Export cn doesn't exist in target module
+  3 | import { Slot } from "radix-ui"
+  4 |
+> 5 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | const buttonVariants = cva(
+  8 |   "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/ui/button.tsx [Client Component Browser]
+    ./components/error-boundary.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/button.tsx [Client Component SSR]
+    ./components/error-boundary.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370214ms] [ERROR] ./components/ui/button.tsx:5:1
+Export cn doesn't exist in target module
+  3 | import { Slot } from "radix-ui"
+  4 |
+> 5 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | const buttonVariants = cva(
+  8 |   "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/ui/button.tsx [Client Component Browser]
+    ./components/error-boundary.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/button.tsx [Client Component SSR]
+    ./components/error-boundary.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370214ms] [ERROR] ./components/ui/card.tsx:3:1
+Export cn doesn't exist in target module
+  1 | import * as React from "react"
+  2 |
+> 3 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | function Card({
+  6 |   className,
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./components/ui/card.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #2 [Client Component SSR]:
+    ./components/ui/card.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #3 [Client Component Browser]:
+    ./components/ui/card.tsx [Client Component Browser]
+    ./components/error-boundary.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./components/ui/card.tsx [Client Component SSR]
+    ./components/error-boundary.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370214ms] [ERROR] ./components/ui/card.tsx:3:1
+Export cn doesn't exist in target module
+  1 | import * as React from "react"
+  2 |
+> 3 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | function Card({
+  6 |   className,
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./components/ui/card.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #2 [Client Component SSR]:
+    ./components/ui/card.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #3 [Client Component Browser]:
+    ./components/ui/card.tsx [Client Component Browser]
+    ./components/error-boundary.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./components/ui/card.tsx [Client Component SSR]
+    ./components/error-boundary.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370214ms] [ERROR] ./components/ui/input.tsx:3:1
+Export cn doesn't exist in target module
+  1 | import * as React from "react"
+  2 |
+> 3 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | function Input({ className, type, ...props }: React.ComponentProps<"input">) {
+  6 |   return (
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./components/ui/input.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #2 [Client Component SSR]:
+    ./components/ui/input.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #3 [Client Component Browser]:
+    ./components/ui/input.tsx [Client Component Browser]
+    ./components/layout/global-header.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./components/ui/input.tsx [Client Component SSR]
+    ./components/layout/global-header.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370215ms] [ERROR] ./components/ui/input.tsx:3:1
+Export cn doesn't exist in target module
+  1 | import * as React from "react"
+  2 |
+> 3 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | function Input({ className, type, ...props }: React.ComponentProps<"input">) {
+  6 |   return (
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./components/ui/input.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #2 [Client Component SSR]:
+    ./components/ui/input.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #3 [Client Component Browser]:
+    ./components/ui/input.tsx [Client Component Browser]
+    ./components/layout/global-header.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./components/ui/input.tsx [Client Component SSR]
+    ./components/layout/global-header.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370216ms] [ERROR] ./components/ui/skeleton.tsx:1:1
+Export cn doesn't exist in target module
+> 1 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
+  4 |   return (
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/ui/skeleton.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/skeleton.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370216ms] [ERROR] ./components/ui/skeleton.tsx:1:1
+Export cn doesn't exist in target module
+> 1 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
+  4 |   return (
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/ui/skeleton.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/skeleton.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370217ms] [ERROR] ./components/ui/tooltip.tsx:6:1
+Export cn doesn't exist in target module
+  4 | import { Tooltip as TooltipPrimitive } from "radix-ui"
+  5 |
+> 6 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 |
+  8 | function TooltipProvider({
+  9 |   delayDuration = 0,
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Server Component:
+    ./components/ui/tooltip.tsx
+    ./app/layout.tsx
+
+  Client Component Browser:
+    ./components/ui/tooltip.tsx [Client Component Browser]
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/tooltip.tsx [Client Component SSR]
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370217ms] [ERROR] ./components/ui/tooltip.tsx:6:1
+Export cn doesn't exist in target module
+  4 | import { Tooltip as TooltipPrimitive } from "radix-ui"
+  5 |
+> 6 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 |
+  8 | function TooltipProvider({
+  9 |   delayDuration = 0,
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Server Component:
+    ./components/ui/tooltip.tsx
+    ./app/layout.tsx
+
+  Client Component Browser:
+    ./components/ui/tooltip.tsx [Client Component Browser]
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/tooltip.tsx [Client Component SSR]
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370217ms] [ERROR] ./app/page.tsx:8:1
+Export cn doesn't exist in target module
+   6 | import { Button } from "@/components/ui/button";
+   7 | import { Navbar } from "@/components/layout/navbar";
+>  8 | import { cn } from "@/lib/utils";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export default function Home() {
+  11 |   const containerVariants: Variants = {
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370217ms] [ERROR] ./app/page.tsx:8:1
+Export cn doesn't exist in target module
+   6 | import { Button } from "@/components/ui/button";
+   7 | import { Navbar } from "@/components/layout/navbar";
+>  8 | import { cn } from "@/lib/utils";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export default function Home() {
+  11 |   const containerVariants: Variants = {
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370220ms] [ERROR] ./components/chat/clinical-chat.tsx:15:1
+Export cn doesn't exist in target module
+  13 | import { GuidelineCard, GuidelineResult } from "./generative-ui/guideline-card";
+  14 | import { Activity, Mic, Upload, Sparkles, PanelRightClose, PanelRightOpen } from "lucide-react";
+> 15 | import { cn } from "@/lib/utils";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  16 | import {
+  17 |   Tooltip,
+  18 |   TooltipContent,
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370225ms] [ERROR] ./components/chat/clinical-chat.tsx:15:1
+Export cn doesn't exist in target module
+  13 | import { GuidelineCard, GuidelineResult } from "./generative-ui/guideline-card";
+  14 | import { Activity, Mic, Upload, Sparkles, PanelRightClose, PanelRightOpen } from "lucide-react";
+> 15 | import { cn } from "@/lib/utils";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  16 | import {
+  17 |   Tooltip,
+  18 |   TooltipContent,
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370225ms] [ERROR] ./components/chat/generative-ui/guideline-card.tsx:6:1
+Export cn doesn't exist in target module
+  4 | import { Badge } from "@/components/ui/badge";
+  5 | import { BookOpen, ExternalLink, Sparkles } from "lucide-react";
+> 6 | import { cn } from "@/lib/utils";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 |
+  8 | export interface GuidelineResult {
+  9 |   title: string;
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/chat/generative-ui/guideline-card.tsx [Client Component Browser]
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/chat/generative-ui/guideline-card.tsx [Client Component SSR]
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370225ms] [ERROR] ./components/chat/generative-ui/guideline-card.tsx:6:1
+Export cn doesn't exist in target module
+  4 | import { Badge } from "@/components/ui/badge";
+  5 | import { BookOpen, ExternalLink, Sparkles } from "lucide-react";
+> 6 | import { cn } from "@/lib/utils";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 |
+  8 | export interface GuidelineResult {
+  9 |   title: string;
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/chat/generative-ui/guideline-card.tsx [Client Component Browser]
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/chat/generative-ui/guideline-card.tsx [Client Component SSR]
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370225ms] [ERROR] ./components/kibo-ui/theme-switcher/index.tsx:7:1
+Export cn doesn't exist in target module
+   5 | import { motion } from "motion/react";
+   6 | import { useEffect, useState } from "react";
+>  7 | import { cn } from "@/lib/utils";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | const themes = [
+  10 |   {
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/kibo-ui/theme-switcher/index.tsx [Client Component Browser]
+    ./components/layout/global-header.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/kibo-ui/theme-switcher/index.tsx [Client Component SSR]
+    ./components/layout/global-header.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370225ms] [ERROR] ./components/kibo-ui/theme-switcher/index.tsx:7:1
+Export cn doesn't exist in target module
+   5 | import { motion } from "motion/react";
+   6 | import { useEffect, useState } from "react";
+>  7 | import { cn } from "@/lib/utils";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | const themes = [
+  10 |   {
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/kibo-ui/theme-switcher/index.tsx [Client Component Browser]
+    ./components/layout/global-header.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/kibo-ui/theme-switcher/index.tsx [Client Component SSR]
+    ./components/layout/global-header.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370225ms] [ERROR] ./components/patients/navigation-menu.tsx:3:1
+Export cn doesn't exist in target module
+  1 | "use client";
+  2 |
+> 3 | import { cn } from "@/lib/utils";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { LayoutDashboard, FileText, BookOpen, Bell, Settings, Users } from "lucide-react";
+  5 | import Link from "next/link";
+  6 | import { usePathname } from "next/navigation";
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/patients/navigation-menu.tsx [Client Component Browser]
+    ./components/patients/patient-sidebar.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/patients/navigation-menu.tsx [Client Component SSR]
+    ./components/patients/patient-sidebar.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370225ms] [ERROR] ./components/patients/navigation-menu.tsx:3:1
+Export cn doesn't exist in target module
+  1 | "use client";
+  2 |
+> 3 | import { cn } from "@/lib/utils";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { LayoutDashboard, FileText, BookOpen, Bell, Settings, Users } from "lucide-react";
+  5 | import Link from "next/link";
+  6 | import { usePathname } from "next/navigation";
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/patients/navigation-menu.tsx [Client Component Browser]
+    ./components/patients/patient-sidebar.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/patients/navigation-menu.tsx [Client Component SSR]
+    ./components/patients/patient-sidebar.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370226ms] [ERROR] ./components/patients/patient-sidebar.tsx:3:1
+Export cn doesn't exist in target module
+  1 | "use client";
+  2 |
+> 3 | import { cn } from "@/lib/utils";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { NavigationMenu } from "./navigation-menu";
+  5 | import { ThemeSwitcher } from "@/components/kibo-ui/theme-switcher";
+  6 | import { useUser, UserButton } from "@clerk/nextjs";
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/patients/patient-sidebar.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/patients/patient-sidebar.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370226ms] [ERROR] ./components/patients/patient-sidebar.tsx:3:1
+Export cn doesn't exist in target module
+  1 | "use client";
+  2 |
+> 3 | import { cn } from "@/lib/utils";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { NavigationMenu } from "./navigation-menu";
+  5 | import { ThemeSwitcher } from "@/components/kibo-ui/theme-switcher";
+  6 | import { useUser, UserButton } from "@clerk/nextjs";
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/patients/patient-sidebar.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/patients/patient-sidebar.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370226ms] [ERROR] ./components/ui/alert.tsx:4:1
+Export cn doesn't exist in target module
+  2 | import { cva, type VariantProps } from "class-variance-authority"
+  3 |
+> 4 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const alertVariants = cva(
+  7 |   "group/alert relative grid w-full gap-0.5 rounded-lg border px-2.5 py-2 text-left text-sm has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pr-18 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-2 *:[svg]:row-span-2 *:[svg]:translate-y-0.5 *:[svg]:text-current *:[svg:not([class*='size-'])]:size-4",
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/ui/alert.tsx [Client Component Browser]
+    ./components/chat/generative-ui/safety-alert-card.tsx [Client Component Browser]
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/alert.tsx [Client Component SSR]
+    ./components/chat/generative-ui/safety-alert-card.tsx [Client Component SSR]
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370226ms] [ERROR] ./components/ui/alert.tsx:4:1
+Export cn doesn't exist in target module
+  2 | import { cva, type VariantProps } from "class-variance-authority"
+  3 |
+> 4 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const alertVariants = cva(
+  7 |   "group/alert relative grid w-full gap-0.5 rounded-lg border px-2.5 py-2 text-left text-sm has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pr-18 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-2 *:[svg]:row-span-2 *:[svg]:translate-y-0.5 *:[svg]:text-current *:[svg:not([class*='size-'])]:size-4",
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/ui/alert.tsx [Client Component Browser]
+    ./components/chat/generative-ui/safety-alert-card.tsx [Client Component Browser]
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/alert.tsx [Client Component SSR]
+    ./components/chat/generative-ui/safety-alert-card.tsx [Client Component SSR]
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370226ms] [ERROR] ./components/ui/badge.tsx:5:1
+Export cn doesn't exist in target module
+  3 | import { Slot } from "radix-ui"
+  4 |
+> 5 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | const badgeVariants = cva(
+  8 |   "group/badge inline-flex h-5 w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-4xl border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3!",
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./components/ui/badge.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #2 [Client Component SSR]:
+    ./components/ui/badge.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #3 [Client Component Browser]:
+    ./components/ui/badge.tsx [Client Component Browser]
+    ./components/layout/global-header.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./components/ui/badge.tsx [Client Component SSR]
+    ./components/layout/global-header.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370226ms] [ERROR] ./components/ui/badge.tsx:5:1
+Export cn doesn't exist in target module
+  3 | import { Slot } from "radix-ui"
+  4 |
+> 5 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | const badgeVariants = cva(
+  8 |   "group/badge inline-flex h-5 w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-4xl border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3!",
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./components/ui/badge.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #2 [Client Component SSR]:
+    ./components/ui/badge.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #3 [Client Component Browser]:
+    ./components/ui/badge.tsx [Client Component Browser]
+    ./components/layout/global-header.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./components/ui/badge.tsx [Client Component SSR]
+    ./components/layout/global-header.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370226ms] [ERROR] ./components/ui/button.tsx:5:1
+Export cn doesn't exist in target module
+  3 | import { Slot } from "radix-ui"
+  4 |
+> 5 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | const buttonVariants = cva(
+  8 |   "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/ui/button.tsx [Client Component Browser]
+    ./components/error-boundary.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/button.tsx [Client Component SSR]
+    ./components/error-boundary.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370226ms] [ERROR] ./components/ui/button.tsx:5:1
+Export cn doesn't exist in target module
+  3 | import { Slot } from "radix-ui"
+  4 |
+> 5 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | const buttonVariants = cva(
+  8 |   "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/ui/button.tsx [Client Component Browser]
+    ./components/error-boundary.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/button.tsx [Client Component SSR]
+    ./components/error-boundary.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370226ms] [ERROR] ./components/ui/card.tsx:3:1
+Export cn doesn't exist in target module
+  1 | import * as React from "react"
+  2 |
+> 3 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | function Card({
+  6 |   className,
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./components/ui/card.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #2 [Client Component SSR]:
+    ./components/ui/card.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #3 [Client Component Browser]:
+    ./components/ui/card.tsx [Client Component Browser]
+    ./components/error-boundary.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./components/ui/card.tsx [Client Component SSR]
+    ./components/error-boundary.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370228ms] [ERROR] ./components/ui/card.tsx:3:1
+Export cn doesn't exist in target module
+  1 | import * as React from "react"
+  2 |
+> 3 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | function Card({
+  6 |   className,
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./components/ui/card.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #2 [Client Component SSR]:
+    ./components/ui/card.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #3 [Client Component Browser]:
+    ./components/ui/card.tsx [Client Component Browser]
+    ./components/error-boundary.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./components/ui/card.tsx [Client Component SSR]
+    ./components/error-boundary.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370228ms] [ERROR] ./components/ui/input.tsx:3:1
+Export cn doesn't exist in target module
+  1 | import * as React from "react"
+  2 |
+> 3 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | function Input({ className, type, ...props }: React.ComponentProps<"input">) {
+  6 |   return (
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./components/ui/input.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #2 [Client Component SSR]:
+    ./components/ui/input.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #3 [Client Component Browser]:
+    ./components/ui/input.tsx [Client Component Browser]
+    ./components/layout/global-header.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./components/ui/input.tsx [Client Component SSR]
+    ./components/layout/global-header.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370228ms] [ERROR] ./components/ui/input.tsx:3:1
+Export cn doesn't exist in target module
+  1 | import * as React from "react"
+  2 |
+> 3 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | function Input({ className, type, ...props }: React.ComponentProps<"input">) {
+  6 |   return (
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./components/ui/input.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #2 [Client Component SSR]:
+    ./components/ui/input.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #3 [Client Component Browser]:
+    ./components/ui/input.tsx [Client Component Browser]
+    ./components/layout/global-header.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./components/ui/input.tsx [Client Component SSR]
+    ./components/layout/global-header.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370228ms] [ERROR] ./components/ui/skeleton.tsx:1:1
+Export cn doesn't exist in target module
+> 1 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
+  4 |   return (
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/ui/skeleton.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/skeleton.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370228ms] [ERROR] ./components/ui/skeleton.tsx:1:1
+Export cn doesn't exist in target module
+> 1 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
+  4 |   return (
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/ui/skeleton.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/skeleton.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370228ms] [ERROR] ./components/ui/tooltip.tsx:6:1
+Export cn doesn't exist in target module
+  4 | import { Tooltip as TooltipPrimitive } from "radix-ui"
+  5 |
+> 6 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 |
+  8 | function TooltipProvider({
+  9 |   delayDuration = 0,
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Server Component:
+    ./components/ui/tooltip.tsx
+    ./app/layout.tsx
+
+  Client Component Browser:
+    ./components/ui/tooltip.tsx [Client Component Browser]
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/tooltip.tsx [Client Component SSR]
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370228ms] [ERROR] ./components/ui/tooltip.tsx:6:1
+Export cn doesn't exist in target module
+  4 | import { Tooltip as TooltipPrimitive } from "radix-ui"
+  5 |
+> 6 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 |
+  8 | function TooltipProvider({
+  9 |   delayDuration = 0,
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Server Component:
+    ./components/ui/tooltip.tsx
+    ./app/layout.tsx
+
+  Client Component Browser:
+    ./components/ui/tooltip.tsx [Client Component Browser]
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/tooltip.tsx [Client Component SSR]
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370228ms] [ERROR] ./app/page.tsx:8:1
+Export cn doesn't exist in target module
+   6 | import { Button } from "@/components/ui/button";
+   7 | import { Navbar } from "@/components/layout/navbar";
+>  8 | import { cn } from "@/lib/utils";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export default function Home() {
+  11 |   const containerVariants: Variants = {
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370228ms] [ERROR] ./app/page.tsx:8:1
+Export cn doesn't exist in target module
+   6 | import { Button } from "@/components/ui/button";
+   7 | import { Navbar } from "@/components/layout/navbar";
+>  8 | import { cn } from "@/lib/utils";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export default function Home() {
+  11 |   const containerVariants: Variants = {
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370249ms] [ERROR] ./components/chat/clinical-chat.tsx:15:1
+Export cn doesn't exist in target module
+  13 | import { GuidelineCard, GuidelineResult } from "./generative-ui/guideline-card";
+  14 | import { Activity, Mic, Upload, Sparkles, PanelRightClose, PanelRightOpen } from "lucide-react";
+> 15 | import { cn } from "@/lib/utils";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  16 | import {
+  17 |   Tooltip,
+  18 |   TooltipContent,
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370249ms] [ERROR] ./components/chat/clinical-chat.tsx:15:1
+Export cn doesn't exist in target module
+  13 | import { GuidelineCard, GuidelineResult } from "./generative-ui/guideline-card";
+  14 | import { Activity, Mic, Upload, Sparkles, PanelRightClose, PanelRightOpen } from "lucide-react";
+> 15 | import { cn } from "@/lib/utils";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  16 | import {
+  17 |   Tooltip,
+  18 |   TooltipContent,
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370251ms] [ERROR] ./components/chat/generative-ui/guideline-card.tsx:6:1
+Export cn doesn't exist in target module
+  4 | import { Badge } from "@/components/ui/badge";
+  5 | import { BookOpen, ExternalLink, Sparkles } from "lucide-react";
+> 6 | import { cn } from "@/lib/utils";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 |
+  8 | export interface GuidelineResult {
+  9 |   title: string;
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/chat/generative-ui/guideline-card.tsx [Client Component Browser]
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/chat/generative-ui/guideline-card.tsx [Client Component SSR]
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370251ms] [ERROR] ./components/chat/generative-ui/guideline-card.tsx:6:1
+Export cn doesn't exist in target module
+  4 | import { Badge } from "@/components/ui/badge";
+  5 | import { BookOpen, ExternalLink, Sparkles } from "lucide-react";
+> 6 | import { cn } from "@/lib/utils";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 |
+  8 | export interface GuidelineResult {
+  9 |   title: string;
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/chat/generative-ui/guideline-card.tsx [Client Component Browser]
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/chat/generative-ui/guideline-card.tsx [Client Component SSR]
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370252ms] [ERROR] ./components/kibo-ui/theme-switcher/index.tsx:7:1
+Export cn doesn't exist in target module
+   5 | import { motion } from "motion/react";
+   6 | import { useEffect, useState } from "react";
+>  7 | import { cn } from "@/lib/utils";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | const themes = [
+  10 |   {
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/kibo-ui/theme-switcher/index.tsx [Client Component Browser]
+    ./components/layout/global-header.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/kibo-ui/theme-switcher/index.tsx [Client Component SSR]
+    ./components/layout/global-header.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370253ms] [ERROR] ./components/kibo-ui/theme-switcher/index.tsx:7:1
+Export cn doesn't exist in target module
+   5 | import { motion } from "motion/react";
+   6 | import { useEffect, useState } from "react";
+>  7 | import { cn } from "@/lib/utils";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   8 |
+   9 | const themes = [
+  10 |   {
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/kibo-ui/theme-switcher/index.tsx [Client Component Browser]
+    ./components/layout/global-header.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/kibo-ui/theme-switcher/index.tsx [Client Component SSR]
+    ./components/layout/global-header.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370253ms] [ERROR] ./components/patients/navigation-menu.tsx:3:1
+Export cn doesn't exist in target module
+  1 | "use client";
+  2 |
+> 3 | import { cn } from "@/lib/utils";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { LayoutDashboard, FileText, BookOpen, Bell, Settings, Users } from "lucide-react";
+  5 | import Link from "next/link";
+  6 | import { usePathname } from "next/navigation";
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/patients/navigation-menu.tsx [Client Component Browser]
+    ./components/patients/patient-sidebar.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/patients/navigation-menu.tsx [Client Component SSR]
+    ./components/patients/patient-sidebar.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370253ms] [ERROR] ./components/patients/navigation-menu.tsx:3:1
+Export cn doesn't exist in target module
+  1 | "use client";
+  2 |
+> 3 | import { cn } from "@/lib/utils";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { LayoutDashboard, FileText, BookOpen, Bell, Settings, Users } from "lucide-react";
+  5 | import Link from "next/link";
+  6 | import { usePathname } from "next/navigation";
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/patients/navigation-menu.tsx [Client Component Browser]
+    ./components/patients/patient-sidebar.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/patients/navigation-menu.tsx [Client Component SSR]
+    ./components/patients/patient-sidebar.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370254ms] [ERROR] ./components/patients/patient-sidebar.tsx:3:1
+Export cn doesn't exist in target module
+  1 | "use client";
+  2 |
+> 3 | import { cn } from "@/lib/utils";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { NavigationMenu } from "./navigation-menu";
+  5 | import { ThemeSwitcher } from "@/components/kibo-ui/theme-switcher";
+  6 | import { useUser, UserButton } from "@clerk/nextjs";
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/patients/patient-sidebar.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/patients/patient-sidebar.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370255ms] [ERROR] ./components/patients/patient-sidebar.tsx:3:1
+Export cn doesn't exist in target module
+  1 | "use client";
+  2 |
+> 3 | import { cn } from "@/lib/utils";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { NavigationMenu } from "./navigation-menu";
+  5 | import { ThemeSwitcher } from "@/components/kibo-ui/theme-switcher";
+  6 | import { useUser, UserButton } from "@clerk/nextjs";
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/patients/patient-sidebar.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/patients/patient-sidebar.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370256ms] [ERROR] ./components/ui/alert.tsx:4:1
+Export cn doesn't exist in target module
+  2 | import { cva, type VariantProps } from "class-variance-authority"
+  3 |
+> 4 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const alertVariants = cva(
+  7 |   "group/alert relative grid w-full gap-0.5 rounded-lg border px-2.5 py-2 text-left text-sm has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pr-18 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-2 *:[svg]:row-span-2 *:[svg]:translate-y-0.5 *:[svg]:text-current *:[svg:not([class*='size-'])]:size-4",
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/ui/alert.tsx [Client Component Browser]
+    ./components/chat/generative-ui/safety-alert-card.tsx [Client Component Browser]
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/alert.tsx [Client Component SSR]
+    ./components/chat/generative-ui/safety-alert-card.tsx [Client Component SSR]
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370256ms] [ERROR] ./components/ui/alert.tsx:4:1
+Export cn doesn't exist in target module
+  2 | import { cva, type VariantProps } from "class-variance-authority"
+  3 |
+> 4 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 | const alertVariants = cva(
+  7 |   "group/alert relative grid w-full gap-0.5 rounded-lg border px-2.5 py-2 text-left text-sm has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pr-18 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-2 *:[svg]:row-span-2 *:[svg]:translate-y-0.5 *:[svg]:text-current *:[svg:not([class*='size-'])]:size-4",
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/ui/alert.tsx [Client Component Browser]
+    ./components/chat/generative-ui/safety-alert-card.tsx [Client Component Browser]
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/alert.tsx [Client Component SSR]
+    ./components/chat/generative-ui/safety-alert-card.tsx [Client Component SSR]
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370257ms] [ERROR] ./components/ui/badge.tsx:5:1
+Export cn doesn't exist in target module
+  3 | import { Slot } from "radix-ui"
+  4 |
+> 5 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | const badgeVariants = cva(
+  8 |   "group/badge inline-flex h-5 w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-4xl border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3!",
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./components/ui/badge.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #2 [Client Component SSR]:
+    ./components/ui/badge.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #3 [Client Component Browser]:
+    ./components/ui/badge.tsx [Client Component Browser]
+    ./components/layout/global-header.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./components/ui/badge.tsx [Client Component SSR]
+    ./components/layout/global-header.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370258ms] [ERROR] ./components/ui/badge.tsx:5:1
+Export cn doesn't exist in target module
+  3 | import { Slot } from "radix-ui"
+  4 |
+> 5 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | const badgeVariants = cva(
+  8 |   "group/badge inline-flex h-5 w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-4xl border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3!",
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./components/ui/badge.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #2 [Client Component SSR]:
+    ./components/ui/badge.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #3 [Client Component Browser]:
+    ./components/ui/badge.tsx [Client Component Browser]
+    ./components/layout/global-header.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./components/ui/badge.tsx [Client Component SSR]
+    ./components/layout/global-header.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370258ms] [ERROR] ./components/ui/button.tsx:5:1
+Export cn doesn't exist in target module
+  3 | import { Slot } from "radix-ui"
+  4 |
+> 5 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | const buttonVariants = cva(
+  8 |   "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/ui/button.tsx [Client Component Browser]
+    ./components/error-boundary.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/button.tsx [Client Component SSR]
+    ./components/error-boundary.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370258ms] [ERROR] ./components/ui/button.tsx:5:1
+Export cn doesn't exist in target module
+  3 | import { Slot } from "radix-ui"
+  4 |
+> 5 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 |
+  7 | const buttonVariants = cva(
+  8 |   "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/ui/button.tsx [Client Component Browser]
+    ./components/error-boundary.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/button.tsx [Client Component SSR]
+    ./components/error-boundary.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370258ms] [ERROR] ./components/ui/card.tsx:3:1
+Export cn doesn't exist in target module
+  1 | import * as React from "react"
+  2 |
+> 3 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | function Card({
+  6 |   className,
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./components/ui/card.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #2 [Client Component SSR]:
+    ./components/ui/card.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #3 [Client Component Browser]:
+    ./components/ui/card.tsx [Client Component Browser]
+    ./components/error-boundary.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./components/ui/card.tsx [Client Component SSR]
+    ./components/error-boundary.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370260ms] [ERROR] ./components/ui/card.tsx:3:1
+Export cn doesn't exist in target module
+  1 | import * as React from "react"
+  2 |
+> 3 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | function Card({
+  6 |   className,
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./components/ui/card.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #2 [Client Component SSR]:
+    ./components/ui/card.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #3 [Client Component Browser]:
+    ./components/ui/card.tsx [Client Component Browser]
+    ./components/error-boundary.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./components/ui/card.tsx [Client Component SSR]
+    ./components/error-boundary.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370260ms] [ERROR] ./components/ui/input.tsx:3:1
+Export cn doesn't exist in target module
+  1 | import * as React from "react"
+  2 |
+> 3 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | function Input({ className, type, ...props }: React.ComponentProps<"input">) {
+  6 |   return (
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./components/ui/input.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #2 [Client Component SSR]:
+    ./components/ui/input.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #3 [Client Component Browser]:
+    ./components/ui/input.tsx [Client Component Browser]
+    ./components/layout/global-header.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./components/ui/input.tsx [Client Component SSR]
+    ./components/layout/global-header.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370260ms] [ERROR] ./components/ui/input.tsx:3:1
+Export cn doesn't exist in target module
+  1 | import * as React from "react"
+  2 |
+> 3 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 |
+  5 | function Input({ className, type, ...props }: React.ComponentProps<"input">) {
+  6 |   return (
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./components/ui/input.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #2 [Client Component SSR]:
+    ./components/ui/input.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  #3 [Client Component Browser]:
+    ./components/ui/input.tsx [Client Component Browser]
+    ./components/layout/global-header.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./components/ui/input.tsx [Client Component SSR]
+    ./components/layout/global-header.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370277ms] [ERROR] ./components/ui/skeleton.tsx:1:1
+Export cn doesn't exist in target module
+> 1 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
+  4 |   return (
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/ui/skeleton.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/skeleton.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370277ms] [ERROR] ./components/ui/skeleton.tsx:1:1
+Export cn doesn't exist in target module
+> 1 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 |
+  3 | function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
+  4 |   return (
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./components/ui/skeleton.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Client Component Browser]
+    ./app/(dashboard)/records/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/skeleton.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Client Component SSR]
+    ./app/(dashboard)/records/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370277ms] [ERROR] ./components/ui/tooltip.tsx:6:1
+Export cn doesn't exist in target module
+  4 | import { Tooltip as TooltipPrimitive } from "radix-ui"
+  5 |
+> 6 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 |
+  8 | function TooltipProvider({
+  9 |   delayDuration = 0,
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Server Component:
+    ./components/ui/tooltip.tsx
+    ./app/layout.tsx
+
+  Client Component Browser:
+    ./components/ui/tooltip.tsx [Client Component Browser]
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/tooltip.tsx [Client Component SSR]
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370278ms] [ERROR] ./components/ui/tooltip.tsx:6:1
+Export cn doesn't exist in target module
+  4 | import { Tooltip as TooltipPrimitive } from "radix-ui"
+  5 |
+> 6 | import { cn } from "@/lib/utils"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  7 |
+  8 | function TooltipProvider({
+  9 |   delayDuration = 0,
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Server Component:
+    ./components/ui/tooltip.tsx
+    ./app/layout.tsx
+
+  Client Component Browser:
+    ./components/ui/tooltip.tsx [Client Component Browser]
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/ui/tooltip.tsx [Client Component SSR]
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370278ms] [ERROR] ./app/page.tsx:8:1
+Export cn doesn't exist in target module
+   6 | import { Button } from "@/components/ui/button";
+   7 | import { Navbar } from "@/components/layout/navbar";
+>  8 | import { cn } from "@/lib/utils";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export default function Home() {
+  11 |   const containerVariants: Variants = {
+
+The export cn was not found in module [project]/lib/utils.ts [app-client] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  370278ms] [ERROR] ./app/page.tsx:8:1
+Export cn doesn't exist in target module
+   6 | import { Button } from "@/components/ui/button";
+   7 | import { Navbar } from "@/components/layout/navbar";
+>  8 | import { cn } from "@/lib/utils";
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | export default function Home() {
+  11 |   const containerVariants: Variants = {
+
+The export cn was not found in module [project]/lib/utils.ts [app-ssr] (ecmascript).
+Did you mean to import cleanClinicalText?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import traces:
+  Client Component Browser:
+    ./app/page.tsx [Client Component Browser]
+    ./app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/page.tsx [Client Component SSR]
+    ./app/page.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127

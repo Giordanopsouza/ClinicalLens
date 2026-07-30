@@ -10,24 +10,53 @@ import { LabsView } from "../labs/labs-view";
 import { PrescriptionTable } from "../prescriptions/prescription-table";
 import { DiagnosisList } from "../diagnoses/diagnosis-list";
 import { LongitudinalRecord } from "./longitudinal-record";
-import { FileText, FlaskConical, Pill, Stethoscope, User, AlertTriangle, HeartPulse, History, Activity } from "lucide-react";
+import { FileText, FlaskConical, Pill, Stethoscope, User, AlertTriangle, HeartPulse, History, Activity, Search, MousePointer2, Sparkles } from "lucide-react";
 
 export function PatientDetail() {
   const { selectedHadmId } = usePatient();
 
   if (!selectedHadmId) {
     return (
-      <div className="flex h-full items-center justify-center bg-background">
-        <div className="text-center animate-in fade-in zoom-in-95 duration-500">
-          <div className="mx-auto h-20 w-20 rounded-full bg-muted/30 flex items-center justify-center mb-6">
-            <Activity className="h-10 w-10 text-muted-foreground/40" />
+      <div className="flex h-full items-center justify-center bg-background p-8">
+        <div className="max-w-[600px] w-full text-center space-y-12 animate-in fade-in zoom-in-95 duration-700">
+          <div className="space-y-4">
+            <div className="mx-auto h-24 w-24 rounded-[2rem] bg-primary/5 flex items-center justify-center mb-8 border border-primary/10 shadow-inner">
+              <Activity className="h-12 w-12 text-primary/40 animate-pulse" />
+            </div>
+            <h2 className="text-3xl font-black text-foreground tracking-tight uppercase">
+              Clinical Workbench
+            </h2>
+            <p className="text-[15px] font-medium text-muted-foreground max-w-[400px] mx-auto leading-relaxed">
+              Real-time clinical intelligence and longitudinal data analysis for the modern clinician.
+            </p>
           </div>
-          <h2 className="text-2xl font-bold text-foreground mb-3 tracking-tight">
-            Clinical Patient Workbench
-          </h2>
-          <p className="text-[15px] font-medium text-muted-foreground max-w-[340px] mx-auto leading-relaxed">
-            Select a patient from the registry to begin clinical analysis and agentic decision support.
-          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+            <div className="p-6 rounded-3xl bg-muted/30 border border-border/50 space-y-3 group hover:bg-muted/50 transition-colors">
+              <div className="size-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                <Search className="h-5 w-5" />
+              </div>
+              <h4 className="text-xs font-black uppercase tracking-widest">Quick Discovery</h4>
+              <p className="text-[11px] leading-relaxed text-muted-foreground font-medium">
+                Press <kbd className="px-1.5 py-0.5 rounded border border-border bg-background font-black text-[9px]">⌘K</kbd> to search the registry by Patient ID or Diagnosis.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-3xl bg-muted/30 border border-border/50 space-y-3 group hover:bg-muted/50 transition-colors">
+              <div className="size-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                <Sparkles className="h-5 w-5" />
+              </div>
+              <h4 className="text-xs font-black uppercase tracking-widest">Agentic Analysis</h4>
+              <p className="text-[11px] leading-relaxed text-muted-foreground font-medium">
+                Ask Aegis to summarize history, analyze lab trends, or audit prescriptions.
+              </p>
+            </div>
+          </div>
+
+          <div className="pt-4 flex items-center justify-center gap-2 text-[10px] font-black text-muted-foreground/40 uppercase tracking-[0.2em]">
+            <MousePointer2 className="h-3 w-3" />
+            Select a record to begin
+          </div>
         </div>
       </div>
     );

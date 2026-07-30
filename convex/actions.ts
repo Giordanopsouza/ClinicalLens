@@ -15,6 +15,43 @@ async function requireAuth(ctx: ActionCtx) {
   return identity;
 }
 
+export const populateDiscoveryTable = action({
+  args: {},
+  handler: async (ctx) => {
+    // This is an internal utility to populate the lightweight discovery table.
+    // We fetch clinical cases in small chunks to avoid memory limits.
+    let cursor = null;
+    let totalSynced = 0;
+
+    while (true) {
+      const result: { page: any[]; continueCursor: string; isDone: boolean } = await ctx.runQuery(internal.queries.getPatientListInternal, {
+        paginationOpts: {
+          numItems: 100,
+          cursor: cursor,
+        },
+      });
+
+      if (result.page.length === 0) break;
+
+      await ctx.runMutation(internal.mutations.syncDiscoveryMetadata, {
+        patients: result.page.map(p => ({
+          hadm_id: p.hadm_id,
+          subject_id: p.subject_id,
+          admission_diagnosis: p.admission_diagnosis,
+          gender: p.gender,
+          age: p.age,
+        }))
+      });
+
+      totalSynced += result.page.length;
+      cursor = result.continueCursor;
+      if (result.isDone) break;
+    }
+
+    return { totalSynced };
+  },
+});
+
 export const searchDischargeSummaries = action({
   args: {
     embedding: v.array(v.float64()),

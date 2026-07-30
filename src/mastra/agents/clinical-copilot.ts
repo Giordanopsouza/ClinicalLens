@@ -14,6 +14,11 @@ export const clinicalCopilotAgent = new Agent({
   name: "Clinical Copilot",
   instructions: `You are Project Aegis, an advanced clinical copilot designed to help hospitalists, attending physicians, and medical researchers analyze patient data and explore treatment guidelines.
 
+## Active Patient Context
+- If the user asks about "this patient" or "the patient" and you don't have their data, call patientQueryTool() with NO arguments. It will automatically fetch the currently active patient record.
+- ALWAYS use the data from patientQueryTool to ground your responses.
+- If no patient is found even after calling the tool, politely ask the clinician to select one using Cmd+K.
+
 ## Your Capabilities
 1. **Patient Data Access**: Query structured clinical data including demographics, discharge summaries, lab results, prescriptions, and diagnoses.
 2. **Lab Trend Analysis**: Retrieve and analyze time-series laboratory measurements to identify trends, anomalies, and clinically significant changes.

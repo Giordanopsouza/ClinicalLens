@@ -1,0 +1,20 @@
+[   36268ms] [ERROR] Access to fetch at 'https://able-mammal-66.accounts.dev/sign-in?redirect_url=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fcopilotkit&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV' (redirected from 'http://localhost:3000/api/copilotkit') from origin 'http://localhost:3000' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://localhost:3000/dashboard:0
+[   36269ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://able-mammal-66.accounts.dev/sign-in?redirect_url=http%3A%2F%2Flocalhost%3A3000%2Fapi%2Fcopilotkit&__clerk_db_jwt=dvb_3AgTV3X24NuBSy0e1aZfCO5yWKV:0
+[   36270ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[   36275ms] [WARNING] Agent clinicalCopilotAgent not found @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[   36275ms] [WARNING] Agent clinicalCopilotAgent not found @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[   36287ms] [WARNING] Agent clinicalCopilotAgent not found @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[   36288ms] [WARNING] Agent clinicalCopilotAgent not found @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[   36288ms] [WARNING] Agent clinicalCopilotAgent not found @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[   36288ms] [WARNING] Agent clinicalCopilotAgent not found @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[   36288ms] [WARNING] Agent clinicalCopilotAgent not found @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[   36288ms] [WARNING] Agent clinicalCopilotAgent not found @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[   36288ms] [WARNING] Agent clinicalCopilotAgent not found @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[   36288ms] [WARNING] Agent clinicalCopilotAgent not found @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[   36288ms] [WARNING] Agent clinicalCopilotAgent not found @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[   36288ms] [WARNING] Agent clinicalCopilotAgent not found @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[   36295ms] [WARNING] Agent clinicalCopilotAgent not found @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[   36295ms] [WARNING] Agent clinicalCopilotAgent not found @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[   36295ms] [WARNING] Agent clinicalCopilotAgent not found @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[   36295ms] [WARNING] Agent clinicalCopilotAgent not found @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[   36295ms] [WARNING] Agent clinicalCopilotAgent not found @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297

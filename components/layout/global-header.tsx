@@ -67,6 +67,24 @@ export function GlobalHeader() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const highlightText = (text: string, query: string) => {
+    if (!query.trim()) return text;
+    const parts = text.split(new RegExp(`(${query})`, "gi"));
+    return (
+      <span>
+        {parts.map((part, i) =>
+          part.toLowerCase() === query.toLowerCase() ? (
+            <strong key={i} className="text-foreground font-black bg-primary/10 px-0.5 rounded">
+              {part}
+            </strong>
+          ) : (
+            part
+          )
+        )}
+      </span>
+    );
+  };
+
   const handleSelectPatient = (hadmId: number) => {
     setSelectedHadmId(hadmId);
     setSearchQuery("");
@@ -140,10 +158,13 @@ export function GlobalHeader() {
                 className="h-9 pl-9 pr-12 text-[11px] bg-muted/30 border-border/50 focus-visible:ring-1 focus-visible:ring-primary transition-all rounded-xl shadow-inner"
                 value={searchQuery}
                 onChange={(e) => {
-                  setSearchQuery(e.target.value);
-                  setShowResults(true);
+                  const val = e.target.value;
+                  setSearchQuery(val);
+                  setShowResults(val.length >= 2);
                 }}
-                onFocus={() => setShowResults(true)}
+                onFocus={() => {
+                  if (searchQuery.length >= 2) setShowResults(true);
+                }}
               />
               <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none hidden lg:flex items-center gap-1">
                 <kbd className="h-5 px-1.5 rounded border border-border bg-background text-[9px] font-black text-muted-foreground/50 shadow-sm uppercase">
@@ -187,11 +208,15 @@ export function GlobalHeader() {
                               <div className="size-6 rounded-lg bg-primary/10 flex items-center justify-center">
                                 <Activity className="h-3 w-3 text-primary" />
                               </div>
-                              <span className="text-[11px] font-black font-mono text-primary group-hover:scale-105 transition-transform origin-left">AEG-{p.hadm_id}</span>
+                              <span className="text-[11px] font-black font-mono text-primary group-hover:scale-105 transition-transform origin-left">
+                                {highlightText(`AEG-${p.hadm_id}`, searchQuery)}
+                              </span>
                             </div>
                             <Badge variant="outline" className="text-[8px] h-4 px-1.5 font-black uppercase tracking-tighter opacity-60 group-hover:opacity-100 transition-opacity">{p.gender} · {p.age}y</Badge>
                           </div>
-                          <p className="text-xs font-bold text-foreground/80 group-hover:text-foreground transition-colors line-clamp-1 pl-8">{p.admission_diagnosis}</p>
+                          <p className="text-xs font-bold text-foreground/80 group-hover:text-foreground transition-colors line-clamp-1 pl-8">
+                            {highlightText(p.admission_diagnosis || "No primary diagnosis recorded", searchQuery)}
+                          </p>
                         </button>
                       ))}
                     </div>

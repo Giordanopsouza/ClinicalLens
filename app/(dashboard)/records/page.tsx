@@ -9,6 +9,7 @@ import { FileText, Search, History, Download, ExternalLink, User } from "lucide-
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
+import { cleanClinicalText } from "@/lib/utils";
 
 import { usePaginatedQuery } from "convex/react";
 
@@ -198,7 +199,7 @@ export default function RecordsPage() {
                 <CardContent className="p-8">
                   <div className="prose prose-sm dark:prose-invert max-w-none">
                     <p className="whitespace-pre-wrap text-sm leading-relaxed text-foreground/80 font-normal selection:bg-primary/20">
-                      {highlightText(patient.discharge_summary || "No discharge summary available.", recordSearch)}
+                      {highlightText(cleanClinicalText(patient.discharge_summary) || "No discharge summary available.", recordSearch)}
                     </p>
                   </div>
                 </CardContent>

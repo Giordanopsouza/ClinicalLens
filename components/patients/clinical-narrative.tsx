@@ -3,11 +3,15 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileText, Sparkles } from "lucide-react";
 
+import { cleanClinicalText } from "@/lib/utils";
+
 interface ClinicalNarrativeProps {
   summary: string;
 }
 
 export function ClinicalNarrative({ summary }: ClinicalNarrativeProps) {
+  const cleanedSummary = cleanClinicalText(summary);
+  
   // Simple heuristic to generate some "clinical markers" from the summary
   const generateMarkers = (text: string) => {
     const markers = [];
@@ -35,7 +39,7 @@ export function ClinicalNarrative({ summary }: ClinicalNarrativeProps) {
       </CardHeader>
       <CardContent className="pt-6">
         <p className="text-sm leading-relaxed text-foreground/80 font-medium">
-          {summary.length > 500 ? summary.slice(0, 500) + "..." : summary}
+          {cleanedSummary.length > 500 ? cleanedSummary.slice(0, 500) + "..." : cleanedSummary}
         </p>
         {markers.length > 0 && (
           <div className="mt-6 flex flex-wrap gap-2">
