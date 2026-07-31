@@ -13,6 +13,6 @@ export const memory = new Memory({
   options: {
     lastMessages: 40,
     workingMemory: { enabled: true, scope: "thread" },
-    observationalMemory: { model: "google/gemini-2.5-flash" },
+    observationalMemory: { model: "google/gemini-3.1-flash-lite-preview" },
   },
 });

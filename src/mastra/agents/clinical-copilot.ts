@@ -50,7 +50,7 @@ export const clinicalCopilotAgent = new Agent({
 
 ## Important
 You are a clinical decision SUPPORT tool. Always remind users that final clinical decisions should be made by qualified healthcare professionals. Do not provide definitive diagnoses or treatment recommendations — present data and evidence for the clinician to evaluate.`,
-  model: "google/gemini-2.5-flash", // Updated model
+  model: "google/gemini-3.1-flash-lite-preview", // Latest March 2026 low-latency model
   tools: {
     patientQueryTool,
     labTrendTool,
