@@ -5,7 +5,7 @@ import { usePatient } from "@/context/patient-context";
 import { useQuery, usePaginatedQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileText, Search, History, Download, ExternalLink, User, Sparkles } from "lucide-react";
+import { FileText, Search, History, Download, ExternalLink, User, Sparkles, ArrowRight } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -163,15 +163,13 @@ export default function RecordsPage() {
           </div>
           
           <div className="flex items-center gap-3">
-            <div className="hidden xl:flex items-center gap-4 px-4 py-1.5 border-x border-border/50">
-              <div className="text-right">
-                <p className="text-[8px] font-black text-muted-foreground uppercase leading-none">Last Audit</p>
-                <p className="text-[10px] font-bold text-foreground">Mar 09, 2026</p>
-              </div>
-              <div className="size-8 rounded-full bg-muted flex items-center justify-center border border-border/50">
-                <User className="h-3.5 w-3.5 text-muted-foreground" />
-              </div>
-            </div>
+            <button 
+              onClick={() => setSelectedHadmId(null)}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-muted text-[10px] font-black uppercase tracking-widest hover:bg-muted/80 transition-colors border border-border/50 shadow-sm mr-2"
+            >
+              <ArrowRight className="h-3.5 w-3.5 rotate-180" /> Return to Registry
+            </button>
+            <div className="h-8 w-px bg-border/50 mx-2 hidden xl:block" />
             <button 
               onClick={handlePrint}
               className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-white/5 border border-border shadow-sm text-[10px] font-black uppercase tracking-widest hover:bg-muted transition-all"

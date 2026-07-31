@@ -1,7 +1,10 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import { Bell, Search, Settings, Activity, PanelLeftClose, PanelLeftOpen } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import { 
+  Bell, Search, Settings, Activity, 
+  PanelLeftClose, PanelLeftOpen, XCircle 
+} from "lucide-react";
 import { ThemeSwitcher } from "@/components/kibo-ui/theme-switcher";
 import { UserButton } from "@clerk/nextjs";
 import { Input } from "@/components/ui/input";
@@ -13,6 +16,10 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useState, useEffect, useRef } from "react";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { usePatient } from "@/context/patient-context";
 
 const ROUTE_LABELS: Record<string, string> = {
   "/dashboard": "Workbench",
@@ -23,18 +30,12 @@ const ROUTE_LABELS: Record<string, string> = {
   "/settings": "Settings",
 };
 
-import { useState, useEffect, useRef } from "react";
-import { useQuery } from "convex/react";
-import { api } from "@/convex/_generated/api";
-import { usePatient } from "@/context/patient-context";
-import { useRouter } from "next/navigation";
-
 export function GlobalHeader() {
   const pathname = usePathname();
   const router = useRouter();
   const pageLabel = ROUTE_LABELS[pathname] ?? "Dashboard";
   const { isLeftCollapsed, toggleLeft } = useSidebar();
-  const { setSelectedHadmId } = usePatient();
+  const { selectedHadmId, setSelectedHadmId } = usePatient();
   
   const [searchQuery, setSearchQuery] = useState("");
   const [showResults, setShowResults] = useState(false);
@@ -68,8 +69,8 @@ export function GlobalHeader() {
   }, []);
 
   const highlightText = (text: string, query: string) => {
-    if (!query.trim()) return text;
-    const parts = text.split(new RegExp(`(${query})`, "gi"));
+    if (!query.trim()) return <span>{text}</span>;
+    const parts = text.split(new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`, "gi"));
     return (
       <span>
         {parts.map((part, i) =>
@@ -143,10 +144,29 @@ export function GlobalHeader() {
 
         {/* Right zone — breadcrumb + search + actions */}
         <div className="flex items-center gap-6 flex-1 px-6">
-          {/* Breadcrumb */}
-          <span className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest shrink-0">
-            {pageLabel}
-          </span>
+          {/* Breadcrumb & Case Control */}
+          <div className="flex items-center gap-3 shrink-0">
+            <span className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest">
+              {pageLabel}
+            </span>
+            {selectedHadmId && (
+              <>
+                <div className="size-1 bg-border rounded-full" />
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button 
+                      onClick={() => setSelectedHadmId(null)}
+                      className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-primary/5 border border-primary/10 hover:bg-red-500/5 hover:border-red-500/20 hover:text-red-600 transition-all group animate-in fade-in slide-in-from-left-2"
+                    >
+                      <span className="text-[9px] font-black uppercase tracking-widest text-primary group-hover:text-red-600 transition-colors">AEG-{selectedHadmId}</span>
+                      <XCircle className="size-3 opacity-40 group-hover:opacity-100 transition-opacity" />
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom" className="text-[10px] font-bold uppercase tracking-widest">Close active case</TooltipContent>
+                </Tooltip>
+              </>
+            )}
+          </div>
 
           {/* Global Search Bar */}
           <div className="relative w-full max-w-md group hidden md:block" ref={searchRef}>
@@ -158,9 +178,8 @@ export function GlobalHeader() {
                 className="h-9 pl-9 pr-12 text-[11px] bg-muted/30 border-border/50 focus-visible:ring-1 focus-visible:ring-primary transition-all rounded-xl shadow-inner"
                 value={searchQuery}
                 onChange={(e) => {
-                  const val = e.target.value;
-                  setSearchQuery(val);
-                  setShowResults(val.length >= 2);
+                  setSearchQuery(e.target.value);
+                  setShowResults(e.target.value.length >= 2);
                 }}
                 onFocus={() => {
                   if (searchQuery.length >= 2) setShowResults(true);
