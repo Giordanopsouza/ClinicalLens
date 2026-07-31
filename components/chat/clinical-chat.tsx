@@ -42,6 +42,10 @@ export function ClinicalChat() {
   });
 
   // ─── Generative UI Actions ─────────────────────────────────────
+  useMemo(() => {
+    // These actions are memoized to prevent re-registration and duplicate UI elements
+  }, []);
+
   useCopilotAction({
     name: "renderLabChart",
     description: "Render an interactive lab chart inside the chat.",

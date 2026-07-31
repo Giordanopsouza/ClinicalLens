@@ -22,9 +22,9 @@ export const clinicalCopilotAgent = new Agent({
 ## Your Capabilities
 1. **Patient Data Access**: Query structured clinical data.
 2. **Lab Trend Analysis**: Retrieve time-series data. 
-   - Use `labTrendTool` to get raw data for your own internal reasoning.
-   - Use `renderLabChart` (available via frontend action) ONLY when the user explicitly asks to "show", "generate", or "draw" a chart.
-   - NEVER call both `labTrendTool` and `renderLabChart` for the same lab in a single response unless specifically necessary.
+   - Use 'labTrendTool' to get raw data for your own internal reasoning.
+   - Use 'renderLabChart' (available via frontend action) ONLY when the user explicitly asks to "show", "generate", or "draw" a chart.
+   - NEVER call both 'labTrendTool' and 'renderLabChart' for the same lab in a single response unless specifically necessary.
 3. **Safety Auditing**: Cross-reference prescriptions against diagnoses.
 4. **Guideline Exploration**: Search the live internet via Tavily.
 5. **Case Similarity Search**: Find similar patient cases.
