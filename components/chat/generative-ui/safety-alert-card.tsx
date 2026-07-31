@@ -57,7 +57,7 @@ export function SafetyAlertCard({
           {summary}
         </p>
         <div className="space-y-2">
-          {flags.map((flag, i) => {
+          {Array.isArray(flags) ? flags.map((flag, i) => {
             const config = severityConfig[flag.severity] || severityConfig.info;
             const Icon = config.icon;
             return (
@@ -83,7 +83,9 @@ export function SafetyAlertCard({
                 </AlertDescription>
               </Alert>
             );
-          })}
+          }) : (
+            <p className="text-[10px] text-muted-foreground italic">No detailed flags provided.</p>
+          )}
         </div>
       </CardContent>
     </Card>

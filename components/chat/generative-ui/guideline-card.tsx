@@ -1,8 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { BookOpen, ExternalLink, Sparkles } from "lucide-react";
+import { BookOpen, ExternalLink, Sparkles, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export interface GuidelineResult {
@@ -17,11 +18,35 @@ export interface GuidelineResult {
 
 interface GuidelineCardProps {
   query: string;
-  results: GuidelineResult[];
+  results?: GuidelineResult[];
   answer?: string;
 }
 
-export function GuidelineCard({ query, results, answer }: GuidelineCardProps) {
+export function GuidelineCard({ query, results: initialResults, answer }: GuidelineCardProps) {
+  const [results, setResults] = useState<GuidelineResult[]>(initialResults || []);
+  const [loading, setLoading] = useState(!initialResults || initialResults.length === 0);
+
+  useEffect(() => {
+    if (initialResults && initialResults.length > 0) {
+      setResults(initialResults);
+      setLoading(false);
+      return;
+    }
+    
+    if (!query) return;
+    setLoading(true);
+    fetch("/api/research", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ query }),
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        if (Array.isArray(data.results)) setResults(data.results);
+      })
+      .catch((e) => console.error("GuidelineCard fetch error:", e))
+      .finally(() => setLoading(false));
+  }, [query, initialResults]);
   const formatFreshness = (dateStr?: string) => {
     if (!dateStr) return null;
     try {
@@ -43,6 +68,30 @@ export function GuidelineCard({ query, results, answer }: GuidelineCardProps) {
     unclear: "bg-muted text-muted-foreground border-border",
   };
 
+  const renderMarkdown = (text: string) => {
+    // 1. Handle bold: **text**
+    let processed = text.replace(/\*\*(.*?)\*\*/g, '<strong class="font-black text-foreground">$1</strong>');
+    
+    // 2. Handle bullet points (simple multiline support)
+    // Replace "* " or "- " at start of line with a bullet div
+    const lines = processed.split('\n');
+    const renderedLines = lines.map((line, i) => {
+      const trimmed = line.trim();
+      if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
+        return (
+          <div key={i} className="flex gap-2 mb-1.5 pl-1">
+            <span className="text-primary mt-1">•</span>
+            <span dangerouslySetInnerHTML={{ __html: trimmed.substring(2) }} />
+          </div>
+        );
+      }
+      if (trimmed === '') return <div key={i} className="h-2" />;
+      return <p key={i} className="mb-2" dangerouslySetInnerHTML={{ __html: trimmed }} />;
+    });
+
+    return renderedLines;
+  };
+
   return (
     <Card className="my-2 border-primary/20 bg-primary/[0.01] shadow-sm overflow-hidden animate-in fade-in duration-500 font-sans">
       <CardHeader className="pb-2 pt-3 px-4 bg-primary/5">
@@ -57,19 +106,26 @@ export function GuidelineCard({ query, results, answer }: GuidelineCardProps) {
       <CardContent className="space-y-4 px-4 py-4">
         {answer && (
           <div className="rounded-xl bg-primary/5 border border-primary/10 p-3 relative overflow-hidden group">
-            <div className="flex items-center gap-1.5 mb-1.5">
+            <div className="flex items-center gap-1.5 mb-2">
               <Sparkles className="h-3 w-3 text-primary animate-pulse" />
               <p className="text-[10px] font-black text-primary uppercase tracking-widest">AI Synthesis</p>
             </div>
-            <p className="text-[11px] leading-relaxed text-foreground/90 font-medium">
-              {answer}
-            </p>
+            <div className="text-[11px] leading-relaxed text-foreground/90 font-medium">
+              {renderMarkdown(answer)}
+            </div>
           </div>
         )}
         
         <div className="space-y-3">
           <p className="text-[9px] font-black text-muted-foreground uppercase tracking-[0.2em] px-1 opacity-60">Evidence Sources</p>
-          {results.map((r, i) => (
+          {loading ? (
+            <div className="flex items-center gap-2 text-[10px] text-muted-foreground py-2 px-1">
+              <Loader2 className="h-3 w-3 animate-spin" />
+              <span>Fetching sources…</span>
+            </div>
+          ) : results.length === 0 ? (
+            <p className="text-[10px] text-muted-foreground italic px-1">No sources found.</p>
+          ) : results.map((r, i) => (
             <div key={i} className="rounded-xl border border-border/50 p-3 bg-card hover:bg-muted/5 transition-all group shadow-sm">
               <div className="flex items-start justify-between gap-3 mb-2">
                 <a
@@ -82,7 +138,7 @@ export function GuidelineCard({ query, results, answer }: GuidelineCardProps) {
                   <ExternalLink className="ml-1.5 inline h-2.5 w-2.5 opacity-30 group-hover:opacity-100 transition-opacity" />
                 </a>
                 <Badge variant="outline" className="shrink-0 text-[8px] h-4 px-1.5 bg-muted/30 border-none font-black uppercase tracking-tighter">
-                  {(r.score * 100).toFixed(0)}% match
+                  {typeof r.score === 'number' ? `${(r.score * 100).toFixed(0)}% match` : 'Matched Source'}
                 </Badge>
               </div>
 

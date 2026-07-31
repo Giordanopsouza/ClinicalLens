@@ -91,7 +91,7 @@ function computeGroundedness(answer: string | undefined, results: TavilyResult[]
 export const tavilyResearchTool = createTool({
   id: "tavily-research",
   description:
-    "Search the public internet for current medical guidelines, clinical trials, FDA updates, or PubMed research related to a diagnosis or clinical question. Use this when a user asks about treatment protocols, drug interactions, or wants to explore the latest evidence for a condition. Provide a focused medical search query.",
+    "MANDATORY TOOL for ANY news, breakthroughs, latest research, clinical trials, or medical guidelines. Use this for ANY question that requires current (2024-2026) medical evidence or world knowledge. If the user asks about news, research, or how to treat a condition, you MUST call this tool. Do NOT rely on internal knowledge.",
   inputSchema: z.object({
     query: z
       .string()
@@ -137,75 +137,83 @@ export const tavilyResearchTool = createTool({
       .optional(),
   }),
   execute: async ({ query, icd9_code, search_depth }) => {
-    const tavilyClient = getTavilyClient();
+    console.log(`[tavilyResearchTool] START execution for query: "${query}"`);
+    try {
+      const tavilyClient = getTavilyClient();
 
-    const searchQuery = icd9_code
-      ? `${query} ICD-9 ${icd9_code} clinical guidelines`
-      : query;
+      const searchQuery = icd9_code
+        ? `${query} ICD-9 ${icd9_code} clinical guidelines`
+        : query;
 
-    const response = await tavilyClient.search(searchQuery, {
-      searchDepth: search_depth || "advanced",
-      maxResults: 5,
-      includeAnswer: true,
-      includeDomains: [
-        "pubmed.ncbi.nlm.nih.gov",
-        "nih.gov",
-        "fda.gov",
-        "who.int",
-        "uptodate.com",
-        "medscape.com",
-        "mayoclinic.org",
-        "nejm.org",
-        "thelancet.com",
-      ],
-    });
+      const response = await tavilyClient.search(searchQuery, {
+        searchDepth: search_depth || "advanced",
+        maxResults: 5,
+        includeAnswer: true,
+        includeDomains: [
+          "pubmed.ncbi.nlm.nih.gov",
+          "nih.gov",
+          "fda.gov",
+          "who.int",
+          "uptodate.com",
+          "medscape.com",
+          "mayoclinic.org",
+          "nejm.org",
+          "thelancet.com",
+        ],
+      });
 
-    const getSource = (url: string) => {
-      if (url.includes("pubmed.ncbi.nlm.nih.gov")) return "PubMed";
-      if (url.includes("nih.gov")) return "NIH";
-      if (url.includes("fda.gov")) return "FDA";
-      if (url.includes("who.int")) return "WHO";
-      if (url.includes("uptodate.com")) return "UpToDate";
-      if (url.includes("medscape.com")) return "Medscape";
-      if (url.includes("mayoclinic.org")) return "Mayo Clinic";
-      if (url.includes("nejm.org")) return "NEJM";
-      if (url.includes("thelancet.com")) return "The Lancet";
-      return new URL(url).hostname.replace("www.", "");
-    };
-
-    const getEvidenceStrength = (source: string, content: string): "high" | "moderate" | "low" | "unclear" => {
-      const highValueSources = ["NEJM", "The Lancet", "PubMed", "FDA", "NIH"];
-      const lowerContent = content.toLowerCase();
-      if (highValueSources.includes(source) || lowerContent.includes("meta-analysis") || lowerContent.includes("randomized controlled trial")) {
-        return "high";
-      }
-      if (lowerContent.includes("observational study") || lowerContent.includes("cohort study")) {
-        return "moderate";
-      }
-      return "unclear";
-    };
-
-    const normalizedResults = (response.results as TavilyResult[]).map((r) => {
-      const source = getSource(r.url);
-      return {
-        title: r.title,
-        url: r.url,
-        content: r.content,
-        score: r.score,
-        source,
-        published_date: r.published_date,
-        evidence_strength: getEvidenceStrength(source, r.content),
+      const getSource = (url: string) => {
+        if (url.includes("pubmed.ncbi.nlm.nih.gov")) return "PubMed";
+        if (url.includes("nih.gov")) return "NIH";
+        if (url.includes("fda.gov")) return "FDA";
+        if (url.includes("who.int")) return "WHO";
+        if (url.includes("uptodate.com")) return "UpToDate";
+        if (url.includes("medscape.com")) return "Medscape";
+        if (url.includes("mayoclinic.org")) return "Mayo Clinic";
+        if (url.includes("nejm.org")) return "NEJM";
+        if (url.includes("thelancet.com")) return "The Lancet";
+        return new URL(url).hostname.replace("www.", "");
       };
-    });
 
-    const answer = response.answer || undefined;
-    const groundedness = computeGroundedness(answer, response.results as TavilyResult[]);
+      const getEvidenceStrength = (source: string, content: string): "high" | "moderate" | "low" | "unclear" => {
+        const highValueSources = ["NEJM", "The Lancet", "PubMed", "FDA", "NIH"];
+        const lowerContent = content.toLowerCase();
+        if (highValueSources.includes(source) || lowerContent.includes("meta-analysis") || lowerContent.includes("randomized controlled trial")) {
+          return "high";
+        }
+        if (lowerContent.includes("observational study") || lowerContent.includes("cohort study")) {
+          return "moderate";
+        }
+        return "unclear";
+      };
 
-    return {
-      query: searchQuery,
-      results: normalizedResults,
-      answer,
-      groundedness,
-    };
+      const normalizedResults = (response.results as TavilyResult[]).map((r) => {
+        const source = getSource(r.url);
+        return {
+          title: r.title,
+          url: r.url,
+          content: r.content,
+          score: r.score,
+          source,
+          published_date: r.published_date,
+          evidence_strength: getEvidenceStrength(source, r.content),
+        };
+      });
+
+      const answer = response.answer || undefined;
+      const groundedness = computeGroundedness(answer, response.results as TavilyResult[]);
+
+      console.log(`[tavilyResearchTool] SUCCESS: found ${normalizedResults.length} results`);
+
+      return {
+        query: searchQuery,
+        results: normalizedResults,
+        answer,
+        groundedness,
+      };
+    } catch (error) {
+      console.error(`[tavilyResearchTool] ERROR:`, error);
+      throw error;
+    }
   },
 });

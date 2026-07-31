@@ -1,0 +1,27 @@
+[     969ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[    1025ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[  141011ms] [WARNING] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[  141011ms] [WARNING] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(undefined) or use aspect(undefined) to control the
+       height and width. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[  244702ms] TypeError: results.map is not a function
+    at GuidelineCard (http://localhost:3000/_next/static/chunks/_8fe21fbc._.js:1716:37)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9105:47)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64)
+[  261361ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[  262304ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[  262658ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[  262730ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297

@@ -6,7 +6,7 @@ import { api } from "@/convex/_generated/api";
 export const patientQueryTool = createTool({
   id: "patient-query",
   description:
-    "Look up a patient's full clinical record. If no hadm_id is provided, it will automatically retrieve the most recently accessed/active patient record.",
+    "Look up a patient's full clinical record. Call this tool with no arguments to retrieve the currently active/selected patient. Optionally pass hadm_id to look up a specific patient by admission ID.",
   inputSchema: z.object({
     hadm_id: z.number().optional().describe("The hospital admission ID to look up"),
   }),
@@ -19,17 +19,21 @@ export const patientQueryTool = createTool({
     admission_diagnosis: z.string(),
     discharge_summary: z.string(),
   }),
-  execute: async ({ hadm_id }) => {
-    const client = getConvexClient();
-    
+  execute: async ({ hadm_id }, { requestContext }) => {
+    const token = requestContext?.get("convexToken") as string | undefined;
+    const client = getConvexClient(token);
+
+    // Resolve hadm_id: prefer explicit arg, then the active patient from request context (set via x-hadm-id header)
+    const resolvedHadmId =
+      hadm_id ?? (requestContext?.get("activeHadmId") as number | undefined);
+
     let patient;
-    if (hadm_id) {
+    if (resolvedHadmId) {
       patient = await client.query(api.queries.getPatientById, {
-        hadm_id,
+        hadm_id: resolvedHadmId,
       });
     } else {
-      // Auto-fallback to the first patient in the list if no ID is provided
-      // This is a robust fallback for the copilot when context is "active"
+      // Last resort: first patient in the list (should rarely happen)
       const list = await client.query(api.queries.getPatientList, {
         paginationOpts: { numItems: 1, cursor: null }
       });
@@ -41,7 +45,7 @@ export const patientQueryTool = createTool({
     }
 
     if (!patient) {
-      throw new Error(`No active patient found.`);
+      throw new Error(`No active patient found. Please select a patient first.`);
     }
 
     return {

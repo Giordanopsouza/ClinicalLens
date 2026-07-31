@@ -4,7 +4,6 @@ import "./globals.css";
 import { ConvexClientProvider } from "@/components/providers/convex-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { CopilotKitProvider } from "@/components/providers/copilotkit-provider";
 
 const lexend = Lexend({
   weight: ["300", "400", "500", "600", "700"],
@@ -39,11 +38,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ConvexClientProvider>
-            <CopilotKitProvider>
-              <TooltipProvider>
-                {children}
-              </TooltipProvider>
-            </CopilotKitProvider>
+            <TooltipProvider>
+              {children}
+            </TooltipProvider>
           </ConvexClientProvider>
         </ThemeProvider>
       </body>

@@ -103,7 +103,7 @@ export default function Home() {
                 A Unified Clinical Platform
               </h2>
               <p className="mt-6 text-lg text-muted-foreground font-medium leading-relaxed">
-                We've combined lightning-fast global discovery with deep, agentic medical analysis to create the ultimate tool for hospitalists and researchers.
+                We&apos;ve combined lightning-fast global discovery with deep, agentic medical analysis to create the ultimate tool for hospitalists and researchers.
               </p>
             </div>
             

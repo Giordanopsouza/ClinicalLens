@@ -1,21 +1,40 @@
 "use client";
 
-import { PatientProvider } from "@/context/patient-context";
+import { useEffect } from "react";
+import { PatientProvider, usePatient } from "@/context/patient-context";
 import { SidebarProvider } from "@/context/sidebar-context";
 import { PatientSidebar } from "@/components/patients/patient-sidebar";
 import { ClinicalChat } from "@/components/chat/clinical-chat";
 import { GlobalHeader } from "@/components/layout/global-header";
 import { ErrorBoundary } from "@/components/error-boundary";
 import { Footer } from "@/components/layout/footer";
+import { useConvexAuth, useMutation } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { CopilotKit } from "@copilotkit/react-core";
 
-export default function DashboardLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+const COPILOTKIT_URL =
+  process.env.NEXT_PUBLIC_COPILOTKIT_URL || "/api/copilotkit";
+
+// Inner component — has access to PatientContext so it can pass hadm_id as a header
+function DashboardShell({ children }: { children: React.ReactNode }) {
+  const { isAuthenticated } = useConvexAuth();
+  const storeUser = useMutation(api.mutations.storeUser);
+  const { selectedHadmId } = usePatient();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      storeUser();
+    }
+  }, [isAuthenticated, storeUser]);
+
   return (
-    <SidebarProvider>
-      <PatientProvider>
+    <CopilotKit
+      runtimeUrl={COPILOTKIT_URL}
+      agent="clinicalCopilotAgent"
+      showDevConsole={false}
+      headers={{ "x-hadm-id": selectedHadmId?.toString() ?? "" }}
+    >
+      <SidebarProvider>
         <div className="flex h-screen flex-col bg-background overflow-hidden font-sans">
           {/* Top: Global Navigation & User Controls */}
           <GlobalHeader />
@@ -31,7 +50,7 @@ export default function DashboardLayout({
                   {children}
                 </ErrorBoundary>
               </main>
-              
+
               {/* Contextual Footer (Compliance) */}
               <Footer />
             </div>
@@ -40,7 +59,19 @@ export default function DashboardLayout({
             <ClinicalChat />
           </div>
         </div>
-      </PatientProvider>
-    </SidebarProvider>
+      </SidebarProvider>
+    </CopilotKit>
+  );
+}
+
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <PatientProvider>
+      <DashboardShell>{children}</DashboardShell>
+    </PatientProvider>
   );
 }

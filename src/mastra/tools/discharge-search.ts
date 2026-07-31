@@ -65,10 +65,11 @@ export const dischargeSummarySearchTool = createTool({
       })
     ),
   }),
-  execute: async ({ query, limit }) => {
+  execute: async ({ query, limit }, { requestContext }) => {
+    const token = requestContext?.get("convexToken") as string | undefined;
     const queryEmbedding = await createQueryEmbedding(query);
 
-    const client = getConvexClient();
+    const client = getConvexClient(token);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const results = await client.action((api as any).actions.searchDischargeSummaries, {
       embedding: queryEmbedding,

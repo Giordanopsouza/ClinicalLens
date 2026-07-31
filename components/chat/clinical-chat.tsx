@@ -30,7 +30,6 @@ export function ClinicalChat() {
   );
 
   // ─── Pass patient context to the agent automatically ───────────
-  // We use a memoized string to prevent the re-render loop
   const patientInfo = useMemo(() => {
     if (!patient) return "No patient selected";
     return `Patient AEG-${patient.hadm_id}, Age ${patient.age}, Gender ${patient.gender}, Diagnosis: ${patient.admission_diagnosis}`;
@@ -41,11 +40,45 @@ export function ClinicalChat() {
     value: patientInfo,
   });
 
-  // ─── Generative UI Actions ─────────────────────────────────────
-  useMemo(() => {
-    // These actions are memoized to prevent re-registration and duplicate UI elements
-  }, []);
+  useCopilotReadable({
+    description: "The active patient ID for the current session.",
+    value: selectedHadmId ? `ACTIVE_HADM_ID:${selectedHadmId}` : "NO_ACTIVE_PATIENT",
+  });
 
+  useCopilotReadable({
+    description: "Current date and time for temporal context.",
+    value: `TODAY_IS: ${new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}`,
+  });
+
+  // ─── Data Parsing Helper ───────────────────────────────────────
+  const parseToolData = (data: any): any[] => {
+    if (Array.isArray(data)) return data;
+    if (typeof data === "object" && data !== null) {
+      if (Array.isArray((data as any).results)) return (data as any).results;
+      if (Array.isArray((data as any).flags)) return (data as any).flags;
+      return [data];
+    }
+    if (typeof data !== "string") return [];
+
+    const trimmed = data.trim();
+    if (trimmed.includes("[See summary above]") || trimmed === "...") return [];
+
+    if (trimmed.startsWith("[") || trimmed.startsWith("{")) {
+      try {
+        const sanitized = trimmed.replace(/\n/g, "\\n").replace(/\r/g, "\\r");
+        const parsed = JSON.parse(sanitized);
+        if (Array.isArray(parsed)) return parsed;
+        if (parsed.results && Array.isArray(parsed.results)) return parsed.results;
+        return [parsed];
+      } catch (e) {
+        console.error("[parseToolData] JSON.parse failed:", e);
+        return [];
+      }
+    }
+    return [];
+  };
+
+  // ─── Generative UI Actions ─────────────────────────────────────
   useCopilotAction({
     name: "renderLabChart",
     description: "Render an interactive lab chart inside the chat.",
@@ -65,27 +98,38 @@ export function ClinicalChat() {
     description: "Render a safety alert card showing prescription-diagnosis mismatches.",
     parameters: [
       { name: "hadmId", type: "number", required: true },
-      { name: "flags", type: "object", required: true },
+      { name: "flags", type: "array", required: true, items: { type: "object" } },
       { name: "summary", type: "string", required: true },
     ],
     handler: async () => {},
-    render: ({ args }) => (
-      <SafetyAlertCard hadmId={args.hadmId as number} flags={args.flags as SafetyFlag[]} summary={args.summary as string} />
-    ),
+    render: ({ args }) => {
+      const safeFlags = parseToolData(args.flags);
+      return (
+        <SafetyAlertCard hadmId={args.hadmId as number} flags={safeFlags as SafetyFlag[]} summary={args.summary as string} />
+      );
+    },
   });
 
   useCopilotAction({
     name: "renderGuidelines",
-    description: "Render guideline search results as cards.",
+    description: "Render guideline search results as cards with live evidence sources.",
     parameters: [
       { name: "query", type: "string", required: true },
-      { name: "results", type: "object", required: true },
+      { name: "results", type: "array", required: true, items: { type: "object" } },
       { name: "answer", type: "string", required: false },
     ],
     handler: async () => {},
-    render: ({ args }) => (
-      <GuidelineCard query={args.query as string} results={args.results as GuidelineResult[]} answer={args.answer as string} />
-    ),
+    render: ({ args, status }) => {
+      if (!args.query) return <div />;
+      const safeResults = parseToolData(args.results);
+      return (
+        <GuidelineCard 
+          query={args.query as string} 
+          results={safeResults as GuidelineResult[]}
+          answer={status === "complete" ? (args.answer as string) : undefined} 
+        />
+      );
+    },
   });
 
   // ─── Listen for Explore button events ──────────────────────────

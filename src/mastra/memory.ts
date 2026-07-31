@@ -11,8 +11,7 @@ export const memory = new Memory({
     url: databaseUrl,
   }),
   options: {
-    lastMessages: 40,
-    workingMemory: { enabled: true, scope: "thread" },
-    observationalMemory: { model: "google/gemini-3.1-flash-lite-preview" },
+    lastMessages: 10,
+    workingMemory: { enabled: false, scope: "thread" },
   },
 });

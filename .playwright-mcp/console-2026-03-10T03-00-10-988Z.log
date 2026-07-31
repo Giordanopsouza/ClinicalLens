@@ -1,0 +1,84 @@
+[    3005ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[    3807ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[   57186ms] [ERROR] Failed to parse results: SyntaxError: Unexpected token 'S', "[See summary above]" is not valid JSON
+    at JSON.parse (<anonymous>)
+    at ClinicalChat.useCopilotAction (http://localhost:3000/_next/static/chunks/_8fe21fbc._.js:2097:40)
+    at useFrontendTool.useMemo[normalizedRender] (http://localhost:3000/_next/static/chunks/9d83e_%40copilotkit_react-core_dist_index_mjs_f2be57aa._.js:3358:38)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9068:186)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64) @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[   57187ms] [ERROR] Failed to parse results: SyntaxError: Unexpected token 'S', "[See summary above]" is not valid JSON
+    at JSON.parse (<anonymous>)
+    at ClinicalChat.useCopilotAction (http://localhost:3000/_next/static/chunks/_8fe21fbc._.js:2097:40)
+    at useFrontendTool.useMemo[normalizedRender] (http://localhost:3000/_next/static/chunks/9d83e_%40copilotkit_react-core_dist_index_mjs_f2be57aa._.js:3358:38)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooksAgain (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4706:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4657:28)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9068:186)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64) @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[   57207ms] [ERROR] Failed to parse results: SyntaxError: Unexpected token 'S', "[See summary above]" is not valid JSON
+    at JSON.parse (<anonymous>)
+    at ClinicalChat.useCopilotAction (http://localhost:3000/_next/static/chunks/_8fe21fbc._.js:2097:40)
+    at useFrontendTool.useMemo[normalizedRender] (http://localhost:3000/_next/static/chunks/9d83e_%40copilotkit_react-core_dist_index_mjs_f2be57aa._.js:3358:38)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9068:186)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64) @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[   57207ms] [ERROR] Failed to parse results: SyntaxError: Unexpected token 'S', "[See summary above]" is not valid JSON
+    at JSON.parse (<anonymous>)
+    at ClinicalChat.useCopilotAction (http://localhost:3000/_next/static/chunks/_8fe21fbc._.js:2097:40)
+    at useFrontendTool.useMemo[normalizedRender] (http://localhost:3000/_next/static/chunks/9d83e_%40copilotkit_react-core_dist_index_mjs_f2be57aa._.js:3358:38)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooksAgain (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4706:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4657:28)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9068:186)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64) @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  205071ms] [WARNING] results is a non-JSON string, defaulting to empty array: - Genomic assays for early detection of tumor DNA in blood.
+- New four-marker blood panel for early pancreatic cancer detection.
+- Ongoing efforts to adapt CAR-T cell therapy for solid tumors.
+- Nanoparticle-enhanced immunotherapy.
+- AI-powered tools for streamlining clinical diagnostics. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[  205071ms] [WARNING] results is a non-JSON string, defaulting to empty array: - Genomic assays for early detection of tumor DNA in blood.
+- New four-marker blood panel for early pancreatic cancer detection.
+- Ongoing efforts to adapt CAR-T cell therapy for solid tumors.
+- Nanoparticle-enhanced immunotherapy.
+- AI-powered tools for streamlining clinical diagnostics. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[  205100ms] [WARNING] results is a non-JSON string, defaulting to empty array: - Genomic assays for early detection of tumor DNA in blood.
+- New four-marker blood panel for early pancreatic cancer detection.
+- Ongoing efforts to adapt CAR-T cell therapy for solid tumors.
+- Nanoparticle-enhanced immunotherapy.
+- AI-powered tools for streamlining clinical diagnostics. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[  205100ms] [WARNING] results is a non-JSON string, defaulting to empty array: - Genomic assays for early detection of tumor DNA in blood.
+- New four-marker blood panel for early pancreatic cancer detection.
+- Ongoing efforts to adapt CAR-T cell therapy for solid tumors.
+- Nanoparticle-enhanced immunotherapy.
+- AI-powered tools for streamlining clinical diagnostics. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297

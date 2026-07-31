@@ -14,7 +14,7 @@ import {
   Area,
 } from "recharts";
 import { Badge } from "@/components/ui/badge";
-import { Activity, Clock, FlaskConical, TrendingUp } from "lucide-react";
+import { Clock, FlaskConical } from "lucide-react";
 
 interface LabChartCardProps {
   hadmId: number;
@@ -22,6 +22,7 @@ interface LabChartCardProps {
   labName: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (

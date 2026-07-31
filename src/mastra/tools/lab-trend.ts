@@ -20,8 +20,9 @@ export const labTypesTool = createTool({
       }),
     ),
   }),
-  execute: async ({ hadm_id }) => {
-    const client = getConvexClient();
+  execute: async ({ hadm_id }, { requestContext }) => {
+    const token = requestContext?.get("convexToken") as string | undefined;
+    const client = getConvexClient(token);
     const labTypes = await client.query(api.queries.getLabTypesForAdmission, {
       hadm_id,
     });
@@ -57,8 +58,9 @@ export const labTrendTool = createTool({
       }),
     ),
   }),
-  execute: async ({ hadm_id, itemid }) => {
-    const client = getConvexClient();
+  execute: async ({ hadm_id, itemid }, { requestContext }) => {
+    const token = requestContext?.get("convexToken") as string | undefined;
+    const client = getConvexClient(token);
     const trend = await client.query(api.queries.getLabTrend, {
       hadm_id,
       itemid,

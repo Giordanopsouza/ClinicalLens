@@ -1,0 +1,508 @@
+[   38896ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[   39002ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[  279911ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard:0
+[  280193ms] ReferenceError: CopilotKitProvider is not defined
+    at RootLayout (about://React/Server/file:///Users/karanbalaji/Documents/coding-projects/the-team/.next/dev/server/chunks/ssr/%5Broot-of-the-server%5D__1c265e5a._.js?0:234:490)
+    at resolveErrorDev (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-server-dom-turbopack_9c8523e2._.js:1894:106)
+    at processFullStringRow (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-server-dom-turbopack_9c8523e2._.js:2402:29)
+    at processFullBinaryRow (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-server-dom-turbopack_9c8523e2._.js:2361:9)
+    at processBinaryChunk (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-server-dom-turbopack_9c8523e2._.js:2470:221)
+    at progress (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-server-dom-turbopack_9c8523e2._.js:2640:13)
+[  282071ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/dashboard:0
+[  282680ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[  283083ms] Error: Remember to wrap your app in a `<CopilotKit> {...} </CopilotKit>` !!!
+    at useCopilotContext (http://localhost:3000/_next/static/chunks/9d83e_%40copilotkit_react-core_dist_index_mjs_f2be57aa._.js:190:50)
+    at CopilotChat (http://localhost:3000/_next/static/chunks/a5e17_%40copilotkit_react-ui_dist_index_mjs_b19be404._.js:2484:547)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9105:47)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64)
+[  286121ms] [WARNING] The resource http://localhost:3000/_next/static/chunks/node_modules__pnpm_05e6903b._.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[  286121ms] [WARNING] The resource http://localhost:3000/_next/static/chunks/%5Broot-of-the-server%5D__6bcf5f4f._.css was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[  295452ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[  296526ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[  297677ms] Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <SidebarProvider>
+      <div className="flex h-scr...">
+        <GlobalHeader>
+          <TooltipProvider delayDuration={300}>
+            <TooltipProvider data-slot="tooltip-pr..." delayDuration={300}>
+              <TooltipProviderProvider scope={undefined} isOpenDelayedRef={{current:true}} delayDuration={300} ...>
+                <header className="h-14 borde...">
+                  <div>
+                  <div className="flex items...">
+                    <div>
+                    <div>
+                    <div className="ml-auto fl...">
+                      <button>
+                      <button>
+                      <div>
+                      <ThemeSwitcher>
+                      <div>
+                      <withClerk(UserButton) appearance={{elements:{...}}}>
+                        <UserButton getContainer={function} appearance={{elements:{...}}} component="UserButton" ...>
+                          <ClerkHostRenderer component="UserButton" mount={function} unmount={function} ...>
++                           <div ref={{current:null}} data-clerk-component="UserButton">
+                            ...
+        ...
+
+    at throwOnHydrationMismatch (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:3348:56)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6775:918)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopConcurrentByScheduler (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9558:58)
+    at renderRootConcurrent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9541:71)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9068:150)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64)
+[  298083ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[  301286ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[  343557ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[  386744ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[  416003ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[  430187ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[  475910ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[  486112ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[  495571ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[  509424ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[  518414ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[  532007ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[  542462ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[  562797ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[  606317ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[  650564ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[  693761ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[  712414ms] [ERROR] ./src/mastra/agents/clinical-copilot.ts:29:20
+Parsing ecmascript source code failed
+  27 | 2. Call renderGuidelines with:
+  28 |    - query: the search string
+> 29 |    - results: the `results` ARRAY from the tavilyResearchTool output (NOT the full object — extract only the array field)
+     |                    ^^^^^^^
+  30 |    - answer: your own detailed clinical synthesis (not a placeholder)
+  31 | 3. Also provide a brief text summary in the chat.
+  32 | 
+
+Expected ',', got 'ident'
+
+Import trace:
+  App Route:
+    ./src/mastra/agents/clinical-copilot.ts
+    ./app/api/copilotkit/route.ts @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  712414ms] [ERROR] ./src/mastra/agents/clinical-copilot.ts
+Code generation for chunk item errored
+An error occurred while generating the chunk item [project]/src/mastra/agents/clinical-copilot.ts [app-route] (ecmascript)
+
+Caused by:
+- CJS module can't be async.
+
+Debug info:
+- An error occurred while generating the chunk item [project]/src/mastra/agents/clinical-copilot.ts [app-route] (ecmascript)
+- Execution of <ModuleChunkItem as EcmascriptChunkItem>::content_with_async_module_info failed
+- Execution of EcmascriptChunkItemContent::new failed
+- CJS module can't be async.
+
+Import trace:
+  App Route:
+    ./src/mastra/agents/clinical-copilot.ts
+    ./app/api/copilotkit/route.ts @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  712697ms] [ERROR] ./src/mastra/agents/clinical-copilot.ts:29:20
+Parsing ecmascript source code failed
+  27 | 2. Call renderGuidelines with:
+  28 |    - query: the search string
+> 29 |    - results: the `results` ARRAY from the tavilyResearchTool output (NOT the full object — extract only the array field)
+     |                    ^^^^^^^
+  30 |    - answer: your own detailed clinical synthesis (not a placeholder)
+  31 | 3. Also provide a brief text summary in the chat.
+  32 | 
+
+Expected ',', got 'ident'
+
+Import trace:
+  App Route:
+    ./src/mastra/agents/clinical-copilot.ts
+    ./app/api/copilotkit/route.ts @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  712697ms] [ERROR] ./src/mastra/agents/clinical-copilot.ts
+Code generation for chunk item errored
+An error occurred while generating the chunk item [project]/src/mastra/agents/clinical-copilot.ts [app-route] (ecmascript)
+
+Caused by:
+- CJS module can't be async.
+
+Debug info:
+- An error occurred while generating the chunk item [project]/src/mastra/agents/clinical-copilot.ts [app-route] (ecmascript)
+- Execution of <ModuleChunkItem as EcmascriptChunkItem>::content_with_async_module_info failed
+- Execution of EcmascriptChunkItemContent::new failed
+- CJS module can't be async.
+
+Import trace:
+  App Route:
+    ./src/mastra/agents/clinical-copilot.ts
+    ./app/api/copilotkit/route.ts @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  712736ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/copilotkit:0
+[  712740ms] [ERROR] Agent execution failed: Error: HTTP 500: <!DOCTYPE html><html><head><meta charSet="utf-8" data-next-head=""/><meta name="viewport" content="width=device-width" data-next-head=""/><style data-next-hide-fouc="true">body{display:none}</style><noscript data-next-hide-fouc="true"><style>body{display:block}</style></noscript><noscript data-n-css=""></noscript><script src="/_next/static/chunks/189f2_next_dist_compiled_3f17d668._.js" defer=""></script><script src="/_next/static/chunks/189f2_next_dist_shared_lib_10228090._.js" defer=""></script><script src="/_next/static/chunks/189f2_next_dist_client_21ff9dc6._.js" defer=""></script><script src="/_next/static/chunks/189f2_next_dist_95022686._.js" defer=""></script><script src="/_next/static/chunks/189f2_next_app_99870d16.js" defer=""></script><script src="/_next/static/chunks/%5Bnext%5D_entry_page-loader_ts_5790419d._.js" defer=""></script><script src="/_next/static/chunks/5e54f_react-dom_4d21b075._.js" defer=""></script><script src="/_next/static/chunks/node_modules__pnpm_fd60bec7._.js" defer=""></script><script src="/_next/static/chunks/%5Broot-of-the-server%5D__45f039c3._.js" defer=""></script><script src="/_next/static/chunks/pages__app_2da965e7._.js" defer=""></script><script src="/_next/static/chunks/turbopack-pages__app_564eed79._.js" defer=""></script><script src="/_next/static/chunks/189f2_next_dist_shared_lib_56b84b4b._.js" defer=""></script><script src="/_next/static/chunks/189f2_next_dist_6d782a7c._.js" defer=""></script><script src="/_next/static/chunks/189f2_next_error_15861337.js" defer=""></script><script src="/_next/static/chunks/%5Bnext%5D_entry_page-loader_ts_8497a9be._.js" defer=""></script><script src="/_next/static/chunks/%5Broot-of-the-server%5D__092393de._.js" defer=""></script><script src="/_next/static/chunks/pages__error_2da965e7._.js" defer=""></script><script src="/_next/static/chunks/turbopack-pages__error_ff7c389a._.js" defer=""></script><script src="/_next/static/development/_ssgManifest.js" defer=""></script><script src="/_next/static/development/_buildManifest.js" defer=""></script><noscript id="__next_css__DO_NOT_USE__"></noscript></head><body><div id="__next"></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"statusCode":500,"hostname":"localhost"}},"page":"/_error","query":{},"buildId":"development","isFallback":false,"err":{"name":"Error","source":"server","message":"./src/mastra/agents/clinical-copilot.ts:29:20\nParsing ecmascript source code failed\n  27 | 2. Call renderGuidelines with:\n  28 |    - query: the search string\n\u003e 29 |    - results: the `results` ARRAY from the tavilyResearchTool output (NOT the full object — extract only the array field)\n     |                    ^^^^^^^\n  30 |    - answer: your own detailed clinical synthesis (not a placeholder)\n  31 | 3. Also provide a brief text summary in the chat.\n  32 | \n\nExpected ',', got 'ident'\n\nImport trace:\n  App Route:\n    ./src/mastra/agents/clinical-copilot.ts\n    ./app/api/copilotkit/route.ts\n\n","stack":"Error: ./src/mastra/agents/clinical-copilot.ts:29:20\nParsing ecmascript source code failed\n\u001b[0m \u001b[90m 27 |\u001b[39m \u001b[32m2. Call renderGuidelines with:\u001b[39m\n \u001b[90m 28 |\u001b[39m \u001b[32m   - query: the search string\u001b[39m\n\u001b[31m\u001b[1m\u003e\u001b[22m\u001b[39m\u001b[90m 29 |\u001b[39m \u001b[32m   - results: the `\u001b[39mresults\u001b[32m` ARRAY from the tavilyResearchTool output (NOT the full object — extract only the array field)\u001b[39m\n \u001b[90m    |\u001b[39m                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 30 |\u001b[39m \u001b[32m   - answer: your own detailed clinical synthesis (not a placeholder)\u001b[39m\n \u001b[90m 31 |\u001b[39m \u001b[32m3. Also provide a brief text summary in the chat.\u001b[39m\n \u001b[90m 32 |\u001b[39m \u001b[32m\u001b[39m\u001b[0m\n\nExpected ',', got 'ident'\n\nImport trace:\n  App Route:\n    ./src/mastra/agents/clinical-copilot.ts\n    ./app/api/copilotkit/route.ts\n\n\n    at Object.getCompilationErrors (/Users/karanbalaji/Documents/coding-projects/the-team/node_modules/.pnpm/next@16.1.6_@babel+core@7.29.0_@opentelemetry+api@1.9.0_@playwright+test@1.58.2_react-d_92e089280fbb2cb51d985b7d6387c615/node_modules/next/dist/server/dev/hot-reloader-turbopack.js:1008:59)\n    at DevBundlerService.getCompilationError (/Users/karanbalaji/Documents/coding-projects/the-team/node_modules/.pnpm/next@16.1.6_@babel+core@7.29.0_@opentelemetry+api@1.9.0_@playwright+test@1.58.2_react-d_92e089280fbb2cb51d985b7d6387c615/node_modules/next/dist/server/lib/dev-bundler-service.js:44:55)\n    at DevServer.getCompilationError (/Users/karanbalaji/Documents/coding-projects/the-team/node_modules/.pnpm/next@16.1.6_@babel+core@7.29.0_@opentelemetry+api@1.9.0_@playwright+test@1.58.2_react-d_92e089280fbb2cb51d985b7d6387c615/node_modules/next/dist/server/dev/next-dev-server.js:706:42)\n    at DevServer.findPageComponents (/Users/karanbalaji/Documents/coding-projects/the-team/node_modules/.pnpm/next@16.1.6_@babel+core@7.29.0_@opentelemetry+api@1.9.0_@playwright+test@1.58.2_react-d_92e089280fbb2cb51d985b7d6387c615/node_modules/next/dist/server/dev/next-dev-server.js:676:43)\n    at async DevServer.renderErrorToResponseImpl (/Users/karanbalaji/Documents/coding-projects/the-team/node_modules/.pnpm/next@16.1.6_@babel+core@7.29.0_@opentelemetry+api@1.9.0_@playwright+test@1.58.2_react-d_92e089280fbb2cb51d985b7d6387c615/node_modules/next/dist/server/base-server.js:1733:26)"},"gip":true,"scriptLoader":[]}</script></body></html>
+    at http://localhost:3000/_next/static/chunks/89bd6_%40ag-ui_client_dist_index_mjs_27ce17c7._.js:725:25
+    at doInnerSub (http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:1990:251)
+    at outerNext (http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:1984:38)
+    at OperatorSubscriber._this._next (http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:1578:17)
+    at Subscriber.next (http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:427:18)
+    at http://localhost:3000/_next/static/chunks/4de3b_rxjs_dist_esm5_internal_36540870._.js:1323:28 @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  715737ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[  732878ms] [ERROR] ./src/mastra/agents/clinical-copilot.ts:29:20
+Parsing ecmascript source code failed
+  27 | 2. Call renderGuidelines with:
+  28 |    - query: the search string
+> 29 |    - results: the `results` ARRAY from the tavilyResearchTool output (NOT the full object — extract only the array field)
+     |                    ^^^^^^^
+  30 |    - answer: your own detailed clinical synthesis (not a placeholder)
+  31 | 3. Also provide a brief text summary in the chat.
+  32 | 
+
+Expected ',', got 'ident'
+
+Import trace:
+  App Route:
+    ./src/mastra/agents/clinical-copilot.ts
+    ./app/api/copilotkit/route.ts @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  732878ms] [ERROR] ./src/mastra/agents/clinical-copilot.ts
+Code generation for chunk item errored
+An error occurred while generating the chunk item [project]/src/mastra/agents/clinical-copilot.ts [app-route] (ecmascript)
+
+Caused by:
+- CJS module can't be async.
+
+Debug info:
+- An error occurred while generating the chunk item [project]/src/mastra/agents/clinical-copilot.ts [app-route] (ecmascript)
+- Execution of <ModuleChunkItem as EcmascriptChunkItem>::content_with_async_module_info failed
+- Execution of EcmascriptChunkItemContent::new failed
+- CJS module can't be async.
+
+Import trace:
+  App Route:
+    ./src/mastra/agents/clinical-copilot.ts
+    ./app/api/copilotkit/route.ts @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  737517ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[  772296ms] [ERROR] ./src/mastra/agents/clinical-copilot.ts:29:20
+Parsing ecmascript source code failed
+  27 | 2. Call renderGuidelines with:
+  28 |    - query: the search string
+> 29 |    - results: the `results` ARRAY from the tavilyResearchTool output (NOT the full object — extract only the array field)
+     |                    ^^^^^^^
+  30 |    - answer: your own detailed clinical synthesis (not a placeholder)
+  31 | 3. Also provide a brief text summary in the chat.
+  32 | 
+
+Expected ',', got 'ident'
+
+Import trace:
+  App Route:
+    ./src/mastra/agents/clinical-copilot.ts
+    ./app/api/copilotkit/route.ts @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  772296ms] [ERROR] ./src/mastra/agents/clinical-copilot.ts
+Code generation for chunk item errored
+An error occurred while generating the chunk item [project]/src/mastra/agents/clinical-copilot.ts [app-route] (ecmascript)
+
+Caused by:
+- CJS module can't be async.
+
+Debug info:
+- An error occurred while generating the chunk item [project]/src/mastra/agents/clinical-copilot.ts [app-route] (ecmascript)
+- Execution of <ModuleChunkItem as EcmascriptChunkItem>::content_with_async_module_info failed
+- Execution of EcmascriptChunkItemContent::new failed
+- CJS module can't be async.
+
+Import trace:
+  App Route:
+    ./src/mastra/agents/clinical-copilot.ts
+    ./app/api/copilotkit/route.ts @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  772879ms] [ERROR] ./src/mastra/agents/clinical-copilot.ts:29:20
+Parsing ecmascript source code failed
+  27 | 2. Call renderGuidelines with:
+  28 |    - query: the search string
+> 29 |    - results: the `results` ARRAY from the tavilyResearchTool output (NOT the full object — extract only the array field)
+     |                    ^^^^^^^
+  30 |    - answer: your own detailed clinical synthesis (not a placeholder)
+  31 | 3. Also provide a brief text summary in the chat.
+  32 | 
+
+Expected ',', got 'ident'
+
+Import trace:
+  App Route:
+    ./src/mastra/agents/clinical-copilot.ts
+    ./app/api/copilotkit/route.ts @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  772880ms] [ERROR] ./src/mastra/agents/clinical-copilot.ts
+Code generation for chunk item errored
+An error occurred while generating the chunk item [project]/src/mastra/agents/clinical-copilot.ts [app-route] (ecmascript)
+
+Caused by:
+- CJS module can't be async.
+
+Debug info:
+- An error occurred while generating the chunk item [project]/src/mastra/agents/clinical-copilot.ts [app-route] (ecmascript)
+- Execution of <ModuleChunkItem as EcmascriptChunkItem>::content_with_async_module_info failed
+- Execution of EcmascriptChunkItemContent::new failed
+- CJS module can't be async.
+
+Import trace:
+  App Route:
+    ./src/mastra/agents/clinical-copilot.ts
+    ./app/api/copilotkit/route.ts @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  773005ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[  773082ms] [ERROR] ./src/mastra/agents/clinical-copilot.ts:29:20
+Parsing ecmascript source code failed
+  27 | 2. Call renderGuidelines with:
+  28 |    - query: the search string
+> 29 |    - results: the `results` ARRAY from the tavilyResearchTool output (NOT the full object — extract only the array field)
+     |                    ^^^^^^^
+  30 |    - answer: your own detailed clinical synthesis (not a placeholder)
+  31 | 3. Also provide a brief text summary in the chat.
+  32 | 
+
+Expected ',', got 'ident'
+
+Import trace:
+  App Route:
+    ./src/mastra/agents/clinical-copilot.ts
+    ./app/api/copilotkit/route.ts @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  773082ms] [ERROR] ./src/mastra/agents/clinical-copilot.ts
+Code generation for chunk item errored
+An error occurred while generating the chunk item [project]/src/mastra/agents/clinical-copilot.ts [app-route] (ecmascript)
+
+Caused by:
+- CJS module can't be async.
+
+Debug info:
+- An error occurred while generating the chunk item [project]/src/mastra/agents/clinical-copilot.ts [app-route] (ecmascript)
+- Execution of <ModuleChunkItem as EcmascriptChunkItem>::content_with_async_module_info failed
+- Execution of EcmascriptChunkItemContent::new failed
+- CJS module can't be async.
+
+Import trace:
+  App Route:
+    ./src/mastra/agents/clinical-copilot.ts
+    ./app/api/copilotkit/route.ts @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  773230ms] [ERROR] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/dashboard" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <script>
+                      <script>
+                      <script>
+                      <script>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en" suppressHydrationWarning={true}>
+                          <body
+                            className="lexend_b64d526a-module__s1qVXG__variable jetbrains_mono_7d65b77b-module__VxV-Ta..."
+-                           style={{overflow-x:"hidden",overflow-y:"hidden"}}
+                          >
+                  ...
+ @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  774726ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[  813081ms] [ERROR] Tool data parse error: SyntaxError: Unexpected non-whitespace character after JSON at position 11136 (line 1 column 11137)
+    at JSON.parse (<anonymous>)
+    at parseToolData (http://localhost:3000/_next/static/chunks/_8fe21fbc._.js:1999:37)
+    at ClinicalChat.useCopilotAction (http://localhost:3000/_next/static/chunks/_8fe21fbc._.js:2118:37)
+    at useFrontendTool.useMemo[normalizedRender] (http://localhost:3000/_next/static/chunks/9d83e_%40copilotkit_react-core_dist_index_mjs_f2be57aa._.js:3358:38)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9068:186)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64) Raw value snippet: [{"content":"To date, trastuzumab rezetecan has been granted Breakthrough Therapy Designation by the @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  813082ms] [ERROR] Tool data parse error: SyntaxError: Unexpected non-whitespace character after JSON at position 11136 (line 1 column 11137)
+    at JSON.parse (<anonymous>)
+    at parseToolData (http://localhost:3000/_next/static/chunks/_8fe21fbc._.js:1999:37)
+    at ClinicalChat.useCopilotAction (http://localhost:3000/_next/static/chunks/_8fe21fbc._.js:2118:37)
+    at useFrontendTool.useMemo[normalizedRender] (http://localhost:3000/_next/static/chunks/9d83e_%40copilotkit_react-core_dist_index_mjs_f2be57aa._.js:3358:38)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooksAgain (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4706:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4657:28)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9068:186)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64) Raw value snippet: [{"content":"To date, trastuzumab rezetecan has been granted Breakthrough Therapy Designation by the @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  813105ms] [ERROR] Tool data parse error: SyntaxError: Unexpected non-whitespace character after JSON at position 11136 (line 1 column 11137)
+    at JSON.parse (<anonymous>)
+    at parseToolData (http://localhost:3000/_next/static/chunks/_8fe21fbc._.js:1999:37)
+    at ClinicalChat.useCopilotAction (http://localhost:3000/_next/static/chunks/_8fe21fbc._.js:2118:37)
+    at useFrontendTool.useMemo[normalizedRender] (http://localhost:3000/_next/static/chunks/9d83e_%40copilotkit_react-core_dist_index_mjs_f2be57aa._.js:3358:38)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4651:24)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9068:186)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64) Raw value snippet: [{"content":"To date, trastuzumab rezetecan has been granted Breakthrough Therapy Designation by the @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[  813106ms] [ERROR] Tool data parse error: SyntaxError: Unexpected non-whitespace character after JSON at position 11136 (line 1 column 11137)
+    at JSON.parse (<anonymous>)
+    at parseToolData (http://localhost:3000/_next/static/chunks/_8fe21fbc._.js:1999:37)
+    at ClinicalChat.useCopilotAction (http://localhost:3000/_next/static/chunks/_8fe21fbc._.js:2118:37)
+    at useFrontendTool.useMemo[normalizedRender] (http://localhost:3000/_next/static/chunks/9d83e_%40copilotkit_react-core_dist_index_mjs_f2be57aa._.js:3358:38)
+    at Object.react_stack_bottom_frame (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:14826:24)
+    at renderWithHooksAgain (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4706:24)
+    at renderWithHooks (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:4657:28)
+    at updateFunctionComponent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6112:21)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6708:24)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9456:40)
+    at renderRootSync (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9440:13)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9068:186)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64) Raw value snippet: [{"content":"To date, trastuzumab rezetecan has been granted Breakthrough Therapy Designation by the @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 2310439ms] [ERROR] ./components/chat/generative-ui/guideline-card.tsx:161:14
+Parsing ecmascript source code failed
+  159 |               </p>
+  160 |             </div>
+> 161 |           )) : (
+      |              ^
+  162 |             <p className="text-[10px] text-muted-foreground italic">No detailed evidence sources provided.</p>
+  163 |           )}
+  164 |         </div>
+
+Expected '</', got ':'
+
+Import traces:
+  Client Component Browser:
+    ./components/chat/generative-ui/guideline-card.tsx [Client Component Browser]
+    ./components/chat/clinical-chat.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Client Component Browser]
+    ./app/(dashboard)/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./components/chat/generative-ui/guideline-card.tsx [Client Component SSR]
+    ./components/chat/clinical-chat.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Client Component SSR]
+    ./app/(dashboard)/layout.tsx [Server Component] @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:3127
+[ 2318757ms] [WARNING] Failed to load runtime info (/api/copilotkit/info): Failed to fetch @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2319169ms] [WARNING] Clerk: Clerk has been loaded with development keys. Development instances have strict usage limits and should not be used when deploying your application to production. Learn more: https://clerk.com/docs/deployments/overview @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2319958ms] Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <SidebarProvider>
+      <div className="flex h-scr...">
+        <GlobalHeader>
+          <TooltipProvider delayDuration={300}>
+            <TooltipProvider data-slot="tooltip-pr..." delayDuration={300}>
+              <TooltipProviderProvider scope={undefined} isOpenDelayedRef={{current:true}} delayDuration={300} ...>
+                <header className="h-14 borde...">
+                  <div>
+                  <div className="flex items...">
+                    <div>
+                    <div>
+                    <div className="ml-auto fl...">
+                      <button>
+                      <button>
+                      <div>
+                      <ThemeSwitcher>
+                      <div>
+                      <withClerk(UserButton) appearance={{elements:{...}}}>
+                        <UserButton getContainer={function} appearance={{elements:{...}}} component="UserButton" ...>
+                          <ClerkHostRenderer component="UserButton" mount={function} unmount={function} ...>
++                           <div ref={{current:null}} data-clerk-component="UserButton">
+                            ...
+        ...
+
+    at throwOnHydrationMismatch (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:3348:56)
+    at beginWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:6775:918)
+    at runWithFiberInDEV (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:965:74)
+    at performUnitOfWork (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9562:97)
+    at workLoopConcurrentByScheduler (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9558:58)
+    at renderRootConcurrent (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9541:71)
+    at performWorkOnRoot (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:9068:150)
+    at performWorkOnRootViaSchedulerTask (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_react-dom_72e9ff7c._.js:10230:9)
+    at MessagePort.performWorkUntilDeadline (http://localhost:3000/_next/static/chunks/189f2_next_dist_compiled_c32c4d46._.js:2647:64)
+[ 2320422ms] [WARNING] Lit is in dev mode. Not recommended for production! See https://lit.dev/msg/dev-mode for more information. @ http://localhost:3000/_next/static/chunks/189f2_next_dist_5c5e791c._.js:2297
+[ 2323760ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2366298ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2394069ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2410637ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2417234ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2437980ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2455338ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2462030ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2482073ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2499213ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2505665ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2527515ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2531628ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2542736ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2553593ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2557564ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2563031ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2571099ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2580727ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2586970ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2592910ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0
+[ 2597211ms] [WARNING] The resource https://able-mammal-66.clerk.accounts.dev/npm/@clerk/ui@1/dist/ui.browser.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/dashboard:0

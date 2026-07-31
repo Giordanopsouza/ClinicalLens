@@ -5,7 +5,6 @@ import { internal } from "./_generated/api";
 import { v } from "convex/values";
 import { ActionCtx } from "./_generated/server";
 import { Doc } from "./_generated/dataModel";
-
 // Helper to check authentication
 async function requireAuth(ctx: ActionCtx) {
   const identity = await ctx.auth.getUserIdentity();

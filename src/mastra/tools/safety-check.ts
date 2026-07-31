@@ -59,13 +59,28 @@ export const safetyCheckTool = createTool({
     ),
     summary: z.string(),
   }),
-  execute: async ({ hadm_id }) => {
-    const client = getConvexClient();
+  execute: async ({ hadm_id }, { requestContext }) => {
+    const token = requestContext?.get("convexToken") as string | undefined;
+    const client = getConvexClient(token);
+
+    let finalHadmId = hadm_id;
+    if (!finalHadmId) {
+      const list = await client.query(api.queries.getPatientList, {
+        paginationOpts: { numItems: 1, cursor: null }
+      });
+      if (list.page.length > 0) {
+        finalHadmId = list.page[0].hadm_id;
+      }
+    }
+
+    if (!finalHadmId) {
+      throw new Error("No active patient found for safety check.");
+    }
 
     const [prescriptions, diagnoses, creatinineTrend] = await Promise.all([
-      client.query(api.queries.getPrescriptionsByAdmission, { hadm_id }),
-      client.query(api.queries.getDiagnosesByAdmission, { hadm_id }),
-      client.query(api.queries.getLabTrend, { hadm_id, itemid: CREATININE_ITEMID }),
+      client.query(api.queries.getPrescriptionsByAdmission, { hadm_id: finalHadmId }),
+      client.query(api.queries.getDiagnosesByAdmission, { hadm_id: finalHadmId }),
+      client.query(api.queries.getLabTrend, { hadm_id: finalHadmId, itemid: CREATININE_ITEMID }),
     ]);
 
     const diagnosisTitles = diagnoses.map(

@@ -1,4 +1,4 @@
-import { internalQuery, query } from "./_generated/server";
+import { internalQuery, query, QueryCtx } from "./_generated/server";
 import { v } from "convex/values";
 
 type LabDictionaryEntry = {
@@ -8,21 +8,20 @@ type LabDictionaryEntry = {
 };
 
 type DiagnosisDictionaryEntry = {
+  icd9_code: string;
   short_title: string;
   long_title: string;
 };
 
-function toTimestamp(value: string): number {
+function toTimestamp(value: string) {
   const timestamp = Date.parse(value);
   return Number.isNaN(timestamp) ? 0 : timestamp;
 }
 
 // Helper to check authentication - returns identity or null
-/*
 async function getAuth(ctx: QueryCtx) {
   return await ctx.auth.getUserIdentity();
 }
-*/
 
 import { paginationOptsValidator } from "convex/server";
 
@@ -31,8 +30,8 @@ export const getPatientList = query({
     paginationOpts: paginationOptsValidator,
   },
   handler: async (ctx, args) => {
-    // Auth disabled for demo reliability
-    // const identity = await getAuth(ctx);
+    const identity = await getAuth(ctx);
+    if (!identity) return { page: [], isDone: true, continueCursor: "" };
     
     const results = await ctx.db
       .query("clinical_cases")
@@ -67,8 +66,8 @@ export const getPatientListInternal = internalQuery({
 export const searchPatients = query({
   args: { query: v.string(), limit: v.optional(v.number()) },
   handler: async (ctx, args) => {
-    // Auth disabled for demo reliability
-    // const identity = await getAuth(ctx);
+    const identity = await getAuth(ctx);
+    if (!identity) return [];
 
     const searchLower = args.query.toLowerCase().trim();
     if (searchLower.length < 2) return [];
@@ -98,7 +97,6 @@ export const searchPatients = query({
 
     // 2. Optimized Intelligent Search across all records
     // We use the lightweight patient_discovery table which has NO summaries or embeddings.
-    // This allows us to search thousands of rows without hitting memory limits.
     const searchResults = await ctx.db
       .query("patient_discovery")
       .withSearchIndex("search_diagnosis", (q) => 
@@ -119,7 +117,9 @@ export const searchPatients = query({
 
 export const getTotalPatientCount = query({
   args: {},
-  handler: async () => {
+  handler: async (ctx) => {
+    const identity = await getAuth(ctx);
+    if (!identity) return 0;
     return 2000; 
   },
 });
@@ -127,8 +127,8 @@ export const getTotalPatientCount = query({
 export const getPatientById = query({
   args: { hadm_id: v.number() },
   handler: async (ctx, args) => {
-    // const identity = await getAuth(ctx);
-    // if (!identity) return null;
+    const identity = await getAuth(ctx);
+    if (!identity) return null;
 
     return await ctx.db
       .query("clinical_cases")
@@ -140,8 +140,8 @@ export const getPatientById = query({
 export const getLabsByAdmission = query({
   args: { hadm_id: v.number() },
   handler: async (ctx, args) => {
-    // const identity = await getAuth(ctx);
-    // if (!identity) return [];
+    const identity = await getAuth(ctx);
+    if (!identity) return [];
 
     const labs = await ctx.db
       .query("labs")
@@ -184,8 +184,8 @@ export const getLabTrend = query({
     itemid: v.number(),
   },
   handler: async (ctx, args) => {
-    // const identity = await getAuth(ctx);
-    // if (!identity) return { lab_name: "Unauthenticated", data: [] };
+    const identity = await getAuth(ctx);
+    if (!identity) return { lab_name: "Unauthenticated", data: [] };
 
     const labs = await ctx.db
       .query("labs")
@@ -218,8 +218,8 @@ export const getLabTrend = query({
 export const getLabTypesForAdmission = query({
   args: { hadm_id: v.number() },
   handler: async (ctx, args) => {
-    // const identity = await getAuth(ctx);
-    // if (!identity) return [];
+    const identity = await getAuth(ctx);
+    if (!identity) return [];
 
     const labs = await ctx.db
       .query("labs")
@@ -266,8 +266,8 @@ export const getLabTypesForAdmission = query({
 export const getPrescriptionsByAdmission = query({
   args: { hadm_id: v.number() },
   handler: async (ctx, args) => {
-    // const identity = await getAuth(ctx);
-    // if (!identity) return [];
+    const identity = await getAuth(ctx);
+    if (!identity) return [];
 
     return await ctx.db
       .query("prescriptions")
@@ -279,8 +279,8 @@ export const getPrescriptionsByAdmission = query({
 export const getDiagnosesByAdmission = query({
   args: { hadm_id: v.number() },
   handler: async (ctx, args) => {
-    // const identity = await getAuth(ctx);
-    // if (!identity) return [];
+    const identity = await getAuth(ctx);
+    if (!identity) return [];
 
     const diagnoses = await ctx.db
       .query("diagnoses")
@@ -341,8 +341,8 @@ export const getAlerts = query({
     status: v.optional(v.union(v.literal("unresolved"), v.literal("archived"), v.literal("resolved"))),
   },
   handler: async (ctx, args) => {
-    // const identity = await getAuth(ctx);
-    // if (!identity) return [];
+    const identity = await getAuth(ctx);
+    if (!identity) return [];
 
     let alerts;
 
@@ -384,11 +384,10 @@ export const getAlerts = query({
 export const getCohortStats = query({
   args: {},
   handler: async (ctx) => {
-    // const identity = await getAuth(ctx);
-    // if (!identity) return null;
+    const identity = await getAuth(ctx);
+    if (!identity) return null;
 
     // We use the lightweight patient_discovery table which has NO heavy summaries or embeddings.
-    // This allows us to analyze all 2000+ cases instantly without hitting memory limits.
     const cases = await ctx.db
       .query("patient_discovery")
       .collect(); 
@@ -429,4 +428,3 @@ export const getCohortStats = query({
     };
   },
 });
-
