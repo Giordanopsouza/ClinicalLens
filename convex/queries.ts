@@ -78,31 +78,65 @@ export const searchPatients = query({
 
     // 1. Try exact ID matches first (lightning fast indexed lookup)
     if (!isNaN(searchId)) {
-      const idMatch = await ctx.db
+      const discoveryMatch = await ctx.db
         .query("patient_discovery")
         .withIndex("by_hadm_id", (q) => q.eq("hadm_id", searchId))
         .first();
-      
-      if (idMatch) {
+
+      if (discoveryMatch) {
         return [{
-          _id: idMatch._id,
-          hadm_id: idMatch.hadm_id,
-          subject_id: idMatch.subject_id,
-          admission_diagnosis: idMatch.admission_diagnosis,
-          gender: idMatch.gender,
-          age: idMatch.age,
+          _id: discoveryMatch._id,
+          hadm_id: discoveryMatch.hadm_id,
+          subject_id: discoveryMatch.subject_id,
+          admission_diagnosis: discoveryMatch.admission_diagnosis,
+          gender: discoveryMatch.gender,
+          age: discoveryMatch.age,
+        }];
+      }
+
+      const clinicalCaseMatch = await ctx.db
+        .query("clinical_cases")
+        .withIndex("by_hadm_id", (q) => q.eq("hadm_id", searchId))
+        .first();
+
+      if (clinicalCaseMatch) {
+        return [{
+          _id: clinicalCaseMatch._id,
+          hadm_id: clinicalCaseMatch.hadm_id,
+          subject_id: clinicalCaseMatch.subject_id,
+          admission_diagnosis: clinicalCaseMatch.admission_diagnosis,
+          gender: clinicalCaseMatch.gender,
+          age: clinicalCaseMatch.age,
         }];
       }
     }
 
     // 2. Optimized Intelligent Search across all records
     // We use the lightweight patient_discovery table which has NO summaries or embeddings.
-    const searchResults = await ctx.db
+    let searchResults = await ctx.db
       .query("patient_discovery")
       .withSearchIndex("search_diagnosis", (q) => 
         q.search("admission_diagnosis", searchLower)
       )
       .take(args.limit ?? 15);
+
+    if (searchResults.length === 0) {
+      const clinicalCaseResults = await ctx.db
+        .query("clinical_cases")
+        .withSearchIndex("search_diagnosis", (q) =>
+          q.search("admission_diagnosis", searchLower)
+        )
+        .take(args.limit ?? 15);
+
+      searchResults = clinicalCaseResults.map((p) => ({
+        _id: p._id,
+        hadm_id: p.hadm_id,
+        subject_id: p.subject_id,
+        admission_diagnosis: p.admission_diagnosis,
+        gender: p.gender,
+        age: p.age,
+      }));
+    }
 
     return searchResults.map((p) => ({
       _id: p._id,
@@ -386,9 +420,22 @@ export const getCohortStats = query({
   handler: async (ctx) => {
     // For aggregate stats, we can bypass strict identity checks if it's causing UI hanging
     // We use the lightweight patient_discovery table which has NO heavy summaries or embeddings.
-    const cases = await ctx.db
+    let cases = await ctx.db
       .query("patient_discovery")
       .collect(); 
+
+    if (cases.length === 0) {
+      const clinicalCases = await ctx.db
+        .query("clinical_cases")
+        .collect();
+      cases = clinicalCases.map((c) => ({
+        hadm_id: c.hadm_id,
+        subject_id: c.subject_id,
+        admission_diagnosis: c.admission_diagnosis,
+        gender: c.gender,
+        age: c.age,
+      }));
+    }
     
     const total = cases.length;
     const genderSplit = { M: 0, F: 0, O: 0 };
