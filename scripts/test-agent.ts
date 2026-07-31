@@ -9,7 +9,10 @@ async function main() {
   console.log("Testing agent with query: 'what is the latest news around cancer'");
   
   const result = await clinicalCopilotAgent.generate("what is the latest news around cancer", {
-    threadId: "test-thread-" + Date.now()
+    memory: {
+      thread: "test-thread-" + Date.now(),
+      resource: "test-resource"
+    }
   });
   
   console.log("--- Agent Response ---");

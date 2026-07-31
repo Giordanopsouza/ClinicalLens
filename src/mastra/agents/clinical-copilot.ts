@@ -35,7 +35,7 @@ For ANY query about latest news, research, breakthroughs, guidelines, or clinica
 
 ## Important
 You are a clinical decision SUPPORT tool. Final decisions belong to the clinician.`,
-  model: "google/gemini-3.1-flash-lite-preview", // Latest March 2026 low-latency model
+  model: "google/gemini-2.5-flash",
   tools: {
     patientQueryTool,
     labTrendTool,

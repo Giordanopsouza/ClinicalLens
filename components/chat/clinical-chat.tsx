@@ -98,7 +98,7 @@ export function ClinicalChat() {
     description: "Render a safety alert card showing prescription-diagnosis mismatches.",
     parameters: [
       { name: "hadmId", type: "number", required: true },
-      { name: "flags", type: "array", required: true, items: { type: "object" } },
+      { name: "flags", type: "object[]", required: true },
       { name: "summary", type: "string", required: true },
     ],
     handler: async () => {},
@@ -115,7 +115,7 @@ export function ClinicalChat() {
     description: "Render guideline search results as cards with live evidence sources.",
     parameters: [
       { name: "query", type: "string", required: true },
-      { name: "results", type: "array", required: true, items: { type: "object" } },
+      { name: "results", type: "object[]", required: true },
       { name: "answer", type: "string", required: false },
     ],
     handler: async () => {},
