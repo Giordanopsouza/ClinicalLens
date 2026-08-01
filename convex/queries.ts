@@ -13,6 +13,14 @@ type DiagnosisDictionaryEntry = {
   long_title: string;
 };
 
+type PatientSearchResult = {
+  hadm_id: number;
+  subject_id: number;
+  admission_diagnosis?: string;
+  gender: string;
+  age: number;
+};
+
 function toTimestamp(value: string) {
   const timestamp = Date.parse(value);
   return Number.isNaN(timestamp) ? 0 : timestamp;
@@ -85,7 +93,6 @@ export const searchPatients = query({
 
       if (discoveryMatch) {
         return [{
-          _id: discoveryMatch._id,
           hadm_id: discoveryMatch.hadm_id,
           subject_id: discoveryMatch.subject_id,
           admission_diagnosis: discoveryMatch.admission_diagnosis,
@@ -101,7 +108,6 @@ export const searchPatients = query({
 
       if (clinicalCaseMatch) {
         return [{
-          _id: clinicalCaseMatch._id,
           hadm_id: clinicalCaseMatch.hadm_id,
           subject_id: clinicalCaseMatch.subject_id,
           admission_diagnosis: clinicalCaseMatch.admission_diagnosis,
@@ -113,12 +119,18 @@ export const searchPatients = query({
 
     // 2. Optimized Intelligent Search across all records
     // We use the lightweight patient_discovery table which has NO summaries or embeddings.
-    let searchResults = await ctx.db
+    let searchResults: PatientSearchResult[] = (await ctx.db
       .query("patient_discovery")
       .withSearchIndex("search_diagnosis", (q) => 
         q.search("admission_diagnosis", searchLower)
       )
-      .take(args.limit ?? 15);
+      .take(args.limit ?? 15)).map((p) => ({
+        hadm_id: p.hadm_id,
+        subject_id: p.subject_id,
+        admission_diagnosis: p.admission_diagnosis,
+        gender: p.gender,
+        age: p.age,
+      }));
 
     if (searchResults.length === 0) {
       const clinicalCaseResults = await ctx.db
@@ -129,7 +141,6 @@ export const searchPatients = query({
         .take(args.limit ?? 15);
 
       searchResults = clinicalCaseResults.map((p) => ({
-        _id: p._id,
         hadm_id: p.hadm_id,
         subject_id: p.subject_id,
         admission_diagnosis: p.admission_diagnosis,
@@ -138,14 +149,7 @@ export const searchPatients = query({
       }));
     }
 
-    return searchResults.map((p) => ({
-      _id: p._id,
-      hadm_id: p.hadm_id,
-      subject_id: p.subject_id,
-      admission_diagnosis: p.admission_diagnosis,
-      gender: p.gender,
-      age: p.age,
-    }));
+    return searchResults;
   },
 });
 
@@ -420,9 +424,15 @@ export const getCohortStats = query({
   handler: async (ctx) => {
     // For aggregate stats, we can bypass strict identity checks if it's causing UI hanging
     // We use the lightweight patient_discovery table which has NO heavy summaries or embeddings.
-    let cases = await ctx.db
+    let cases: PatientSearchResult[] = (await ctx.db
       .query("patient_discovery")
-      .collect(); 
+      .collect()).map((c) => ({
+        hadm_id: c.hadm_id,
+        subject_id: c.subject_id,
+        admission_diagnosis: c.admission_diagnosis,
+        gender: c.gender,
+        age: c.age,
+      }));
 
     if (cases.length === 0) {
       const clinicalCases = await ctx.db
