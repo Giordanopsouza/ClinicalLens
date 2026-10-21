@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useEffect } from "react";
-import { CopilotChat } from "@copilotkit/react-ui";
+import dynamic from "next/dynamic";
 import "@copilotkit/react-ui/styles.css";
 import { useCopilotReadable, useCopilotAction } from "@copilotkit/react-core";
 import { usePatient } from "@/context/patient-context";
@@ -13,6 +13,64 @@ import { SafetyAlertCard, SafetyFlag } from "./generative-ui/safety-alert-card";
 import { GuidelineCard, GuidelineResult } from "./generative-ui/guideline-card";
 import { Activity, Mic, Upload, Sparkles, PanelRightClose, PanelRightOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+// Lazily load the chat UI: keeps the CopilotKit bundle out of the
+// critical path of the dashboard's first paint.
+const CopilotChat = dynamic(
+  () => import("@copilotkit/react-ui").then((m) => m.CopilotChat),
+  { ssr: false, loading: () => <ChatSkeleton /> }
+);
+
+function ChatSkeleton() {
+  return (
+    <div className="h-full w-full animate-pulse space-y-4 p-5" aria-busy="true">
+      {[0, 1, 2].map((i) => (
+        <div key={i} className="space-y-2">
+          <div className="h-3 w-1/3 rounded bg-muted" />
+          <div className="h-12 w-full rounded-lg bg-muted/60" />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// ─── Data Parsing Helper (pure, hoisted out of the component tree) ──
+// Defined at module scope so it is not re-created on every render and
+// can safely be referenced inside memoized render callbacks.
+const parseToolData = (data: unknown): unknown[] => {
+  if (Array.isArray(data)) return data;
+  if (typeof data === "object" && data !== null) {
+    const obj = data as Record<string, unknown>;
+    if (Array.isArray(obj.results)) return obj.results;
+    if (Array.isArray(obj.flags)) return obj.flags;
+    return [data];
+  }
+  if (typeof data !== "string") return [];
+
+  const trimmed = data.trim();
+  if (trimmed.includes("[See summary above]") || trimmed === "...") return [];
+
+  if (trimmed.startsWith("[") || trimmed.startsWith("{")) {
+    try {
+      const sanitized = trimmed.replace(/\n/g, "\\n").replace(/\r/g, "\\r");
+      const parsed: unknown = JSON.parse(sanitized);
+      if (Array.isArray(parsed)) return parsed;
+      if (
+        typeof parsed === "object" &&
+        parsed !== null &&
+        Array.isArray((parsed as Record<string, unknown>).results)
+      ) {
+        return (parsed as Record<string, unknown>).results as unknown[];
+      }
+      return [parsed];
+    } catch {
+      // Malformed tool payloads are expected occasionally; render nothing
+      // instead of crashing the chat stream.
+      return [];
+    }
+  }
+  return [];
+};
 import {
   Tooltip,
   TooltipContent,
@@ -45,38 +103,25 @@ export function ClinicalChat() {
     value: selectedHadmId ? `ACTIVE_HADM_ID:${selectedHadmId}` : "NO_ACTIVE_PATIENT",
   });
 
+  // Recomputed only once per day instead of on every render/stream tick.
+  const todayLabel = useMemo(
+    () =>
+      `TODAY_IS: ${new Date().toLocaleDateString("en-US", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })}`,
+    // The date only changes at midnight; a day-granular dependency keeps
+    // the string referentially stable across re-renders.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [Math.floor(Date.now() / 86_400_000)]
+  );
+
   useCopilotReadable({
     description: "Current date and time for temporal context.",
-    value: `TODAY_IS: ${new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}`,
+    value: todayLabel,
   });
-
-  // ─── Data Parsing Helper ───────────────────────────────────────
-  const parseToolData = (data: any): any[] => {
-    if (Array.isArray(data)) return data;
-    if (typeof data === "object" && data !== null) {
-      if (Array.isArray((data as any).results)) return (data as any).results;
-      if (Array.isArray((data as any).flags)) return (data as any).flags;
-      return [data];
-    }
-    if (typeof data !== "string") return [];
-
-    const trimmed = data.trim();
-    if (trimmed.includes("[See summary above]") || trimmed === "...") return [];
-
-    if (trimmed.startsWith("[") || trimmed.startsWith("{")) {
-      try {
-        const sanitized = trimmed.replace(/\n/g, "\\n").replace(/\r/g, "\\r");
-        const parsed = JSON.parse(sanitized);
-        if (Array.isArray(parsed)) return parsed;
-        if (parsed.results && Array.isArray(parsed.results)) return parsed.results;
-        return [parsed];
-      } catch (e) {
-        console.error("[parseToolData] JSON.parse failed:", e);
-        return [];
-      }
-    }
-    return [];
-  };
 
   // ─── Generative UI Actions ─────────────────────────────────────
   useCopilotAction({
@@ -131,6 +176,19 @@ export function ClinicalChat() {
       );
     },
   });
+
+  // Stable labels object: avoids re-rendering the (lazy-loaded) chat on
+  // every parent render by keeping the prop referentially stable.
+  const chatLabels = useMemo(
+    () => ({
+      title: "Clinical Copilot",
+      initial: patient
+        ? `I'm Aegis, analyzing Patient AEG-${patient.hadm_id}. How can I assist with this case?`
+        : "I'm Aegis, your clinical intelligence partner. Select a patient to begin analysis.",
+      placeholder: "Ask about clinical data...",
+    }),
+    [patient]
+  );
 
   // ─── Listen for Explore button events ──────────────────────────
   useEffect(() => {
@@ -206,13 +264,7 @@ export function ClinicalChat() {
             {/* Chat Area */}
             <div className="flex-1 overflow-hidden relative">
               <CopilotChat
-                labels={{
-                  title: "Clinical Copilot",
-                  initial: patient 
-                    ? `I'm Aegis, analyzing Patient AEG-${patient.hadm_id}. How can I assist with this case?`
-                    : "I'm Aegis, your clinical intelligence partner. Select a patient to begin analysis.",
-                  placeholder: "Ask about clinical data...",
-                }}
+                labels={chatLabels}
                 className="h-full border-none shadow-none rounded-none"
               />
             </div>
